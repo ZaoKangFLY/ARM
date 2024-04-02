@@ -22,18 +22,18 @@ typedef struct __pid_t{             //标记类型__pid_t
                         uint32_t pid_mode;
                         /*函数指针*/
                         void (*f_param_init)(struct __pid_t *pid,  
-                                            uint32_t pid_mode,
-                                           float maxOutput,
-                                           float integralLimit,
-                                            float p,
-                                            float i,
-                                            float d,
-                                            float Max_err,
-                                            float Deadband);
+											uint32_t Mode, //模式
+										    float MaxOutput,//最大输出值
+										    float IntergralLimit,//积分限幅
+											float 	kp,
+											float 	ki,
+											float 	kd,
+											float Max_err, //最大误差
+											float Deadband);//死区值
                         void (*f_pid_reset)(struct __pid_t *pid,
-                                            float p,
-                                            float i,
-                                            float d);
+                                            float kp,
+                                            float ki,
+                                            float kd);
 }pid_t;		//结构体别名pid_t
 
 typedef struct _CascadePID

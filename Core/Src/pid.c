@@ -4,11 +4,12 @@ pid_t Motor_Small;
 /* PID控制------位置式和增量式 */
 float PID_calc(pid_t* pid, float get, float set)
 {
-	int index;
+	int index = 1;
     pid->get[NOW] = get;
     pid->set[NOW] = set;
     pid->err[NOW] = set - get;//当前误差
-    if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  // 积分分离
+   
+/*	if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  // 积分分离
     {
 		index=0;
 	
@@ -16,8 +17,10 @@ float PID_calc(pid_t* pid, float get, float set)
 	else
 	{
 		index=1;
-	}
-
+	}*/
+  /*  if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  //10000设置量程 如果超量程 则失能   
+    {return 0;}*/
+	
 	if (pid->deadband != 0 && fabs(pid->err[NOW]) < pid->deadband)     //0.001设置死区 与上述参数相同 可单独初始化
 	{return 0;}
     if(pid->pid_mode == POSITION_PID) //位置式PID

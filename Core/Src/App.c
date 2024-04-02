@@ -18,7 +18,7 @@ void System_Init()
    
 	/*初始化结构体*/
 	//pid_param_init(&Motor_Big,POSITION_PID,999.0f,200.0f,2000.0f,20.5f,50.0f,10000.0f,0.001f);//初始化大臂PID结构体
-	pid_param_init(&Motor_Small,POSITION_PID,3359.0f,100000000.0f,20.0f,1.5f,0.0f,10000000.0f,10.0f);//初始化小臂PID结构体 
+	pid_param_init(&Motor_Small,POSITION_PID,999.0f,200.0f,2.0f,50.0f,10.0f,10000.0f,3.0f);//初始化小臂PID结构体 
 	//PID_struct_init(&Motor_Small,POSITION_PID,999.0f,200.0f,2000.0f,20.5f,50.0f,10000.0f,0.02f);
 
 #if PID_ASSISTANT_EN
@@ -110,12 +110,12 @@ void Motor_Small_Set_Position(float _set)
 	 {
 		//static int Round_Cnt=0;
 		//static int Last_CNT=0;
-		float Motor_Small_K=0.00057f; //传动比(包含传动比以及减速比)
+		//float Motor_Small_K=0.00057f; //传动比(包含传动比以及减速比)
 		static float PWM=0.0f;//控制量：占空比；周期等有关
 		static float _get=0.0f;//当前位置
 		static int32_t Small_Position_Now=0;//当前位置	 
 		_set=Convert_angle(1,_set);//转换弧度
-	/*
+		/*
 		 if((int)(Small_Econder_TIM->CNT)-Last_CNT>40000)     
 		{
 			Round_Cnt--;
@@ -230,7 +230,7 @@ void Motor_Small_Set_Position(float _set)
 
 
 
-void Motor_Small_Set_Speed(float _set)//速度环控制
+void Motor_Small_Set_Speed(float _set)//pid转子位置式
 {
 	 if (is_motor_en == 1)
 	 {	
@@ -238,26 +238,28 @@ void Motor_Small_Set_Speed(float _set)//速度环控制
 //		float K=0.01425f/REDUCTION_RATIO; //(包含传动比以及减速比)0.00057=k/REDUCTION_RATIO 
 		static int Round_Cnt = 0; // 当前时刻总计数值
 		static int Last_Cnt = 0;
-		 float PWM = 0;//控制量：占空比；周期等有关
+		static float con_val = 0;//控制量
+		static uint16_t PWM = 0;//占空比；周期等有关
 		static int32_t _get = 0;//当前速度
-		 
-		
-		Round_Cnt =(Small_Econder_TIM->CNT)+ (Encoder_Overflow_Count *4294967295 ) ;
-		_get=((float)(Round_Cnt - Last_Cnt)/ENCODER_TOTAL_RESOLUTION/REDUCTION_RATIO) / (GET_BASIC_TIM_PERIOD()/1000/60);//转子转速 r/min		
-		Last_Cnt=Round_Cnt; //将当前编码器的值记录下来
-		//PWM=PID_calc(&Motor_Small,_get,_set);//输入为臂速度	
-/*电机反接的控制*/	//////////1高-1低电控制
-		if(PWM>0)
+		 	
+		Round_Cnt = __HAL_TIM_GET_COUNTER(&htim2) + (Encoder_Overflow_Count *4294967295 ) ;
+		_get=Round_Cnt;//((float)(Round_Cnt - Last_Cnt)/ENCODER_TOTAL_RESOLUTION/REDUCTION_RATIO) ;//转子转速 r/min		
+		con_val=PID_calc(&Motor_Small,_get,_set);//输入为臂速度	
+		//Last_Cnt=Round_Cnt; //将当前编码器的值记录下来
+/*电机反接的控制*/	//////////1高-1低电控制			 
+		 if(con_val>0)//电机正转
 		{
-			Small_PWM1_SETCOMPAER((uint32_t)PWM);//电机正转
+			PWM = con_val;
+			Small_PWM1_SETCOMPAER(PWM);
 			Small_PWM2_SETCOMPAER(0);		    
 		}
-		else 
+		else //电机反转
 		{
-			PWM= -PWM;
-			Small_PWM1_SETCOMPAER(0); //电机反转
-			Small_PWM2_SETCOMPAER((uint32_t)PWM);
-	}
+			PWM = -con_val;
+			Small_PWM1_SETCOMPAER(0); 
+			Small_PWM2_SETCOMPAER(PWM);
+		}
+
 
 		
 		//static uint16_t i = 0;
@@ -345,7 +347,6 @@ float Convert_angle(int j, float x)//1转角度0转弧度
 }
 
 /*侧推占空比对应力的函数计算*/
-
 float COUNT(float x) 
 {
     const float coefficients[] = {
@@ -367,6 +368,8 @@ float COUNT(float x)
     }
     return y;
 }
+
+
 
 
 

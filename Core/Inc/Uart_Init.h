@@ -19,7 +19,7 @@ extern float Receive_Position[];  //存储接收到的信息
 extern int Ce_Speed;
 extern float Big_Position;
 extern float Small_Position;
-extern float Small_Speed;
+extern int Small_Speed;
 extern int stop1;//运转标志
 extern int stop2;
 extern int stop3;

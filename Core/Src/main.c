@@ -72,7 +72,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  int32_t target_location =0;
+  int32_t target_location =CIRCLE_OUTPUT;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
