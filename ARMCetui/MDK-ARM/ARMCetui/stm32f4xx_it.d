@@ -33,17 +33,15 @@ armcetui\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_e
 armcetui\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/protocol.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/usart.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/Uart_Init.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/tim.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/gpio.h
-armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/App.h
 armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/pid.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/Uart_Init.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/Tim_Init.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/App.h
+armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/protocol.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/Uart_Init.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/App.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/Tim_Init.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/motor_control.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/pid.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/tim.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/usart.h

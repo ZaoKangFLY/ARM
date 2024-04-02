@@ -440,6 +440,11 @@
               <FileType>1</FileType>
               <FilePath>..\Core\Src\Uart_Init.c</FilePath>
             </File>
+            <File>
+              <FileName>motor_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\motor_control.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

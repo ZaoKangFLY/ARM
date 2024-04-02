@@ -1,10 +1,5 @@
 #ifndef __TIM_INIT_H__
 #define __TIM_INIT_H__
-#include "main.h"
-#include "tim.h"
-#include "gpio.h"
-#include "string.h"
-#include "stdio.h"
 #include "App.h"
 
 #define  Basic_htim                    htim6
@@ -20,7 +15,7 @@
 
 #define  Basic_TIM            		   TIM6
 #define  Big_Econder_TIM       		   TIM1
-#define  Small_Econder_TIM     		   TIM2
+#define  Small_Econder_TIM     		   TIM2//TIM2->CNT=__HAL_TIM_GET_COUNTER(&htim2)
 #define  Big_PWM_TIM     		   	   TIM5
 #define  Small_PWM_TIM     		       TIM5
 
@@ -46,11 +41,6 @@
 #define   Small_TIM_SETCOUNTER()                __HAL_TIM_SET_COUNTER(&Small_Encoder_htim, 0)//定义电机编码器初值 Big_Econder_TIM->CNT=value;
 #define   Big_TIM_SETCOUNTER()                  __HAL_TIM_SET_COUNTER(&Big_Encoder_htim , 0)
 
-/* 编码器物理分辨率/线数 */
-#define ENCODER_RESOLUTION                     1000
-
-/* 编码器接口倍频数 */
-#define ENCODER_MODE                           TIM_ENCODERMODE_TI1
 
 /* 经过倍频之后的总分辨率 */
 #if (ENCODER_MODE == TIM_ENCODERMODE_TI12)
@@ -59,8 +49,7 @@
   #define ENCODER_TOTAL_RESOLUTION             (ENCODER_RESOLUTION * 2)  /* 2倍频后的总分辨率 */
 #endif
 
-/* 减速电机减速比 */
-#define REDUCTION_RATIO                        25
+
 
 #define CIRCLE_PULSES    ENCODER_TOTAL_RESOLUTION     // 编码器一圈可以捕获的脉冲
 

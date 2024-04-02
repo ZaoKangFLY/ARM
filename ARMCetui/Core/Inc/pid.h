@@ -1,9 +1,7 @@
 #ifndef __PID_H
 #define __PID_H
-#include "stdio.h"
-#include "stm32f4xx.h"
-#include <math.h>
 
+#include "App.h"
 //#define ABS(x)		((x>0)? (x): (-x)) //取绝对值,运算性能更高
 enum{
     LLAST	= 0,
@@ -43,7 +41,7 @@ typedef struct _CascadePID
 	float output;//串级输出，等于inner.output
 }CascadePID;
 
-
+extern pid_t Motor_Small; //创建小臂PID结构体 
 
 
 void PID_struct_init(pid_t* pid,
@@ -65,7 +63,6 @@ void PID_CascadeCalc(CascadePID *pid,float angleGet,float speedGet,float angleSe
 void abs_limit(float *a, float ABS_MAX);
 void abs_limit_min(float *a, float ABS_MIN);
 					
-extern pid_t Motor_Small; //创建小臂PID结构体 
 
 void pid_param_init( pid_t* pid, //结构体指针所以下文->
                             uint32_t Mode, //模式

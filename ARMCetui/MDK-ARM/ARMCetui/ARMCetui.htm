@@ -3,7 +3,7 @@
 <title>Static Call Graph - [ARMCetui\ARMCetui.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ARMCetui\ARMCetui.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Apr 02 20:16:17 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Apr 02 22:51:48 2024
 <BR><P>
 <H3>Maximum Stack Usage =        228 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -955,12 +955,12 @@ Global Symbols
 <P><STRONG><a name="[3]"></a>MemManage_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.MemManage_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[9e]"></a>Motor_Small_Set_Speed</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, app.o(i.Motor_Small_Set_Speed))
+<P><STRONG><a name="[9e]"></a>Motor_Small_Set_Speed</STRONG> (Thumb, 216 bytes, Stack size 16 bytes, motor_control.o(i.Motor_Small_Set_Speed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Motor_Small_Set_Speed &rArr; set_computer_value &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_computer_value
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Small_PWM_SETCOMPAER
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Small_PWM_SETCOMPAER
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_calc
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_computer_value
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
 </UL>
@@ -971,9 +971,9 @@ Global Symbols
 <P><STRONG><a name="[b5]"></a>PID_calc</STRONG> (Thumb, 496 bytes, Stack size 48 bytes, pid.o(i.PID_calc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = PID_calc &rArr; __hardfp_fabs
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;abs_limit
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_fabs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Small_Set_Speed
@@ -1010,8 +1010,8 @@ Global Symbols
 <P><STRONG><a name="[5c]"></a>SystemInit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
-<P><STRONG><a name="[be]"></a>System_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, app.o(i.System_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = System_Init &rArr; TIMx_basic_enable &rArr; set_computer_value &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[be]"></a>System_Init</STRONG> (Thumb, 128 bytes, Stack size 24 bytes, app.o(i.System_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = System_Init &rArr; TIMx_basic_enable &rArr; set_computer_value &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_computer_value
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pid_param_init
@@ -1086,10 +1086,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = TIMx_basic_enable &rArr; set_computer_value &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_computer_value
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
@@ -1151,8 +1151,8 @@ Global Symbols
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_computer_value
 </UL>
 
-<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
+<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
@@ -1162,7 +1162,6 @@ Global Symbols
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_init
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_computer_value
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -1205,10 +1204,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_sum
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Small_Set_Speed
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMx_basic_enable
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Small_Set_Speed
 </UL>
 <P>
 <H3>

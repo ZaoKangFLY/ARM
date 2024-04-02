@@ -25,8 +25,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "App.h"
-#include "protocol.h"
-#include "Uart_Init.h"
+//#include "protocol.h"
+//#include "Uart_Init.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,7 +68,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  int32_t target_location =0;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -95,10 +95,6 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 	System_Init();  //系统初始化
- #if PID_ASSISTANT_EN
-  set_computer_value(SEND_STOP_CMD, CURVES_CH1, NULL, 0);    // 同步上位机的启动按钮状态
-  set_computer_value(SEND_TARGET_CMD, CURVES_CH1, &target_location, 1);     // 给通道 1 发送目标值
-#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */

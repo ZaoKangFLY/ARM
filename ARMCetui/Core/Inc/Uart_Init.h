@@ -1,13 +1,7 @@
 #ifndef __UART_INIT_H__
 #define __UART_INIT_H__
-#include "main.h"
-#include "tim.h"
-#include "gpio.h"
-#include "usart.h"
-#include "string.h"
-#include "stdio.h"
 #include "App.h"
-#include "protocol.h"
+
 
 #define Uart_Rx_Information_Size  24
 #define UartHandle                huart3

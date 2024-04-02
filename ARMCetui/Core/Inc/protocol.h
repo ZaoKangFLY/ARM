@@ -5,14 +5,9 @@
 /*****************************************************************************/
 /* Includes                                                                  */
 /*****************************************************************************/
-#include "stm32f4xx.h"
-#include "usart.h"
-#include "Uart_Init.h"
-#include <string.h>
+
 #include "App.h"
-#include "pid.h"
-#include "Tim_Init.h"
-#include "tim.h"
+
 
 #ifdef _cplusplus
 extern "C" {
