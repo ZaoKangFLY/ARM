@@ -14,7 +14,7 @@
 
 
 #define PID_ASSISTANT_EN    1   // 1:使用PID调试助手显示波形，0：使用串口直接打印数据
-
+#define      Motor_Small_K        8  //传动比
 
 #define  Big_PWM1_SETCOMPAER(ChannelPulse)      Big_PWM_SETCOMPAER( Big_CHANNEL_1,ChannelPulse)
 #define  Big_PWM2_SETCOMPAER(ChannelPulse)      Big_PWM_SETCOMPAER( Big_CHANNEL_2,ChannelPulse)

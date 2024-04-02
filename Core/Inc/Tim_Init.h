@@ -50,7 +50,7 @@
 #define ENCODER_RESOLUTION                     1000
 
 /* 编码器接口倍频数 */
-#define ENCODER_MODE                           TIM_ENCODERMODE_TI1
+#define ENCODER_MODE                           TIM_ENCODERMODE_TI1//TI1/TI12
 
 /* 经过倍频之后的总分辨率 */
 #if (ENCODER_MODE == TIM_ENCODERMODE_TI12)
@@ -60,11 +60,14 @@
 #endif
 
 /* 减速电机减速比 */
-#define REDUCTION_RATIO                        25
+#define REDUCTION_RATIO                        15
 
 #define CIRCLE_PULSES    ENCODER_TOTAL_RESOLUTION     // 编码器一圈可以捕获的脉冲
 
-#define CIRCLE_OUTPUT    (REDUCTION_RATIO/REDUCTION_RATIO)  //输出轴的一圈的脉冲数
+#define CIRCLE_OUTPUT    (ENCODER_TOTAL_RESOLUTION*REDUCTION_RATIO)  //输出轴的一圈的脉冲数
+
+#define CIRCLE_Samll      (CIRCLE_OUTPUT*Motor_Small_K)  //小臂的一圈的脉冲数
+
 
 
 /* 以下两宏仅适用于定时器时钟源TIMxCLK=84MHz，预分频器为：1680-1 的情况 */
