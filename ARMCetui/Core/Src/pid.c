@@ -1,5 +1,6 @@
 #include "pid.h"
-pid_t Motor_Small;
+pid_t Motor_Big;    //创建大臂PID结构体
+pid_t Motor_Small;//创建小臂PID结构体 
 
 /* PID控制------位置式和增量式 */
 float PID_calc(pid_t* pid, float get, float set)

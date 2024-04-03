@@ -24,8 +24,10 @@
 /* 编码器接口倍频数 */
 #define ENCODER_MODE                    TIM_ENCODERMODE_TI1//改为1/2/12
 /* 减速电机减速比 */
-#define REDUCTION_RATIO                 25
+#define REDUCTION_RATIO_B                 125
+#define REDUCTION_RATIO_S                 25
 /*输出轴到小臂传动比*/
+#define  Motor_Big_K        			1
 #define  Motor_Small_K        			8 
 
 void System_Init(void);

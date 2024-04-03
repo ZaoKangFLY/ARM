@@ -10,13 +10,13 @@
 extern uint8_t  Uart_Rx_Buffer[]; //用于UART3的数据接收缓存
 extern uint8_t  Uart_Rx_Data[];   //用于UART3的整理后的数据
 extern float Receive_Position[];  //存储接收到的信息
-extern int Ce_Speed;
+
 extern float Big_Position;
 extern float Small_Position;
-extern int Small_Speed;
-extern int stop1;//运转标志
-extern int stop2;
-extern int stop3;
+
+extern float Small_Speed;
+extern float Big_Speed;
+extern int Ce_Speed;
 
 void Uartx_enable(void);
 void Usart_SendByte(uint8_t str);

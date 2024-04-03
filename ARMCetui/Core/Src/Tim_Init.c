@@ -4,25 +4,32 @@ int16_t Encoder_Overflow_Count = 0;
 /* 使能对应PWM通道定时器 */
 void TIMx_PWM_enable(void)
 {
+#if PID_ASSISTANT_EN
 	is_motor_en=1;
+#endif
+    Big1_PWM_ENABLE();
+    Big2_PWM_ENABLE();
+    Small1_PWM_ENABLE();
+    Small2_PWM_ENABLE();
+	
 #if 0   
     Ce_PWM1_ENABLE();    
     Ce_PWM2_ENABLE();  
 #endif
-    Big_PWM1_ENABLE();
-    Big_PWM2_ENABLE();
-    Small_PWM1_ENABLE();
-    Small_PWM2_ENABLE();
 }
 /* 失能对应PWM通道定时器 */
 void TIMx_PWM_disable(void)
 {
 	is_motor_en=0;
-	Big_PWM1_DISABLE();
-    Big_PWM2_DISABLE();
-    Small_PWM1_DISABLE();
-    Small_PWM2_DISABLE();
-
+	Big1_PWM_DISABLE();
+    Big2_PWM_DISABLE();
+    Small1_PWM_DISABLE();
+    Small2_PWM_DISABLE();
+	
+#if 0   
+	Ce_PWM1_DISABLE() 
+	Ce_PWM2_DISABLE() 
+#endif
 }
 /* 使能编码器定时器 */
 void TIMx_econder_enable(void)
@@ -43,27 +50,27 @@ void TIMx_basic_enable(void)
 #endif
 }
 
-void Big_PWM_SETCOMPAER(uint32_t channel,int compare)
-{
-		switch(channel)
-	{
-		case TIM_CHANNEL_1:   __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_1,compare);break;
-		case TIM_CHANNEL_2:	  __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_2,compare);break;
-		case TIM_CHANNEL_3:	  __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_3,compare);break;
-		case TIM_CHANNEL_4:	  __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_4,compare);break;
-	}
-}
+//void Big_PWM_SETCOMPAER(uint32_t channel,int compare)
+//{
+//		switch(channel)
+//	{
+//		case TIM_CHANNEL_1:   __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_1,compare);break;
+//		case TIM_CHANNEL_2:	  __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_2,compare);break;
+//		case TIM_CHANNEL_3:	  __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_3,compare);break;
+//		case TIM_CHANNEL_4:	  __HAL_TIM_SET_COMPARE(&Big_PWM_htim,TIM_CHANNEL_4,compare);break;
+//	}
+//}
 
-void Small_PWM_SETCOMPAER(uint32_t channel,int compare)
-{
-		switch(channel)
-	{
-		case TIM_CHANNEL_1:   __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_1,compare);break;
-		case TIM_CHANNEL_2:	  __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_2,compare);break;
-		case TIM_CHANNEL_3:	  __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_3,compare);break;
-		case TIM_CHANNEL_4:	  __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_4,compare);break;
-	}
-}
+//void Small_PWM_SETCOMPAER(uint32_t channel,int compare)
+//{
+//		switch(channel)
+//	{
+//		case TIM_CHANNEL_1:   __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_1,compare);break;
+//		case TIM_CHANNEL_2:	  __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_2,compare);break;
+//		case TIM_CHANNEL_3:	  __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_3,compare);break;
+//		case TIM_CHANNEL_4:	  __HAL_TIM_SET_COMPARE(&Small_PWM_htim,TIM_CHANNEL_4,compare);break;
+//	}
+//}
 
 /*定时器中断回调函数中进行PWM*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) 
@@ -74,7 +81,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       
 		//Motor_Big_Set_Position(Big_Position);
        // Motor_Small_Set_Position(Small_Position);
+		
 		Motor_Small_Set_Speed(Small_Speed);
+		//Motor_Big_Set_Speed(Big_Speed);
 	
 /*      if(stop2==0)
         {
