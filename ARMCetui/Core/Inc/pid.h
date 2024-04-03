@@ -40,8 +40,10 @@ typedef struct _CascadePID
 	pid_t outer;//外环
 	float output;//串级输出，等于inner.output
 }CascadePID;
+
 extern pid_t Motor_Big;    //创建大臂PID结构体
 extern pid_t Motor_Small; //创建小臂PID结构体 
+extern pid_t Motor_Ce;     //创建小臂PID结构体 
 
 
 void PID_struct_init(pid_t* pid,

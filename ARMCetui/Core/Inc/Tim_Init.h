@@ -18,10 +18,10 @@
 /*Í¨µÀ*/
 #define Big1_CHANNEL                  TIM_CHANNEL_3
 #define Big2_CHANNEL                  TIM_CHANNEL_4
-#define Small1_CHANNEL               TIM_CHANNEL_1
-#define Small2_CHANNEL               TIM_CHANNEL_2
+#define Small1_CHANNEL                TIM_CHANNEL_1
+#define Small2_CHANNEL                TIM_CHANNEL_2
 #define Ce1_CHANNEL                   TIM_CHANNEL_1
-#define Ce2_CHANNEL                  TIM_CHANNEL_2
+#define Ce2_CHANNEL                   TIM_CHANNEL_2
 
 
 #define  Big1_PWM_ENABLE()                      HAL_TIM_PWM_Start(&Big_PWM_htim ,Big1_CHANNEL)

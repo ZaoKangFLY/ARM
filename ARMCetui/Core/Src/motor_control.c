@@ -1,6 +1,7 @@
 #include "motor_control.h"
 
 uint8_t    is_motor_en = 0;             // 电机使能
+uint8_t    is_cemotor_en = 0;             // 电机使能 
 /*大臂*/
 void Motor_Big_Set_Speed(float _set)//臂环控制；设定角度
 {
@@ -79,69 +80,102 @@ void Motor_Small_Set_Speed(float _set)//小臂环控制；设定角度
 
 }
 /*控制侧推*/
-//void Motor_CeTui_Set_Speed(int _set)
-//{
-//     static float y=0;
-//     static uint16_t PWM=1500; 
-//     if(stop3==1)//接收到侧推指令
-//    {
-//        if(1000<=_set&&_set<=2000)//判断指令是否有效范围
-//        {
-//            if(_set!=PWM )//判断指令是否发生过改变
-//            {
-//                if(PWM<_set)
-//                {
-//                    while(PWM!=_set)
-//                    {
-//                        __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, PWM);/* 修改比较值控制占空比 */
-//                        __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, PWM);
-//                        HAL_Delay(5);
-//                        PWM++;
-//                    }
-//                }
-//                else if(PWM>_set)
-//                {
-//                   while(_set!=PWM)
-//                   {
-//                        __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, PWM);/* 修改比较值控制占空比 */
-//                        __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, PWM);
-//                       HAL_Delay(5);;
-//                       PWM--;
-//                   }
-//                }
-//               y=COUNT(_set);
-//                printf("\r\npwm:%d;占空比:%.1f%%;PWM:%.1fms;推力:%.2fN;",_set,((float)PWM)/200,((float)PWM)/20000*20,10*y);
-//            }
-//            else
-//            {
-//                printf("\r\n输入侧推占空比无变化"); 
-//            }
-
-//        }
-//        else
-//        {
-//            printf("\r\n输入侧推占空比不在范围"); 
-//        }
-//        stop3=0;
-//    }
-//}
-
-
-
-
-
-/*弧度转角度计算*/
-float Convert_angle(int j, float x)//1转角度0转弧度
+void Motor_CeTui_Set_Speed(int _set)
 {
-	if(j)
-	{
-		x=x*3.1415926/180;
+     static float y=0;
+     static uint16_t con_val=1500; 
+     if(is_cemotor_en == 1)//接收到侧推指令
+    {
+        if(1000<=_set&&_set<=2000)//判断指令是否有效范围
+        {
+            if(_set!=con_val )//判断指令是否发生过改变
+            {
+                if(con_val<_set)
+                {
+                    while(con_val!=_set)
+                    {
+						Ce1_SETCOMPAER(_set) ;
+						Ce2_SETCOMPAER(_set) ;
+                       // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, PWM);/* 修改比较值控制占空比 */
+                       // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, PWM);
+                        HAL_Delay(5);
+                        con_val++;
+                    }
+                }
+                else if(con_val>_set)
+                {
+                   while(_set!=con_val)
+                   {
+					   	Ce1_SETCOMPAER(_set) ;
+						Ce2_SETCOMPAER(_set) ;
+                       // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, PWM);/* 修改比较值控制占空比 */
+                       // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, PWM);
+                       HAL_Delay(5);;
+                       con_val--;
+                   }
+                }
+              // y=COUNT(_set);
+              //  printf("\r\npwm:%d;占空比:%.1f%%;PWM:%.1fms;推力:%.2fN;",_set,((float)con_val)/200,((float)con_val)/20000*20,10*y);
+            }
+            else
+            {
+               // printf("\r\n输入侧推占空比无变化"); 
+            }
+
+        }
+        else
+        {
+            //printf("\r\n输入侧推占空比不在范围"); 
+        }
+       
+    }
+}
+
+/*姿态控制*/
+void Motor_CeTui_Set(float _get)//当前姿态角度
+{
+	
+//	 static int set = 0;//设定计数值
+//	 static int get = 0;//当前计数值
+	 if (is_cemotor_en == 1)
+	 {	
+		 
+		static float con_val = 0;//控制量
+		static uint16_t PWM = 0;//占空比
+		static int _set = 0;//设定0
+		_get=deg_to_rad(_get);//当前滚转角
+		con_val=PID_calc(&Motor_Ce,_get,_set)+1500;//输入为臂速度	
+ 
+		if(con_val>1500)//电机正转
+		{
+			PWM = con_val;
+			Small1_SETCOMPAER(PWM);
+			Small2_SETCOMPAER(0);		    
+		}
+		else //电机反转
+		{
+			PWM = -con_val;
+			Small1_SETCOMPAER(0); 
+			Small2_SETCOMPAER(PWM);
+		}		
+#if PID_ASSISTANT_EN
+		//set=(int)(_set);
+		//get=(int)(_get*360/CIRCLE_Samll);
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH1, &get, 1);                // 给通道 1 发送实际值
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH2, &_set, 1); 
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_get, 1);
+#endif
 	}
-	else
-	{
-		x=x*180/3.1415926;
-	}
-	return x;
+
+}
+
+// 弧度转角度
+float rads_to_deg(float radians) {
+    return radians * 180.0 / PI;
+}
+// 角度转弧度
+float deg_to_rad(float degrees) {
+    return degrees * PI / 180.0;
 }
 
 /*侧推占空比对应力的函数计算*/

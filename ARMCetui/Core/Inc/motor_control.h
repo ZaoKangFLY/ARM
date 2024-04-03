@@ -1,8 +1,8 @@
 #ifndef __MOTOR_CONTROL_H__
 #define __MOTOR_CONTROL_H__
 #include "App.h"
- 
- 
+
+#define PI 3.14159265
 #define  Big1_SETCOMPAER(ChannelPulse)         __HAL_TIM_SET_COMPARE(&Big_PWM_htim, Big1_CHANNEL,ChannelPulse);
 #define  Big2_SETCOMPAER(ChannelPulse)         __HAL_TIM_SET_COMPARE(&Big_PWM_htim, Big2_CHANNEL,ChannelPulse);
 #define  Small1_SETCOMPAER(ChannelPulse)       __HAL_TIM_SET_COMPARE(&Small_PWM_htim, Small1_CHANNEL,ChannelPulse);
@@ -29,7 +29,9 @@ void Motor_Small_Set_Position(float _set);
     
 
 
-float Convert_angle(int j, float x);
+
+float rads_to_deg(float radians);
+float deg_to_rad(float degrees);
 
 float COUNT(float x);
 

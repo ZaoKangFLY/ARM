@@ -10,7 +10,7 @@ float Small_Position=0.0f;
 
 float  Small_Speed=0.0f;
 float  Big_Speed=0.0f;
-int Ce_Speed=0;
+uint16_t Ce_Speed=0;
 
 /*开启接收串口*/
 void Uartx_enable()

@@ -16,7 +16,7 @@ extern float Small_Position;
 
 extern float Small_Speed;
 extern float Big_Speed;
-extern int Ce_Speed;
+extern uint16_t Ce_Speed;
 
 void Uartx_enable(void);
 void Usart_SendByte(uint8_t str);
