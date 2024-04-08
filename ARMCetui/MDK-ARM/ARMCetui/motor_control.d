@@ -4,6 +4,7 @@ armcetui\motor_control.o: ../Core/Inc/App.h
 armcetui\motor_control.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\motor_control.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 armcetui\motor_control.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+armcetui\motor_control.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\motor_control.o: ../Core/Inc/main.h
 armcetui\motor_control.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 armcetui\motor_control.o: ../Core/Inc/stm32f4xx_hal_conf.h

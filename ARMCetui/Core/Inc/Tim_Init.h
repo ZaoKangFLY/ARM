@@ -71,7 +71,8 @@
 #define SET_BASIC_TIM_PERIOD(T)     __HAL_TIM_SET_AUTORELOAD(&Basic_htim, (T)*50 - 1)    // 设置定时器的周期（1~1000ms）
 #define GET_BASIC_TIM_PERIOD()     ((__HAL_TIM_GET_AUTORELOAD(&Basic_htim)+1)/50.0)   // 获取定时器的周期，单位ms//是用于获取定时器的自动重装载寄存器
 
-extern int16_t Encoder_Overflow_Count;
+extern int16_t Encoder1_Overflow_Count;
+extern int16_t Encoder2_Overflow_Count;
 
 void TIMx_PWM_enable(void);
 void TIMx_PWM_disable(void);

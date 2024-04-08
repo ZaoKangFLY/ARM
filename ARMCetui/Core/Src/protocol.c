@@ -302,6 +302,7 @@ int8_t receiving_process(void)
 //		  Motor_Small.i=i_temp;
 //		  Motor_Small.d=d_temp;
 		  pid_reset(&Motor_Small,p_temp, i_temp, d_temp);
+		  pid_reset(&Motor_Big,p_temp, i_temp, d_temp);
        // set_p_i_d(p_temp, i_temp, d_temp);    // 设置 P I D
       }
       break;
@@ -312,6 +313,7 @@ int8_t receiving_process(void)
      
 		//  Small_Position=actual_temp;
 		   Small_Speed=actual_temp;
+		  Big_Speed=actual_temp;
        // set_pid_target(actual_temp);    // 设置目标值
 		 // is_motor_en = 1;
       }

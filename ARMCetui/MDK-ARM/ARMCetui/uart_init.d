@@ -4,6 +4,7 @@ armcetui\uart_init.o: ../Core/Inc/App.h
 armcetui\uart_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\uart_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 armcetui\uart_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+armcetui\uart_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\uart_init.o: ../Core/Inc/main.h
 armcetui\uart_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 armcetui\uart_init.o: ../Core/Inc/stm32f4xx_hal_conf.h

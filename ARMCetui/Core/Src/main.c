@@ -94,6 +94,7 @@ int main(void)
   MX_TIM6_Init();
   MX_USART3_UART_Init();
   MX_TIM12_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	System_Init();  //系统初始化
   /* USER CODE END 2 */

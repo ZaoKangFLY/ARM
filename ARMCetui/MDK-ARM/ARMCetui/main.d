@@ -38,6 +38,7 @@ armcetui\main.o: ../Core/Inc/App.h
 armcetui\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 armcetui\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+armcetui\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\main.o: ../Core/Inc/protocol.h
 armcetui\main.o: ../Core/Inc/App.h
 armcetui\main.o: ../Core/Inc/Uart_Init.h

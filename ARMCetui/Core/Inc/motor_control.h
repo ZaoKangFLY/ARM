@@ -2,7 +2,7 @@
 #define __MOTOR_CONTROL_H__
 #include "App.h"
 
-#define PI 3.14159265
+#define PI 3.14159265f
 #define  Big1_SETCOMPAER(ChannelPulse)         __HAL_TIM_SET_COMPARE(&Big_PWM_htim, Big1_CHANNEL,ChannelPulse);
 #define  Big2_SETCOMPAER(ChannelPulse)         __HAL_TIM_SET_COMPARE(&Big_PWM_htim, Big2_CHANNEL,ChannelPulse);
 #define  Small1_SETCOMPAER(ChannelPulse)       __HAL_TIM_SET_COMPARE(&Small_PWM_htim, Small1_CHANNEL,ChannelPulse);

@@ -1,6 +1,7 @@
 #include "Tim_Init.h"
 
-int16_t Encoder_Overflow_Count = 0;
+int16_t Encoder1_Overflow_Count = 0;
+int16_t Encoder2_Overflow_Count = 0;
 /* 使能对应PWM通道定时器 */
 void TIMx_PWM_enable(void)
 {
@@ -83,7 +84,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
        // Motor_Small_Set_Position(Small_Position);
 		
 		Motor_Small_Set_Speed(Small_Speed);
-		//Motor_Big_Set_Speed(Big_Speed);
+		Motor_Big_Set_Speed(Big_Speed);
 	
 /*      if(stop2==0)
         {
@@ -97,18 +98,33 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
           
     }
+	if(htim->Instance==Big_Econder_TIM)
+    {
+        /* 判断当前计数器计数方向 */
+        if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Big_Encoder_htim))
+        {   /* 下溢 */
+            Encoder1_Overflow_Count--;
+        }
+        else
+        {   /* 上溢 */
+            Encoder1_Overflow_Count++;
+        }
+		
+    }  
     if(htim->Instance==Small_Econder_TIM)
     {
         /* 判断当前计数器计数方向 */
         if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Small_Encoder_htim))
         {   /* 下溢 */
-            Encoder_Overflow_Count--;
+            Encoder2_Overflow_Count--;
         }
         else
         {   /* 上溢 */
-            Encoder_Overflow_Count++;
+            Encoder2_Overflow_Count++;
         }
+		
     }  
+
 }
 
 

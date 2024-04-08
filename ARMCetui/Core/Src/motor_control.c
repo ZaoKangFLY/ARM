@@ -5,35 +5,33 @@ uint8_t    is_cemotor_en = 0;             // 电机使能
 /*大臂*/
 void Motor_Big_Set_Speed(float _set)//臂环控制；设定角度
 {
-	 static int set = 0;//设定计数值
-	 static int get = 0;//当前计数值
+//	 static int set = 0;//
+	 static int get = 0;//转动角度
 	 if (is_motor_en == 1)
 	 {	
 		 
-		static float con_val = 0;//控制量
-		static uint16_t PWM = 0;//占空比
-		static int _get = 0;//当前角度
-		_set=_set*CIRCLE_Big/360;	//臂转角度对应的脉冲数 
-		_get =Big_Econder_TIM->CNT+ Encoder_Overflow_Count *4294967295  ;	 
+		static float con_val = 0.0f;//控制占空比
+		static int16_t _get = 0;////实际转过脉冲数	 
+		 
+		_set=_set*CIRCLE_Big/360;	//设定角度对应的脉冲数 
+		_get =Big_Econder_TIM->CNT+ Encoder1_Overflow_Count * Big_Econder_Period   ; //读取编码器脉冲数	 
 		//_get =__HAL_TIM_GET_COUNTER(&htim2)+ Encoder_Overflow_Count *4294967295  ;	 
-		con_val=PID_calc(&Motor_Big,_get,_set);//输入为臂速度	
+		con_val=PID_calc(&Motor_Big,_get,_set);//pid计算	
 		/*电机反接的控制*/		 
 		if(con_val>0)//电机正转
 		{
-			PWM = con_val;
-			Big1_SETCOMPAER(PWM);
+			Big1_SETCOMPAER(uint16_t（con_val）);
 			Big2_SETCOMPAER(0);		    
 		}
 		else //电机反转
 		{
-			PWM = -con_val;
 			Big1_SETCOMPAER(0); 
-			Big2_SETCOMPAER(PWM);
+			Big2_SETCOMPAER(uint16_t（-con_val）);
 		}		
 #if PID_ASSISTANT_EN
 		//set=(int)(_set);
 		get=(int)(_get*360/CIRCLE_Big);
-		set_computer_value(SEND_FACT_CMD, CURVES_CH2, &get, 1);                // 给通道 1 发送实际值
+		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &get, 1);                // 给通道 1 发送实际值
 		//set_computer_value(SEND_FACT_CMD, CURVES_CH2, &_set, 1); 
 		//set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_get, 1);
 #endif
@@ -45,17 +43,18 @@ void Motor_Big_Set_Speed(float _set)//臂环控制；设定角度
 /*小臂*/
 void Motor_Small_Set_Speed(float _set)//小臂环控制；设定角度
 {
-	 static int set = 0;//设定计数值
-	 static int get = 0;//当前计数值
-	 if (is_motor_en == 1)
+//	 static int set = 0;//
+	 static int get = 0;//转动角度
+	 if (is_motor_en == 1)//使能与否
 	 {	
 		 
-		static float con_val = 0;//控制量
+		static float con_val = 0.0f;//控制量
 		static uint16_t PWM = 0;//占空比
-		static int _get = 0;//当前角度
-		_set=_set*CIRCLE_Samll/360;	//臂转角度对应的脉冲数 
-		_get =Small_Econder_TIM->CNT+ Encoder_Overflow_Count *Small_Econder_Period;	 
-		con_val=PID_calc(&Motor_Small,_get,_set);//输入为臂速度	
+		 
+		static int16_t _get = 0;//实际转过脉冲数	
+		_set=_set*CIRCLE_Samll/360;	//设定角度对应的脉冲数 
+		_get =Small_Econder_TIM->CNT+ Encoder2_Overflow_Count * Small_Econder_Period;//读取编码器脉冲数	  
+		con_val=PID_calc(&Motor_Small,_get,_set);//	
 		/*电机反接的控制*/		 
 		if(con_val>0)//电机正转
 		{
@@ -72,7 +71,7 @@ void Motor_Small_Set_Speed(float _set)//小臂环控制；设定角度
 #if PID_ASSISTANT_EN
 		//set=(int)(_set);
 		get=(int)(_get*360/CIRCLE_Samll);
-		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &get, 1);                // 给通道 1 发送实际值
+		set_computer_value(SEND_FACT_CMD, CURVES_CH2, &get, 1);                // 给通道 2发送实际值
 		//set_computer_value(SEND_FACT_CMD, CURVES_CH2, &_set, 1); 
 		//set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_get, 1);
 #endif
@@ -82,7 +81,7 @@ void Motor_Small_Set_Speed(float _set)//小臂环控制；设定角度
 /*控制侧推*/
 void Motor_CeTui_Set_Speed(int _set)
 {
-     static float y=0;
+//     static float y=0;
      static uint16_t con_val=1500; 
      if(is_cemotor_en == 1)//接收到侧推指令
     {
@@ -144,7 +143,7 @@ void Motor_CeTui_Set(float _get)//当前姿态角度
 		static uint16_t PWM = 0;//占空比
 		static int _set = 0;//设定0
 		_get=deg_to_rad(_get);//当前滚转角
-		con_val=PID_calc(&Motor_Ce,_get,_set)+1500;//输入为臂速度	
+		con_val=PID_calc(&Motor_Ce,_get,_set)+1500;//	
  
 		if(con_val>1500)//电机正转
 		{
@@ -171,11 +170,11 @@ void Motor_CeTui_Set(float _get)//当前姿态角度
 
 // 弧度转角度
 float rads_to_deg(float radians) {
-    return radians * 180.0 / PI;
+    return radians * 180.0f / PI;
 }
 // 角度转弧度
 float deg_to_rad(float degrees) {
-    return degrees * PI / 180.0;
+    return degrees * PI / 180.0f;
 }
 
 /*侧推占空比对应力的函数计算*/

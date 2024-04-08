@@ -4,6 +4,7 @@ armcetui\pid.o: ../Core/Inc/App.h
 armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\pid.o: ../Core/Inc/main.h
 armcetui\pid.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 armcetui\pid.o: ../Core/Inc/stm32f4xx_hal_conf.h

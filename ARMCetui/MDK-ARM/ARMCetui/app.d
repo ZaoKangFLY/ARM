@@ -3,6 +3,7 @@ armcetui\app.o: ../Core/Inc/App.h
 armcetui\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 armcetui\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+armcetui\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\app.o: ../Core/Inc/main.h
 armcetui\app.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 armcetui\app.o: ../Core/Inc/stm32f4xx_hal_conf.h
