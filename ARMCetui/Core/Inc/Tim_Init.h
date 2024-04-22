@@ -1,13 +1,7 @@
 #ifndef __TIM_INIT_H__
 #define __TIM_INIT_H__
 #include "App.h"
-/*定时器*/
-#define  Basic_TIM            		   TIM6
-#define  Big_Econder_TIM       		   TIM1
-#define  Small_Econder_TIM     		   TIM2//TIM2->CNT=__HAL_TIM_GET_COUNTER(&htim2)
-#define  Big_PWM_TIM     		   	   TIM5
-#define  Small_PWM_TIM     		       TIM5
-#define  Ce_TIM     		       	   TIM12
+
 /*句柄*/
 #define  Basic_htim                    htim6
 #define  Big_Encoder_htim              htim1
@@ -23,7 +17,7 @@
 #define Ce1_CHANNEL                   TIM_CHANNEL_1
 #define Ce2_CHANNEL                   TIM_CHANNEL_2
 
-
+/*PWM*/
 #define  Big1_PWM_ENABLE()                      HAL_TIM_PWM_Start(&Big_PWM_htim ,Big1_CHANNEL)
 #define  Big2_PWM_ENABLE()                      HAL_TIM_PWM_Start(&Big_PWM_htim ,Big2_CHANNEL)
 #define  Small1_PWM_ENABLE()                    HAL_TIM_PWM_Start(&Small_PWM_htim,Small1_CHANNEL)
@@ -38,15 +32,14 @@
 #define  Ce1_PWM_DISABLE()                       HAL_TIM_PWM_Stop(&Ce_PWM_htim,Ce1_CHANNEL)
 #define  Ce2_PWM_DISABLE()                       HAL_TIM_PWM_Stop(&Ce_PWM_htim,Ce2_CHANNEL)
 
-
+/*中断*/
 #define  Basic_TIM_ENABLE()                     HAL_TIM_Base_Start_IT(&Basic_htim)
 #define  Big_Encoder_ENABLE()                   HAL_TIM_Encoder_Start(&Big_Encoder_htim, TIM_CHANNEL_ALL)
 #define  Small_Encoder_ENABLE()                 HAL_TIM_Encoder_Start(&Small_Encoder_htim, TIM_CHANNEL_ALL)
 
-/* 清零计数器 */
-#define   Small_TIM_SETCOUNTER()                __HAL_TIM_SET_COUNTER(&Small_Encoder_htim, 0)//定义电机编码器初值 Big_Econder_TIM->CNT=value;
-#define   Big_TIM_SETCOUNTER()                  __HAL_TIM_SET_COUNTER(&Big_Encoder_htim , 0)
 
+/* 编码器接口倍频数 */
+#define ENCODER_MODE                    TIM_ENCODERMODE_TI12
 
 /* 经过倍频之后的总分辨率 */
 #if (ENCODER_MODE == TIM_ENCODERMODE_TI12)
@@ -56,15 +49,17 @@
 #endif
 
 
-
 #define CIRCLE_PULSES    ENCODER_TOTAL_RESOLUTION     // 编码器一圈可以捕获的脉冲
-
-#define CIRCLE_OUTPUT_S   (CIRCLE_PULSES*REDUCTION_RATIO_S)  //输出轴的一圈的脉冲数
-#define CIRCLE_Samll      (CIRCLE_OUTPUT_S*Motor_Small_K)  //小臂的一圈的脉冲数
 
 #define CIRCLE_OUTPUT_B    (CIRCLE_PULSES*REDUCTION_RATIO_B)  //输出轴的一圈的脉冲数
 #define CIRCLE_Big     (CIRCLE_OUTPUT_B*Motor_Big_K)  //大臂的一圈的脉冲数
 
+#define CIRCLE_OUTPUT_S   (CIRCLE_PULSES*REDUCTION_RATIO_S)  //输出轴的一圈的脉冲数
+#define CIRCLE_Samll      (CIRCLE_OUTPUT_S*Motor_Small_K)  //小臂的一圈的脉冲数
+
+/* 清零计数器 */
+#define   Big_TIM_SETCOUNTER()                  __HAL_TIM_SET_COUNTER(&Big_Encoder_htim , 0)
+#define   Small_TIM_SETCOUNTER()                __HAL_TIM_SET_COUNTER(&Small_Encoder_htim, 0)//定义电机编码器初值 Big_Econder_TIM->CNT=value;
 
 
 /* 以下两宏仅适用于定时器时钟源TIMxCLK=84MHz，预分频器为：1680-1 的情况 */

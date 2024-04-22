@@ -312,8 +312,9 @@ int8_t receiving_process(void)
         int actual_temp = COMPOUND_32BIT(&frame_data[13]);    // 得到数据
      
 		//  Small_Position=actual_temp;
+		   Big_Speed=actual_temp;
 		   Small_Speed=actual_temp;
-		  Big_Speed=actual_temp;
+		  
        // set_pid_target(actual_temp);    // 设置目标值
 		 // is_motor_en = 1;
       }

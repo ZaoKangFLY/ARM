@@ -224,9 +224,10 @@ void USART3_IRQHandler(void)
 #if PID_ASSISTANT_EN
 	uint8_t dr = __HAL_UART_FLUSH_DRREGISTER(&UartHandle);
 	protocol_data_recv(&dr, 1);
-#endif	
 	/* 接收数据处理 */
 	receiving_process();
+#endif	
+
   /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */

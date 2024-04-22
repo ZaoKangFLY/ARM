@@ -23,6 +23,7 @@ extern  uint8_t  is_motor_en;
 void Motor_Small_Set_Speed(float _set);
 void Motor_Big_Set_Speed(float _set);
 void Motor_CeTui_Set_Speed(int _set);
+void Motor_CeTui_Set(float _get);
 
 void Motor_Big_Set_Position(float _set);
 void Motor_Small_Set_Position(float _set);

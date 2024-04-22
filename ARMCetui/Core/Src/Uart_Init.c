@@ -15,8 +15,8 @@ uint16_t Ce_Speed=0;
 /*开启接收串口*/
 void Uartx_enable()
 {
-	HAL_UART_Receive_IT(&UartHandle,Uart_Rx_Buffer,Uart_Rx_Information_Size);
-   //HAL_UART_Receive_DMA(&huart3,Uart_Rx_Buffer,Uart_Rx_Information_Size);
+	HAL_UART_Receive_IT(&Uart_232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);
+    //HAL_UART_Receive_DMA(&huart3,Uart_Rx_Buffer,Uart_Rx_Information_Size);
 }
 
 /*防错位*/
@@ -83,34 +83,31 @@ static void Uart_Filter_Data(uint8_t* _header,uint8_t* _input,uint8_t* _output,u
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 
-    if(huart->Instance == DEBUG_USART)
+    if(huart == (&Uart_232) )
     {
 #if 	PID_ASSISTANT_EN
 	
 	
 #else
-		//stop1=1;
-        //stop2=1;
-        //stop3=1;
 		is_motor_en = 1;
 		Uart_Filter_Data(Frama_Header,Uart_Rx_Buffer,Uart_Rx_Data,Uart_Rx_Information_Size);//将接收的数据筛选出来（未做SUM校验）
         memcpy(Receive_Position,&Uart_Rx_Data[5],16);//将电机的位置信息摘出来
-        Ce_Speed=Receive_Position[0];//占空比
-       // Big_Position=Receive_Position[1];//度
-        //Small_Position=Receive_Position[2];
-		
+		//Jian_Speed=Receive_Position[0];//占空比
+		Big_Speed=Receive_Position[1];
 		Small_Speed=Receive_Position[2];
-		
+		//Wan_Speed=Receive_Position[3];
+		 //Ce_Speed=Receive_Position[0];//占空比
         printf("*****************************新数据********************************\r\n");
 #endif
-		HAL_UART_Receive_IT(&UartHandle,Uart_Rx_Buffer,Uart_Rx_Information_Size);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+		HAL_UART_Receive_IT(&Uart_232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
 	}
+//	else if(huart == (&Uart_485))
+//	{
+//		 //ROL_Angle=;
+//	
+//	}
      
 }
-
-
-
-
 
 
 
@@ -120,7 +117,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 /*****************  发送字符 **********************/
 void Usart_SendByte(uint8_t str)
 {
-  HAL_UART_Transmit(&UartHandle, &str, 1, 1000);
+  HAL_UART_Transmit(&Uart_232 , &str, 1, 1000);
 }
 
 /*****************  发送字符串 **********************/
@@ -129,7 +126,7 @@ void Usart_SendString(uint8_t *str)
 	unsigned int k=0;
   do 
   {
-      HAL_UART_Transmit(&UartHandle,(uint8_t *)(str + k) ,1,1000);
+      HAL_UART_Transmit(&Uart_232 ,(uint8_t *)(str + k) ,1,1000);
       k++;
   } while(*(str + k)!='\0');
 }
@@ -138,7 +135,7 @@ void Usart_SendString(uint8_t *str)
 int fputc(int ch, FILE *f)
 {
 	/* 发送一个字节数据到串口DEBUG_USART */
-	HAL_UART_Transmit(&UartHandle, (uint8_t *)&ch, 1, 1000);	
+	HAL_UART_Transmit(&Uart_232 , (uint8_t *)&ch, 1, 1000);	
 	
 	return (ch);
 }
