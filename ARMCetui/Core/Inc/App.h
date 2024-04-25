@@ -30,8 +30,8 @@
 #define REDUCTION_RATIO_S                 25
 
 /*输出轴到臂传动比，经过横传齿轮*/
-#define  Motor_Big_K        			12
-#define  Motor_Small_K        			8//12
+#define  Motor_Big_K        			13
+#define  Motor_Small_K        			8
 
 void System_Init(void);
 

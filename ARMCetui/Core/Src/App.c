@@ -18,11 +18,11 @@ void System_Init()
 #endif
 	Uartx_enable();
 	TIMx_econder_enable();
-    TIMx_basic_enable();    
+    TIMx_basic_enable(); 		
 	/*初始化结构体*/							/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
-	pid_param_init(&Motor_Big,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,0.001f);//初始化大臂PID结构体
-	pid_param_init(&Motor_Small,POSITION_PID,999.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,1000.0f);//初始化小臂PID结构体 
-	pid_param_init(&Motor_Ce,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,100.0f);//初始化小臂PID结构体 
+	pid_param_init(&Motor_Big,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,500.0f);//初始化大臂PID结构体
+	pid_param_init(&Motor_Small,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,1000.0f);//初始化小臂PID结构体 
+	//pid_param_init(&Motor_Ce,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,100.0f);//初始化小臂PID结构体 
 	//PID_struct_init(&Motor_Small,POSITION_PID,999.0f,200.0f,2000.0f,20.5f,50.0f,10000.0f,0.02f);
 #if PID_ASSISTANT_EN
     float pid1_temp[3] = {Motor_Big.p, Motor_Big.i, Motor_Big.d};
@@ -32,12 +32,12 @@ void System_Init()
 #endif	
 
     /*侧推12的上电初始化*/
-    Ce1_SETCOMPAER(2000);
-    Ce1_SETCOMPAER(1500);
-    Ce2_SETCOMPAER(2000);
-    Ce2_SETCOMPAER(1500);
-	/*悬浮*/
-	Ce1_SETCOMPAER(1600);
-	Ce2_SETCOMPAER(1600);
+//    Ce1_SETCOMPAER(2000);
+//    Ce1_SETCOMPAER(1500);
+//    Ce2_SETCOMPAER(2000);
+//    Ce2_SETCOMPAER(1500);
+//	/*悬浮*/
+//	Ce1_SETCOMPAER(1600);
+//	Ce2_SETCOMPAER(1600);
 	
 }

@@ -31,17 +31,16 @@ void Motor_Big_Set_Speed(float _set)//臂环控制；设定角度
 #if PID_ASSISTANT_EN
 		get=(int)(_get*360/CIRCLE_Big);//转动角度
 		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &get, 1);  // 给通道 1 发送实际值
-//		_set=(int)(_set);
-//		_get=(int)(_get);
-//		set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_set, 1); 
-//		set_computer_value(SEND_FACT_CMD, CURVES_CH4, &_get, 1);
+		//_set=(int)(_set);
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_set, 1); 
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH4, &_get, 1);
 #else		
 		static uint16_t i = 0;
 		
 		if(i ==200)/* 100ms计算一次 */
 		{
-			printf("TIM1->CNT:%d\r\n",__HAL_TIM_GET_COUNTER(&Big_Encoder_htim));
-//			printf("_set:%.2f****_get%d****TIM1->CNT:%d******compare:%.3f\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Big_Encoder_htim),con_val);
+			//printf("TIM1->CNT:%d\r\n",__HAL_TIM_GET_COUNTER(&Big_Encoder_htim));
+			printf("_set:%.2f****_get%d****TIM1->CNT:%d*****compare:%.3f*****%d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Big_Encoder_htim),con_val,Encoder1_Overflow_Count  );
 			i=0;
 		}
 		i++;
