@@ -47,11 +47,12 @@ uint8_t is_cemotor_en = 0;
 //       
 //    }
 //}
-//PwmHandle pwmHandle_1;
-//PwmHandle pwmHandle_2;
+PwmHandle pwmHandle_1;
+PwmHandle pwmHandle_2;
 
-void pwmHandle_Init(PwmHandle* pwm,float out,uint16_t max,uint16_t min)
+void pwmHandle_Init(PwmHandle* pwm,uint16_t out,uint16_t last,uint16_t max,uint16_t min)
 {
+	pwm->Con_val[LAST]=last;
 	pwm->Outlier=out;
 	pwm->Max=max;
 	pwm->Min=min;
@@ -81,11 +82,12 @@ void pwmHandle_Init(PwmHandle* pwm,float out,uint16_t max,uint16_t min)
 //		}
 //	}
 //}
-uint16_t Control_Pwm(PwmHandle* pwm, int _set)//传参可移植性好，测试简单
+uint16_t Control_Pwm(PwmHandle* pwm, uint16_t _set)//传参可移植性好，测试简单
 {
-    limit(_set, pwm->Max, pwm->Min);	
+ 	
 	if(_set!=pwm->Con_val[LAST] )//判断指令是否发生过改变
 	{
+		limit(_set, pwm->Max, pwm->Min);
 		if(ABS(_set-pwm->Con_val[LAST])<pwm->Outlier)//是否跳变
 		{
 			pwm->Con_val[LAST]= _set;
@@ -106,7 +108,7 @@ void Motor_CeTui_Set(float _get)//当前姿态角度
 	{	 
 		LED1_TOGGLE();
 		static int i=0;
-	    static int throttle = 1520;
+	    static int throttle = 1535;
 		static float ROL_conval = 0;//控制量
 		static uint16_t motor_pwm_1 = 0;//占空比1
 		static uint16_t motor_pwm_2 = 0;//占空比2
@@ -115,11 +117,12 @@ void Motor_CeTui_Set(float _get)//当前姿态角度
 		//printf("误差角度:%.2f ,初始ROL_conval:%.2f\n\r",_set-ROL_Angle,ROL_conval);
 		motor_pwm_1 = throttle + (int)(ROL_conval);//throttle约等于1700
 		motor_pwm_2 = throttle - (int)(ROL_conval);
-//		Control_Pwm(&pwmHandle_1, motor_pwm_1);
-//		Control_Pwm(&pwmHandle_2, motor_pwm_2);
-        limit(motor_pwm_1,1530, 1510);
-	    limit(motor_pwm_2,1530, 1510);
-		//printf("%d ,%d\n",motor_pwm_1,motor_pwm_2);
+		//printf("1---%d ,%d\n",motor_pwm_1,motor_pwm_2);
+		motor_pwm_1=Control_Pwm(&pwmHandle_1, motor_pwm_1);
+		motor_pwm_2=Control_Pwm(&pwmHandle_2, motor_pwm_2);
+//        limit(motor_pwm_1,1550, 1500);
+//	    limit(motor_pwm_2,1550, 1500);
+		printf("%.2f,%d ,%d\n",-ROL_Angle,motor_pwm_1,motor_pwm_2);
 	    Ce1_SETCOMPAER(motor_pwm_1);
 	    Ce2_SETCOMPAER(motor_pwm_2);		
     is_cemotor_en = 0;

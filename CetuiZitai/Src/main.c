@@ -105,8 +105,10 @@ int main(void)
 	Ce2_SETCOMPAER(1500);
     delay_ms(1386);	
 								/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
-	pid_param_init(&Motor_Ce,POSITION_PID,500.0f,20.0f,0.6f,2.0f,0.0f,80.0f,3.0f);//初始化小臂PID结构体 
+	pid_param_init(&Motor_Ce,POSITION_PID,500.0f,20.0f,0.8f,2.0f,0.0f,90.0f,3.0f);//初始化小臂PID结构体 
     pUartHandle.Done=0;
+	pwmHandle_Init(&pwmHandle_1,25,1535,1580,1500);
+	pwmHandle_Init(&pwmHandle_2,25,1535,1580,1500);
 	RS_485_ENABLE();
 	RS_232_ENABLE();
 	Basic_TIM_ENABLE();

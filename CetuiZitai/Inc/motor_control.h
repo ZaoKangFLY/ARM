@@ -17,14 +17,15 @@ enum{
 typedef struct pwm //状态指示
 {
 	float Con_val[2];
-	float Outlier;//跳变限制
+	uint16_t Outlier;//跳变限制
 	uint16_t Max,Min;
 
 }PwmHandle;
 
 
 extern  uint8_t  is_cemotor_en ;
-
+extern PwmHandle pwmHandle_1;
+extern PwmHandle pwmHandle_2;
 
 void Motor_CeTui_Set_Speed(int _set);
 void Motor_CeTui_Set(float _get);
@@ -35,6 +36,6 @@ float rads_to_deg(float radians);
 float deg_to_rad(float degrees);
 
 float COUNT(float x);
-
+void pwmHandle_Init(PwmHandle* pwm,uint16_t out,uint16_t last,uint16_t max,uint16_t min);
 
 #endif

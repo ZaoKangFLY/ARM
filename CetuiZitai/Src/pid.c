@@ -13,7 +13,7 @@ float PID_calc(pid_t* pid, float get, float set)
     pid->err[NOW] = set - get;//当前误差
 	if(pid->max_err != 0 && ABS(pid->err[NOW]) >  pid->max_err  )  {return 0;}  //过大误差失能 
 	if(pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband )	{return 0;} //死区内不再控制
-	index=((pid->deadband !=0 &&  ABS(pid->err[NOW])>pid->deadband+7) ? 0 : 1); //积分分离>a积分不起作用
+	index=((pid->deadband !=0 &&  ABS(pid->err[NOW])>pid->deadband+4) ? 0 : 1); //积分分离>a积分不起作用
 
 	
     if(pid->pid_mode == POSITION_PID) //位置式PID
