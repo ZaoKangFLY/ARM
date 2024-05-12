@@ -98,23 +98,22 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	Ce1_PWM_ENABLE();
 	Ce2_PWM_ENABLE();
-
-	RS_485_ENABLE();
-	RS_232_ENABLE();
-
-									/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
-	pid_param_init(&Motor_Ce,POSITION_PID,400.0f,20.0f,0.6f,2.0f,0.0f,80.0f,3.0f);//初始化小臂PID结构体 
-    pUartHandle.Done=0;
 	/*侧推12的上电初始化*/
 	Ce1_SETCOMPAER(2000);
 	Ce1_SETCOMPAER(1500);
 	Ce2_SETCOMPAER(2000);
 	Ce2_SETCOMPAER(1500);
-    delay_ms(1386);
- 	Basic_TIM_ENABLE();
+    delay_ms(1386);	
+								/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
+	pid_param_init(&Motor_Ce,POSITION_PID,500.0f,20.0f,0.6f,2.0f,0.0f,80.0f,3.0f);//初始化小臂PID结构体 
+    pUartHandle.Done=0;
+	RS_485_ENABLE();
+	RS_232_ENABLE();
+	Basic_TIM_ENABLE();
+
 //	/*悬浮*/
-//	Ce1_SETCOMPAER(1500);
-//	Ce2_SETCOMPAER(1500);
+	//Ce1_SETCOMPAER(1540);
+	//Ce2_SETCOMPAER(1540);
 
   /* USER CODE END 2 */
 

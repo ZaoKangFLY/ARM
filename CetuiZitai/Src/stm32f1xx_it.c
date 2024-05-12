@@ -214,11 +214,10 @@ void USART2_IRQHandler(void)
 			HAL_UART_Receive(&huart2, &res, 1, 1000);
 			//res=USART2->DR;
 			//printf("%02X ",res);
-		   Receive_Data(res, g_RS485_rx_buf);
+		   Receive_Data(&pUartHandle,res, g_RS485_rx_buf);
 		   if(pUartHandle.Done==1)
 			{
-				ROL_Angle=(g_RS485_rx_buf[4] << 8) | g_RS485_rx_buf[5];
-				ROL_Angle = (ROL_Angle < 32767) ? ROL_Angle * 0.01 : (ROL_Angle - 65536) * 0.01;
+				ROL_Angle=rol_reslving(g_RS485_rx_buf);
 				is_cemotor_en = 1;
 				pUartHandle.Done=0;
 			}

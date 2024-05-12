@@ -3,7 +3,7 @@
 #include <stdio.h>
 typedef unsigned          char uint8_t;
 typedef unsigned short     int uint16_t;
-#define RX_BUF_1_LENGTH 17//接收长度
+#define RX_BUF_1_LENGTH 40//接收长度
 
 typedef struct pos //状态指示
 {
@@ -17,9 +17,9 @@ typedef struct pos //状态指示
 	uint8_t Done;
 
 }PUartHandle;
-
-void Init_data_array(uint8_t *data);
+float rol_reslving(uint8_t *array);
+void Init_data_array(uint8_t *array, int size);
 void pUartHandle_init(void);
-void Receive_Data(uint8_t str, uint8_t *Data);
+void Receive_Data(PUartHandle *pUartHandle,uint8_t str, uint8_t *Data);
 extern PUartHandle pUartHandle;
 #endif
