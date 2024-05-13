@@ -16,9 +16,10 @@ enum{
 
 typedef struct pwm //状态指示
 {
-	float Con_val[2];
-	uint16_t Outlier;//跳变限制
-	uint16_t Max,Min;
+	int16_t Con_val[2];
+    int16_t stablePwm;
+	int16_t Outlier;//跳变限制
+	int16_t Max,Min;
 
 }PwmHandle;
 
@@ -36,6 +37,6 @@ float rads_to_deg(float radians);
 float deg_to_rad(float degrees);
 
 float COUNT(float x);
-void pwmHandle_Init(PwmHandle* pwm,uint16_t out,uint16_t last,uint16_t max,uint16_t min);
+void pwmHandle_Init(PwmHandle* pwm,int16_t out,int16_t stablePwm,int16_t max,int16_t min);
 
 #endif

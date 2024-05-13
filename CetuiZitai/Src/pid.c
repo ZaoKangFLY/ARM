@@ -3,7 +3,18 @@
 pid_t Motor_Big;    //创建大臂PID结构体
 pid_t Motor_Small;  //创建小臂PID结构体 
 pid_t Motor_Ce;     //创建小臂PID结构体 
-
+void abs_limit(float *a, float ABS_MAX)//取限定最值
+{
+    if(*a > ABS_MAX){*a = ABS_MAX;}
+    if(*a < -ABS_MAX){*a = -ABS_MAX;}
+}
+void abs_limit_min(float *a, float ABS_MIN)//取限定最值
+{
+    if(0<*a < ABS_MIN)
+        *a = ABS_MIN;
+    else if(0>*a > -ABS_MIN)
+        *a = -ABS_MIN;
+}
 /* PID控制------位置式和增量式 */
 float PID_calc(pid_t* pid, float get, float set)
 {
@@ -14,8 +25,6 @@ float PID_calc(pid_t* pid, float get, float set)
 	if(pid->max_err != 0 && ABS(pid->err[NOW]) >  pid->max_err  )  {return 0;}  //过大误差失能 
 	if(pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband )	{return 0;} //死区内不再控制
 	index=((pid->deadband !=0 &&  ABS(pid->err[NOW])>pid->deadband+4) ? 0 : 1); //积分分离>a积分不起作用
-
-	
     if(pid->pid_mode == POSITION_PID) //位置式PID
     {
         pid->pout = pid->p * pid->err[NOW];
@@ -28,7 +37,7 @@ float PID_calc(pid_t* pid, float get, float set)
     }
     else if(pid->pid_mode == DELTA_PID)//增量式PID
     {
-        pid->pout = pid->p * (pid->err[NOW] - pid->err[LAST]);
+        pid->pout = pid->p * (pid->err[NOW] - pid->err[LAST]);//这可能有问题，因为pid->err[LAST]初始值没用初始化
         pid->iout = pid->i * pid->err[NOW];
         pid->dout = pid->d * (pid->err[NOW] - 2*pid->err[LAST] + pid->err[LLAST]);       
         abs_limit(&(pid->iout), pid->integralLimit);
@@ -117,18 +126,5 @@ float get_pid_target(void)
   return Small_Position;    // 设置当前的目标值
 }*/
 
-void abs_limit(float *a, float ABS_MAX)//取限定最值
-{
-    if(*a > ABS_MAX)
-        *a = ABS_MAX;
-    if(*a < -ABS_MAX)
-        *a = -ABS_MAX;
-}
-void abs_limit_min(float *a, float ABS_MIN)//取限定最值
-{
-    if(0<*a < ABS_MIN)
-        *a = ABS_MIN;
-    else if(0>*a > -ABS_MIN)
-        *a = -ABS_MIN;
-}
+
 

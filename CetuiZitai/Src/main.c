@@ -99,16 +99,22 @@ int main(void)
 	Ce1_PWM_ENABLE();
 	Ce2_PWM_ENABLE();
 	/*侧推12的上电初始化*/
-	Ce1_SETCOMPAER(2000);
+	Ce1_SETCOMPAER(1000);
 	Ce1_SETCOMPAER(1500);
-	Ce2_SETCOMPAER(2000);
+	Ce2_SETCOMPAER(1000);
 	Ce2_SETCOMPAER(1500);
     delay_ms(1386);	
-								/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
+//	Ce1_SETCOMPAER(1510);
+//	Ce2_SETCOMPAER(1510);
+	
+	/*(pid最大输出值这里不限制在另外一个进行更具体的限制,积分限幅,p,i,d,最大误差,死区值 )*/
 	pid_param_init(&Motor_Ce,POSITION_PID,500.0f,20.0f,0.8f,2.0f,0.0f,90.0f,3.0f);//初始化小臂PID结构体 
     pUartHandle.Done=0;
-	pwmHandle_Init(&pwmHandle_1,25,1535,1580,1500);
-	pwmHandle_Init(&pwmHandle_2,25,1535,1580,1500);
+	pwmHandle_Init(&pwmHandle_1,20,1520,1550,1500);
+	pwmHandle_Init(&pwmHandle_2,20,1460,1500,1420);//反转最低1460
+//	pwmHandle_Init(&pwmHandle_1,20,1600,1800,1540);
+//	pwmHandle_Init(&pwmHandle_2,20,1400,1460,1300);//1460最小转速
+	
 	RS_485_ENABLE();
 	RS_232_ENABLE();
 	Basic_TIM_ENABLE();

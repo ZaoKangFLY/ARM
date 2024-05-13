@@ -50,9 +50,10 @@ uint8_t is_cemotor_en = 0;
 PwmHandle pwmHandle_1;
 PwmHandle pwmHandle_2;
 
-void pwmHandle_Init(PwmHandle* pwm,uint16_t out,uint16_t last,uint16_t max,uint16_t min)
+void pwmHandle_Init(PwmHandle* pwm,int16_t out,int16_t stablePwm,int16_t max,int16_t min)
 {
-	pwm->Con_val[LAST]=last;
+	pwm->stablePwm=stablePwm;
+	pwm->Con_val[LAST]=stablePwm;
 	pwm->Outlier=out;
 	pwm->Max=max;
 	pwm->Min=min;
@@ -82,17 +83,30 @@ void pwmHandle_Init(PwmHandle* pwm,uint16_t out,uint16_t last,uint16_t max,uint1
 //		}
 //	}
 //}
-uint16_t Control_Pwm(PwmHandle* pwm, uint16_t _set)//传参可移植性好，测试简单
+int16_t Control_Pwm(PwmHandle* pwm, float _set)//传参可移植性好，测试简单
 {
- 	
-	if(_set!=pwm->Con_val[LAST] )//判断指令是否发生过改变
+     static int16_t set=0;
+	 static int i=0;
+ 	 set=pwm->stablePwm + (int16_t)(_set);
+	if(set!=pwm->Con_val[LAST] )//判断指令是否发生过改变
 	{
-		limit(_set, pwm->Max, pwm->Min);
-		if(ABS(_set-pwm->Con_val[LAST])<pwm->Outlier)//是否跳变
+		limit(set, pwm->Max, pwm->Min);
+		if(ABS(set-pwm->Con_val[LAST])<pwm->Outlier)//是否跳变，甚至可以细分像上跳变和向下跳变
 		{
-			pwm->Con_val[LAST]= _set;
-			return _set;	
-		}	
+			pwm->Con_val[LAST]= set;
+			return set;	
+		}
+		else//跳变一次忽略，第二次跳变就当成合理，未来考虑滤波或者差分近两次（像MPC预测）
+		{
+			i++;
+			if(i==2)
+			{
+				i=0;
+				pwm->Con_val[LAST]= set;
+			    return set;
+			}
+			
+		}		
 	}
 	return pwm->Con_val[LAST];
 }
@@ -108,21 +122,23 @@ void Motor_CeTui_Set(float _get)//当前姿态角度
 	{	 
 		LED1_TOGGLE();
 		static int i=0;
-	    static int throttle = 1535;
+	    static int throttle = 1525;
 		static float ROL_conval = 0;//控制量
 		static uint16_t motor_pwm_1 = 0;//占空比1
 		static uint16_t motor_pwm_2 = 0;//占空比2
 		static float _set = 0.00f;//设定稳定水平
 		ROL_conval = PID_calc(&Motor_Ce,_get,_set); 
-		//printf("误差角度:%.2f ,初始ROL_conval:%.2f\n\r",_set-ROL_Angle,ROL_conval);
-		motor_pwm_1 = throttle + (int)(ROL_conval);//throttle约等于1700
-		motor_pwm_2 = throttle - (int)(ROL_conval);
+		//printf("误差角度:%.2f ,初始ROL_conval:%.2f\n\r",_set-ROL_Angle,ROL_conval);//加入printf1分钟不到会卡住
+		motor_pwm_1=Control_Pwm(&pwmHandle_1, ROL_conval);
+	    motor_pwm_2=Control_Pwm(&pwmHandle_2, ROL_conval);
+		//motor_pwm_1 = throttle + (int)(ROL_conval);//throttle约等于1700
+		//motor_pwm_2 = throttle - (int)(ROL_conval);
 		//printf("1---%d ,%d\n",motor_pwm_1,motor_pwm_2);
-		motor_pwm_1=Control_Pwm(&pwmHandle_1, motor_pwm_1);
-		motor_pwm_2=Control_Pwm(&pwmHandle_2, motor_pwm_2);
-//        limit(motor_pwm_1,1550, 1500);
-//	    limit(motor_pwm_2,1550, 1500);
-		printf("%.2f,%d ,%d\n",-ROL_Angle,motor_pwm_1,motor_pwm_2);
+		//motor_pwm_1=Control_Pwm(&pwmHandle_1, motor_pwm_1);
+	//	motor_pwm_2=Control_Pwm(&pwmHandle_2, motor_pwm_2);
+    // limit(motor_pwm_1,1550, 1510);
+    //limit(motor_pwm_2,1550, 1510);
+	//	printf("%.2f,%d ,%d\n",-ROL_Angle,motor_pwm_1,motor_pwm_2);
 	    Ce1_SETCOMPAER(motor_pwm_1);
 	    Ce2_SETCOMPAER(motor_pwm_2);		
     is_cemotor_en = 0;
