@@ -1,0 +1,12 @@
+
+本实验用于机械臂控制包括串口接收，大臂和小臂编码器接收和PID控制，主要通过调节PID实现电机控制，在定时器中断中执行电机控制程序。
+1.protocol用于野火上位机pid调试用。不重要
+通过以下函数发送上位机，不用时候把PID_ASSISTANT_EN 置0即可
+#if PID_ASSISTANT_EN
+#else
+#endif
+2App定时器串口使能以及结构体初始化
+3TIM定时器初始化
+4Uart串口初始化以及IEEE754浮点数接收
+5motor_control电机控制程序
+6pid 位置环算法
