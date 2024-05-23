@@ -25,8 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "App.h"
-//#include "protocol.h"
-//#include "Uart_Init.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,7 +95,7 @@ int main(void)
   MX_TIM12_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-	System_Init();  //系统初始化
+	system_init();  //系统初始化
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -1,12 +1,12 @@
-#include "Tim_Init.h"
+#include "tim_init.h"
 
-int16_t Encoder1_Overflow_Count = 0;
-int16_t Encoder2_Overflow_Count = 0;
+int16_t g_bigEncoderOverflowCount = 0;
+int16_t g_smallEncoderOverflowCount = 0;
 /* 使能对应PWM通道定时器 */
-void TIMx_PWM_enable(void)
+void tim_pwm_enable(void)
 {
 #if PID_ASSISTANT_EN
-	is_motor_en=1;
+	g_motorEnable=1;
 #endif
     Big1_PWM_ENABLE();
     Big2_PWM_ENABLE();
@@ -19,9 +19,9 @@ void TIMx_PWM_enable(void)
 #endif
 }
 /* 失能对应PWM通道定时器 */
-void TIMx_PWM_disable(void)
+void tim_pwm_disable(void)
 {
-	is_motor_en=0;
+	g_motorEnable=0;
 	Big1_PWM_DISABLE();
     Big2_PWM_DISABLE();
     Small1_PWM_DISABLE();
@@ -33,7 +33,7 @@ void TIMx_PWM_disable(void)
 #endif
 }
 /* 使能编码器定时器 */
-void TIMx_econder_enable(void)
+void tim_econder_enable(void)
 {
 	/* 清零计数器 */
 	Big_TIM_SETCOUNTER();
@@ -47,12 +47,10 @@ void TIMx_econder_enable(void)
 	
 	Big_Encoder_ENABLE(); 
     Small_Encoder_ENABLE();
-
-
    
 }
 /*使能定时器中断*/	
-void TIMx_basic_enable(void)
+void tim_basic_enable(void)
 {
 	Basic_TIM_ENABLE();	
 #if PID_ASSISTANT_EN
@@ -72,11 +70,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         /* 判断当前计数器计数方向 */
         if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Big_Encoder_htim))
         {   /* 下溢 */
-            Encoder1_Overflow_Count--;
+            g_bigEncoderOverflowCount--;
         }
         else
         {   /* 上溢 */
-            Encoder1_Overflow_Count++;
+            g_bigEncoderOverflowCount++;
         }	
     }  
     else if(htim==(&Small_Encoder_htim))
@@ -85,17 +83,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         /* 判断当前计数器计数方向 */
         if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Small_Encoder_htim))
         {   /* 下溢 */
-            Encoder2_Overflow_Count--;
+            g_smallEncoderOverflowCount--;
         }
         else
         {   /* 上溢 */
-            Encoder2_Overflow_Count++;
+            g_smallEncoderOverflowCount++;
         }	
     }  
     else if(htim==(&Basic_htim))//1ms进一次中断
 	{       
-		Motor_Big_Set_Speed(Big_Speed);
-		Motor_Small_Set_Speed(Small_Speed);
+		big_set_postion(g_bigPosition);
+		small_set_postion(g_smallPosition);
 //		Motor_CeTui_Set(ROL_Angle);     
 		
 //Motor_Big_Set_Position(Big_Position);

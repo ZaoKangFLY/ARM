@@ -7,8 +7,8 @@
 #include "main.h"
 #include "stm32f4xx.h"
 #include "protocol.h"
-#include "Uart_Init.h"
-#include "Tim_Init.h"
+#include "uart_init.h"
+#include "tim_init.h"
 #include "motor_control.h"
 #include "pid.h"
 #include "tim.h"
@@ -22,18 +22,18 @@
 #define ENCODER_RESOLUTION              1000
 
 /*预装载值*/
-#define  Big_Econder_Period       		65535 
-#define  Small_Econder_Period			4294967295
+#define  B_ENCODER_PERIOD      		65535 
+#define  S_ENCODER_PERIOD			4294967295
 
 /* 减速电机减速比 */
-#define REDUCTION_RATIO_B                 125
-#define REDUCTION_RATIO_S                 25
+#define B_REDUCTION_RATIO                 125
+#define S_REDUCTION_RATIO                 25
 
 /*输出轴到臂传动比，经过横传齿轮*/
-#define  Motor_Big_K        			13
-#define  Motor_Small_K        			8
+#define  B_TRANS_RATIO         			13
+#define  S_TRANS_RATIO        			1//8
 
-void System_Init(void);
+void system_init(void);
 
 #endif /* __APP_H__ */
 

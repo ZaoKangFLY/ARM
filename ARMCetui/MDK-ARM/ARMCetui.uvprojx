@@ -401,16 +401,6 @@
               <FilePath>..\Core\Src\protocol.c</FilePath>
             </File>
             <File>
-              <FileName>Tim_Init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\Tim_Init.c</FilePath>
-            </File>
-            <File>
-              <FileName>Uart_Init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\Uart_Init.c</FilePath>
-            </File>
-            <File>
               <FileName>motor_control.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\motor_control.c</FilePath>
@@ -444,6 +434,16 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\tim_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\uart_init.c</FilePath>
             </File>
           </Files>
         </Group>

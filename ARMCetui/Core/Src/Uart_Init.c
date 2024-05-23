@@ -1,19 +1,16 @@
-#include "Uart_Init.h"
+#include "uart_init.h"
 
 uint8_t  Uart_Rx_Buffer[Uart_Rx_Information_Size]; //数据缓存
 uint8_t  Uart_Rx_Data[Uart_Rx_Information_Size];   //整理后的数据
 uint8_t Frama_Header[2]={0xFA,0xAF};
-float Receive_Position[4]={0.0f,0.0f,0.0f,0.0f};  //存储信息
+float receivePosition[4]={0.0f,0.0f,0.0f,0.0f};  //存储信息
 
-float Big_Position=0.0f;
-float Small_Position=0.0f;
-
-float  Small_Speed=0.0f;
-float  Big_Speed=0.0f;
+int16_t  g_bigPosition=0;
+int16_t  g_smallPosition=0;
 uint16_t Ce_Speed=0;
 
 /*开启接收串口*/
-void Uartx_enable()
+void uart_enable()
 {
 	HAL_UART_Receive_IT(&Uart_232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);
     //HAL_UART_Receive_DMA(&huart3,Uart_Rx_Buffer,Uart_Rx_Information_Size);
@@ -89,14 +86,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	
 	
 #else
-		is_motor_en = 1;
+		g_motorEnable = 1;
 		Uart_Filter_Data(Frama_Header,Uart_Rx_Buffer,Uart_Rx_Data,Uart_Rx_Information_Size);//将接收的数据筛选出来（未做SUM校验）
-        memcpy(Receive_Position,&Uart_Rx_Data[5],16);//将电机的位置信息摘出来
-		//Jian_Speed=Receive_Position[0];//占空比
-		Big_Speed=Receive_Position[1];
-		Small_Speed=Receive_Position[2];
-		//Wan_Speed=Receive_Position[3];
-		 //Ce_Speed=Receive_Position[0];//占空比
+        memcpy(receivePosition,&Uart_Rx_Data[5],16);//将电机的位置信息摘出来
+		//g_jianPosition=receivePosition[0];//占空比
+		g_bigPosition=receivePosition[1];
+		g_smallPosition=receivePosition[2];
+		//g_wanPosition=receivePosition[3];
+		 //Ce_Speed=receivePosition[0];//占空比
         printf("*****************************新数据********************************\r\n");
 #endif
 		HAL_UART_Receive_IT(&Uart_232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量

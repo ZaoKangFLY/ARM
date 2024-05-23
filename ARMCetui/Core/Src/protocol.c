@@ -312,7 +312,7 @@ int8_t receiving_process(void)
         int actual_temp = COMPOUND_32BIT(&frame_data[13]);    // 得到数据
      
 		//  Small_Position=actual_temp;
-		   Big_Speed=actual_temp;
+		   g_bigPosition=actual_temp;
 		  // Small_Speed=actual_temp;
 		  
        // set_pid_target(actual_temp);    // 设置目标值
@@ -323,14 +323,14 @@ int8_t receiving_process(void)
       case START_CMD:
       {
 		
-		TIMx_PWM_enable();              // 启动电机
- 
+		tim_pwm_enable();              // 启动电机
+		//g_motorEnable = 1;验证
       }
       break;
       
       case STOP_CMD:
       {
-		TIMx_PWM_disable();          // 停止电机
+		tim_pwm_disable();          // 停止电机
       }
       break;
       

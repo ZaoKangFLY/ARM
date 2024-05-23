@@ -1,24 +1,22 @@
 #include "App.h"
 
-
-
 /*控制系统初始化*/
-void System_Init()
+void system_init()
 {
-	int32_t target_location = 0;
  #if PID_ASSISTANT_EN
+ 	int32_t target_location = 0;//设定初始值
     set_computer_value(SEND_STOP_CMD, CURVES_CH1, NULL, 0);    // 同步上位机的启动按钮状态
     set_computer_value(SEND_TARGET_CMD, CURVES_CH1, &target_location, 1);     // 给通道 1 发送目标值
 	set_computer_value(SEND_TARGET_CMD, CURVES_CH2, &target_location, 1);     // 给通道 2 发送目标值
-	TIMx_PWM_disable();
+	tim_pwm_disable();
 #else
-	TIMx_PWM_enable();
+	tim_pwm_enable();
 	/*调试回传，PC104可能要去掉*/
     Usart_SendString((uint8_t *)"初始化完成！");
 #endif
-	Uartx_enable();
-	TIMx_econder_enable();
-    TIMx_basic_enable(); 		
+	uart_enable();
+	tim_econder_enable();
+    tim_basic_enable(); 		
 	/*初始化结构体*/							/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
 	pid_param_init(&Motor_Big,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,500.0f);//初始化大臂PID结构体
 	pid_param_init(&Motor_Small,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,1000.0f);//初始化小臂PID结构体 
@@ -32,12 +30,12 @@ void System_Init()
 #endif	
 
     /*侧推12的上电初始化*/
-//    Ce1_SETCOMPAER(2000);
-//    Ce1_SETCOMPAER(1500);
-//    Ce2_SETCOMPAER(2000);
-//    Ce2_SETCOMPAER(1500);
+//    Ce1_SETCOMPARE(2000);
+//    Ce1_SETCOMPARE(1500);
+//    Ce2_SETCOMPARE(2000);
+//    Ce2_SETCOMPARE(1500);
 //	/*悬浮*/
-//	Ce1_SETCOMPAER(1600);
-//	Ce2_SETCOMPAER(1600);
+//	Ce1_SETCOMPARE(1600);
+//	Ce2_SETCOMPARE(1600);
 	
 }
