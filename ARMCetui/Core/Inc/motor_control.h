@@ -12,6 +12,7 @@
 
 
 extern  uint8_t  g_motorEnable;
+extern uint8_t    g_cemotorEnable;
 
 void big_set_postion(int16_t _set);
 void small_set_postion(int16_t _set);

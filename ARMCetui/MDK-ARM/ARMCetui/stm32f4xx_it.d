@@ -39,9 +39,9 @@ armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdli
 armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 armcetui\stm32f4xx_it.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/protocol.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/Uart_Init.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/uart_init.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/App.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/Tim_Init.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/tim_init.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/motor_control.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/pid.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/tim.h

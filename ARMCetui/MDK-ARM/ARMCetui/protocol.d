@@ -38,9 +38,9 @@ armcetui\protocol.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 armcetui\protocol.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 armcetui\protocol.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 armcetui\protocol.o: ../Core/Inc/protocol.h
-armcetui\protocol.o: ../Core/Inc/Uart_Init.h
+armcetui\protocol.o: ../Core/Inc/uart_init.h
 armcetui\protocol.o: ../Core/Inc/App.h
-armcetui\protocol.o: ../Core/Inc/Tim_Init.h
+armcetui\protocol.o: ../Core/Inc/tim_init.h
 armcetui\protocol.o: ../Core/Inc/motor_control.h
 armcetui\protocol.o: ../Core/Inc/pid.h
 armcetui\protocol.o: ../Core/Inc/tim.h

@@ -94,6 +94,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{       
 		big_set_postion(g_bigPosition);
 		small_set_postion(g_smallPosition);
+		
 //		Motor_CeTui_Set(ROL_Angle);     
 		
 //Motor_Big_Set_Position(Big_Position);

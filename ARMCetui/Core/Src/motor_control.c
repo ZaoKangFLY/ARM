@@ -1,7 +1,7 @@
 #include "motor_control.h"
 
-uint8_t    g_motorEnable = 0;             // 电机使能
-uint8_t    cemotor_en = 0;             // 电机使能 
+uint8_t  g_motorEnable = 0;             // 电机使能
+uint8_t  g_cemotorEnable = 0;             // 电机使能 
 void motor_big(int16_t pwm)
 {
 	static int16_t val=0; 
@@ -139,7 +139,7 @@ void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 void motor_cetui_set_postion(int _set)
 {
      static uint16_t con_val=1500; 
-     if(is_cemotor_en == 1)//接收到侧推指令
+     if(g_cemotorEnable == 1)//接收到侧推指令
     {
         if(1000<=_set&&_set<=2000)//判断指令是否有效范围
         {
@@ -149,8 +149,8 @@ void motor_cetui_set_postion(int _set)
                 {
                     while(con_val!=_set)
                     {
-						Ce1_SETCOMPARE(con_val) ;
-						Ce2_SETCOMPARE(con_val) ;
+						Ce1_SETCOMPARE(con_val) ;//1600
+						Ce2_SETCOMPARE(3000-con_val) ;//1400
                         HAL_Delay(5);
                         con_val++;
                     }
@@ -159,9 +159,9 @@ void motor_cetui_set_postion(int _set)
                 {
                    while(_set!=con_val)
                    {
-					   	Ce1_SETCOMPARE(con_val) ;
-						Ce2_SETCOMPARE(con_val) ;
-                       HAL_Delay(5);;
+					   	Ce1_SETCOMPARE(con_val) ;//1400
+						Ce2_SETCOMPARE(3000-con_val);//1600
+                       HAL_Delay(5);
                        con_val--;
                    }
                 }
@@ -178,6 +178,7 @@ void motor_cetui_set_postion(int _set)
         {
             //printf("\r\n输入侧推占空比不在范围"); 
         }
+		g_cemotorEnable = 0;
        
     }
 }
@@ -186,7 +187,7 @@ void motor_cetui_set_postion(int _set)
 void cetui_set_postion(float _get)//当前姿态角度
 {
 	static int throttle = 1700;//
-	if (is_cemotor_en == 1)//使能
+	if (g_cemotorEnable == 1)//使能
 	{	
 		static float ROL_conval = 0;//控制量
 		static uint16_t motor_pwm_1 = 0;//占空比
@@ -241,6 +242,7 @@ float count(float x)
     return y;
 }
 
+#if 0
 /*控制大臂未改完*/
 //void Motor_Big_Set_Position(float _set)
 //{
@@ -425,7 +427,7 @@ float count(float x)
 
 //}
 
-
+#endif
 
 
 

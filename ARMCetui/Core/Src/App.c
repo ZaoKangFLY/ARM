@@ -12,7 +12,7 @@ void system_init()
 #else
 	tim_pwm_enable();
 	/*调试回传，PC104可能要去掉*/
-    Usart_SendString((uint8_t *)"初始化完成！");
+    //Usart_SendString((uint8_t *)"初始化完成！");
 #endif
 	uart_enable();
 	tim_econder_enable();

@@ -1,5 +1,5 @@
-armcetui\tim_init.o: ..\Core\Src\Tim_Init.c
-armcetui\tim_init.o: ../Core/Inc/Tim_Init.h
+armcetui\tim_init.o: ..\Core\Src\tim_init.c
+armcetui\tim_init.o: ../Core/Inc/tim_init.h
 armcetui\tim_init.o: ../Core/Inc/App.h
 armcetui\tim_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 armcetui\tim_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
@@ -39,8 +39,8 @@ armcetui\tim_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 armcetui\tim_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 armcetui\tim_init.o: ../Core/Inc/protocol.h
 armcetui\tim_init.o: ../Core/Inc/App.h
-armcetui\tim_init.o: ../Core/Inc/Uart_Init.h
-armcetui\tim_init.o: ../Core/Inc/Tim_Init.h
+armcetui\tim_init.o: ../Core/Inc/uart_init.h
+armcetui\tim_init.o: ../Core/Inc/tim_init.h
 armcetui\tim_init.o: ../Core/Inc/motor_control.h
 armcetui\tim_init.o: ../Core/Inc/pid.h
 armcetui\tim_init.o: ../Core/Inc/tim.h

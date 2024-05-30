@@ -103,8 +103,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    
     /* USER CODE BEGIN 3 */
+	 motor_cetui_set_postion(Ce_Speed);
   }
   /* USER CODE END 3 */
 }

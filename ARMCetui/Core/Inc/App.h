@@ -16,7 +16,7 @@
 
 
 /* 1:使用PID调试助手显示波形，0：使用串口直接打印数据*/
-#define  PID_ASSISTANT_EN    			1
+#define  PID_ASSISTANT_EN    			0
 
 /* 编码器物理分辨率/线数 */
 #define ENCODER_RESOLUTION              1000
