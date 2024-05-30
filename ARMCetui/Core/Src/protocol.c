@@ -376,9 +376,9 @@ void set_computer_value(uint8_t cmd, uint8_t ch, void *data, uint8_t num)
   sum = check_sum(0, (uint8_t *)&set_packet, sizeof(set_packet));       // 计算包头校验和
   sum = check_sum(sum, (uint8_t *)data, num);                           // 计算参数校验和
   
-  HAL_UART_Transmit(&Uart_232 , (uint8_t *)&set_packet, sizeof(set_packet), 0xFFFFF);    // 发送数据头
-  HAL_UART_Transmit(&Uart_232 , (uint8_t *)data, num, 0xFFFFF);                          // 发送参数
-  HAL_UART_Transmit(&Uart_232 , (uint8_t *)&sum, sizeof(sum), 0xFFFFF);                  // 发送校验和
+  HAL_UART_Transmit(&uart232 , (uint8_t *)&set_packet, sizeof(set_packet), 0xFFFFF);    // 发送数据头
+  HAL_UART_Transmit(&uart232 , (uint8_t *)data, num, 0xFFFFF);                          // 发送参数
+  HAL_UART_Transmit(&uart232 , (uint8_t *)&sum, sizeof(sum), 0xFFFFF);                  // 发送校验和
 }
 
 /**********************************************************************************************/

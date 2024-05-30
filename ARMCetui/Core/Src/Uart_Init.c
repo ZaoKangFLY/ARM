@@ -1,9 +1,9 @@
 #include "uart_init.h"
 
-uint8_t  Uart_Rx_Buffer[Uart_Rx_Information_Size]; //数据缓存
-uint8_t  Uart_Rx_Data[Uart_Rx_Information_Size];   //整理后的数据
+uint8_t  recBuffer[recSize]; //数据缓存
+uint8_t  recData[recSize];   //整理后的数据
 uint8_t Frama_Header[2]={0xFA,0xAF};
-float receivePosition[4]={0.0f,0.0f,0.0f,0.0f};  //存储信息
+float recPosition[4]={0.0f,0.0f,0.0f,0.0f};  //存储信息
 
 int16_t  g_bigPosition=0;
 int16_t  g_smallPosition=0;
@@ -12,8 +12,10 @@ uint16_t Ce_Speed=0;
 /*开启接收串口*/
 void uart_enable()
 {
-	HAL_UART_Receive_IT(&Uart_232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);//未使用DMA
-    //HAL_UART_Receive_DMA(&huart3,Uart_Rx_Buffer,Uart_Rx_Information_Size);
+
+	__HAL_UART_ENABLE_IT(&uart232, UART_IT_IDLE);
+	//HAL_UART_Receive_IT(&uart232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);//未使用DMA
+    HAL_UART_Receive_DMA(&uart232,recBuffer,recSize);
 }
 
 /*防错位*/
@@ -79,25 +81,36 @@ static void Uart_Filter_Data(uint8_t* _header,uint8_t* _input,uint8_t* _output,u
 /*串口中断回调函数中接收处理*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
+	
 
-    if(huart == (&Uart_232) )
+    if(huart == (&uart232) )
     {
 #if 	PID_ASSISTANT_EN
 	
 	
 #else
+	if(RESET != __HAL_UART_GET_FLAG(&uart232, UART_FLAG_IDLE))   //判断是否是空闲中断
+	{
+		__HAL_UART_CLEAR_IDLEFLAG(&uart232);                       //清除空闲中断标志
+		HAL_UART_DMAStop(&uart232);                                //停止本次DMA传输    
+		uint8_t data_length  = recSize - __HAL_DMA_GET_COUNTER(&uartDMA232);   //计算接收到的数据长度
+		HAL_UART_Transmit(&uart232,recBuffer,data_length,0x200);             //测试函数：将接收到的数据打印出去
+		memset(recBuffer,0,data_length);                                            
+		data_length = 0;
+		HAL_UART_Receive_DMA(&uart232, recBuffer, recSize);                    //重启开始DMA传输
+    }                    
 		g_motorEnable = 1;
 		g_cemotorEnable= 1;
-		Uart_Filter_Data(Frama_Header,Uart_Rx_Buffer,Uart_Rx_Data,Uart_Rx_Information_Size);//将接收的数据筛选出来（未做SUM校验）
-        memcpy(receivePosition,&Uart_Rx_Data[5],16);//将电机的位置信息摘出来
+		Uart_Filter_Data(Frama_Header,recBuffer,recData,recSize);//将接收的数据筛选出来（未做SUM校验）
+        memcpy(recPosition,&recData[5],16);//将电机的位置信息摘出来
 		//g_jianPosition=receivePosition[0];//占空比
-		g_bigPosition=receivePosition[1];
-		g_smallPosition=receivePosition[2];
-		//g_wanPosition=receivePosition[3];
-		 Ce_Speed=receivePosition[0];//占空比
+		g_bigPosition=recPosition[1];
+		g_smallPosition=recPosition[2];
+		//g_wanPosition=recPosition[3];
+		 Ce_Speed=recPosition[0];//占空比
        // printf("*****************************新数据********************************\r\n");
 #endif
-		HAL_UART_Receive_IT(&Uart_232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+		HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
 	}
 //	else if(huart == (&Uart_485))
 //	{
@@ -115,7 +128,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 /*****************  发送字符 **********************/
 void Usart_SendByte(uint8_t str)
 {
-  HAL_UART_Transmit(&Uart_232 , &str, 1, 1000);
+  HAL_UART_Transmit(&uart232 , &str, 1, 1000);
 }
 
 /*****************  发送字符串 **********************/
@@ -124,7 +137,7 @@ void Usart_SendString(uint8_t *str)
 	unsigned int k=0;
   do 
   {
-      HAL_UART_Transmit(&Uart_232 ,(uint8_t *)(str + k) ,1,1000);
+      HAL_UART_Transmit(&uart232 ,(uint8_t *)(str + k) ,1,1000);
       k++;
   } while(*(str + k)!='\0');
 }
@@ -133,7 +146,7 @@ void Usart_SendString(uint8_t *str)
 int fputc(int ch, FILE *f)
 {
 	/* 发送一个字节数据到串口DEBUG_USART */
-	HAL_UART_Transmit(&Uart_232 , (uint8_t *)&ch, 1, 1000);	
+	HAL_UART_Transmit(&uart232 , (uint8_t *)&ch, 1, 1000);	
 	
 	return (ch);
 }
