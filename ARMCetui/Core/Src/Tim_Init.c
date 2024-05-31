@@ -8,11 +8,14 @@ void tim_pwm_enable(void)
 #if PID_ASSISTANT_EN
 	g_motorEnable=1;
 #endif
+	Jian1_PWM_ENABLE();
+    Jian2_PWM_ENABLE();
     Big1_PWM_ENABLE();
     Big2_PWM_ENABLE();
     Small1_PWM_ENABLE();
     Small2_PWM_ENABLE();
-	
+	Wan1_PWM_ENABLE();
+    Wan2_PWM_ENABLE();
 #if 0   
     Ce_PWM1_ENABLE();    
     Ce_PWM2_ENABLE();  
@@ -22,10 +25,14 @@ void tim_pwm_enable(void)
 void tim_pwm_disable(void)
 {
 	g_motorEnable=0;
+	Jian1_PWM_DISABLE();
+    Jian2_PWM_DISABLE();
 	Big1_PWM_DISABLE();
     Big2_PWM_DISABLE();
     Small1_PWM_DISABLE();
     Small2_PWM_DISABLE();
+	Wan1_PWM_DISABLE();
+    Wan2_PWM_DISABLE();
 	
 #if 0   
 	Ce_PWM1_DISABLE() 
@@ -36,17 +43,25 @@ void tim_pwm_disable(void)
 void tim_econder_enable(void)
 {
 	/* 清零计数器 */
+	Jian_TIM_SETCOUNTER();
 	Big_TIM_SETCOUNTER();
     Small_TIM_SETCOUNTER();
+	Wan_TIM_SETCOUNTER();
 	/*清空标志位*/
-    __HAL_TIM_CLEAR_IT(&Big_Encoder_htim,TIM_IT_UPDATE);
+    __HAL_TIM_CLEAR_IT(&Jian_Encoder_htim,TIM_IT_UPDATE);
+	__HAL_TIM_CLEAR_IT(&Big_Encoder_htim,TIM_IT_UPDATE);
     __HAL_TIM_CLEAR_IT(&Small_Encoder_htim,TIM_IT_UPDATE);
+    __HAL_TIM_CLEAR_IT(&Wan_Encoder_htim,TIM_IT_UPDATE);
 	/*计时器更新中断*/
+	__HAL_TIM_ENABLE_IT(&Jian_Encoder_htim,TIM_IT_UPDATE);
     __HAL_TIM_ENABLE_IT(&Big_Encoder_htim,TIM_IT_UPDATE);
-    __HAL_TIM_ENABLE_IT(&Small_Encoder_htim,TIM_IT_UPDATE);	
+    __HAL_TIM_ENABLE_IT(&Small_Encoder_htim,TIM_IT_UPDATE);
+    __HAL_TIM_ENABLE_IT(&Wan_Encoder_htim,TIM_IT_UPDATE);	
 	
+	Jian_Encoder_ENABLE(); 
 	Big_Encoder_ENABLE(); 
     Small_Encoder_ENABLE();
+	Wan_Encoder_ENABLE(); 
    
 }
 /*使能定时器中断*/	
@@ -65,8 +80,44 @@ void tim_basic_enable(void)
 /*定时器中断回调函数中进行PWM*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) 
 {
-	if(htim==(&Big_Encoder_htim))
+	if(htim==(&Basic_htim))//1ms进一次中断
+	{  
+		set_position(&Motor_Jian, g_jianPosition);
+		set_position(&Motor_Big, g_bigPosition);
+		set_position(&Motor_Small, g_smallPosition);
+		set_position(&Motor_Wan, g_wanPosition);
+//		zhua_set( g_zhua);
+//		big_set_postion(g_bigPosition);
+//		small_set_postion(g_smallPosition);
+		
+//		Motor_CeTui_Set(ROL_Angle);     
+		
+//Motor_Big_Set_Position(Big_Position);
+// Motor_Small_Set_Position(Small_Position);
+		
+//		static int i =0;
+//		i++;
+//		if(i==1000)
+//		{
+//			Usart_SendString((uint8_t *)"1");
+//			i=0;
+//		}
+	}
+	else if(htim==(&Jian_Encoder_htim))
     {
+        /* 判断当前计数器计数方向 */
+        if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Jian_Encoder_htim))
+        {   /* 下溢 */
+            g_jianEncoderOverflowCount--;
+        }
+        else
+        {   /* 上溢 */
+            g_jianEncoderOverflowCount++;
+        }	
+    }  
+    else if(htim==(&Big_Encoder_htim))
+    {
+		//printf("************************************\r\n");
         /* 判断当前计数器计数方向 */
         if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Big_Encoder_htim))
         {   /* 下溢 */
@@ -89,26 +140,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         {   /* 上溢 */
             g_smallEncoderOverflowCount++;
         }	
-    }  
-    else if(htim==(&Basic_htim))//1ms进一次中断
-	{       
-		big_set_postion(g_bigPosition);
-		small_set_postion(g_smallPosition);
-		
-//		Motor_CeTui_Set(ROL_Angle);     
-		
-//Motor_Big_Set_Position(Big_Position);
-// Motor_Small_Set_Position(Small_Position);
-		
-//		static int i =0;
-//		i++;
-//		if(i==1000)
-//		{
-//			Usart_SendString((uint8_t *)"1");
-//			i=0;
-//		}
+    } 
+	else if(htim==(&Wan_Encoder_htim))
+    {
+		//printf("************************************\r\n");
+        /* 判断当前计数器计数方向 */
+        if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&Wan_Encoder_htim))
+        {   /* 下溢 */
+            g_wanEncoderOverflowCount--;
+        }
+        else
+        {   /* 上溢 */
+            g_wanEncoderOverflowCount++;
+        }	
+    }  	
 	       
-    }
 
 
 }

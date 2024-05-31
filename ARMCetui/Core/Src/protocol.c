@@ -301,8 +301,8 @@ int8_t receiving_process(void)
 //		  Motor_Small.p=p_temp;
 //		  Motor_Small.i=i_temp;
 //		  Motor_Small.d=d_temp;
-		  pid_reset(&Motor_Small,p_temp, i_temp, d_temp);
-		  pid_reset(&Motor_Big,p_temp, i_temp, d_temp);
+		  pid_reset(&Pid_Small,p_temp, i_temp, d_temp);
+		  pid_reset(&Pid_Big,p_temp, i_temp, d_temp);
        // set_p_i_d(p_temp, i_temp, d_temp);    // …Ë÷√ P I D
       }
       break;

@@ -41,7 +41,7 @@ armcetui\protocol.o: ../Core/Inc/protocol.h
 armcetui\protocol.o: ../Core/Inc/uart_init.h
 armcetui\protocol.o: ../Core/Inc/App.h
 armcetui\protocol.o: ../Core/Inc/tim_init.h
-armcetui\protocol.o: ../Core/Inc/motor_control.h
 armcetui\protocol.o: ../Core/Inc/pid.h
+armcetui\protocol.o: ../Core/Inc/motor_control.h
 armcetui\protocol.o: ../Core/Inc/tim.h
 armcetui\protocol.o: ../Core/Inc/usart.h
