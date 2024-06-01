@@ -318,8 +318,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\tim_init.c</PathWithFileName>
-      <FilenameWithoutPath>tim_init.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Tim_Init.c</PathWithFileName>
+      <FilenameWithoutPath>Tim_Init.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -330,8 +330,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\uart_init.c</PathWithFileName>
-      <FilenameWithoutPath>uart_init.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Uart_Init.c</PathWithFileName>
+      <FilenameWithoutPath>Uart_Init.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

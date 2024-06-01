@@ -80,7 +80,7 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
-            <RunUserProg2>0</RunUserProg2>
+            <RunUserProg2>1</RunUserProg2>
             <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
@@ -406,14 +406,14 @@
               <FilePath>..\Core\Src\motor_control.c</FilePath>
             </File>
             <File>
-              <FileName>tim_init.c</FileName>
+              <FileName>Tim_Init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Core\Src\tim_init.c</FilePath>
+              <FilePath>..\Core\Src\Tim_Init.c</FilePath>
             </File>
             <File>
-              <FileName>uart_init.c</FileName>
+              <FileName>Uart_Init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Core\Src\uart_init.c</FilePath>
+              <FilePath>..\Core\Src\Uart_Init.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>

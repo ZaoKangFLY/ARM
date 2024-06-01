@@ -42,7 +42,7 @@ armcetui\stm32f4xx_it.o: ../Core/Inc/protocol.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/uart_init.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/App.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/tim_init.h
-armcetui\stm32f4xx_it.o: ../Core/Inc/pid.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/motor_control.h
+armcetui\stm32f4xx_it.o: ../Core/Inc/pid.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/tim.h
 armcetui\stm32f4xx_it.o: ../Core/Inc/usart.h

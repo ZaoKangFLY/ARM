@@ -1,10 +1,5 @@
 armcetui\pid.o: ..\Core\Src\pid.c
 armcetui\pid.o: ../Core/Inc/pid.h
-armcetui\pid.o: ../Core/Inc/App.h
-armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-armcetui\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 armcetui\pid.o: ../Core/Inc/main.h
 armcetui\pid.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 armcetui\pid.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -37,11 +32,3 @@ armcetui\pid.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 armcetui\pid.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 armcetui\pid.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 armcetui\pid.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-armcetui\pid.o: ../Core/Inc/protocol.h
-armcetui\pid.o: ../Core/Inc/App.h
-armcetui\pid.o: ../Core/Inc/uart_init.h
-armcetui\pid.o: ../Core/Inc/tim_init.h
-armcetui\pid.o: ../Core/Inc/pid.h
-armcetui\pid.o: ../Core/Inc/motor_control.h
-armcetui\pid.o: ../Core/Inc/tim.h
-armcetui\pid.o: ../Core/Inc/usart.h

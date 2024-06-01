@@ -1,4 +1,4 @@
-armcetui\tim_init.o: ..\Core\Src\tim_init.c
+armcetui\tim_init.o: ..\Core\Src\Tim_Init.c
 armcetui\tim_init.o: ../Core/Inc/tim_init.h
 armcetui\tim_init.o: ../Core/Inc/App.h
 armcetui\tim_init.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
@@ -41,7 +41,7 @@ armcetui\tim_init.o: ../Core/Inc/protocol.h
 armcetui\tim_init.o: ../Core/Inc/App.h
 armcetui\tim_init.o: ../Core/Inc/uart_init.h
 armcetui\tim_init.o: ../Core/Inc/tim_init.h
-armcetui\tim_init.o: ../Core/Inc/pid.h
 armcetui\tim_init.o: ../Core/Inc/motor_control.h
+armcetui\tim_init.o: ../Core/Inc/pid.h
 armcetui\tim_init.o: ../Core/Inc/tim.h
 armcetui\tim_init.o: ../Core/Inc/usart.h

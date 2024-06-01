@@ -44,5 +44,5 @@ armcetui\main.o: ../Core/Inc/protocol.h
 armcetui\main.o: ../Core/Inc/App.h
 armcetui\main.o: ../Core/Inc/uart_init.h
 armcetui\main.o: ../Core/Inc/tim_init.h
-armcetui\main.o: ../Core/Inc/pid.h
 armcetui\main.o: ../Core/Inc/motor_control.h
+armcetui\main.o: ../Core/Inc/pid.h
