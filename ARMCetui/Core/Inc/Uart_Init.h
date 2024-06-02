@@ -4,7 +4,7 @@
 
 
 #define recSize  48
-#define uartDMA232         hdma_usart3_rx
+#define uartDMA232         		hdma_usart3_rx
 #define uart232               huart3
 //#define Uart_485                huart2
 

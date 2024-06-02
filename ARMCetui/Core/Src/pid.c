@@ -25,7 +25,7 @@ float PID_calc(pid_t* pid, float get, float set)
   /*  if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  //10000设置量程 如果超量程 则失能   
     {return 0;}*/
 	
-	if (pid->deadband != 0 && fabs(pid->err[NOW]) < pid->deadband)     //0.001设置死区 与上述参数相同 可单独初始化
+	if (pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband)     //0.001设置死区 与上述参数相同 可单独初始化
 	{return 0;}
     if(pid->pid_mode == POSITION_PID) //位置式PID
     {

@@ -18,11 +18,11 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
 }
  void set_position(motor_t *motor, int16_t _set) 
 {
-    static int _get = 0; // 实际转动角度
     if (g_motorEnable == 1)
     {   
+//		static int _get = 0; 		// 实际转动角度
         static int16_t con_val = 0; // 控制占空比
-        static int32_t set = 0;     // 设定脉冲数
+        static int32_t set = 0;     // pid设定脉冲数
         static int32_t get = 0;     // 实际转过脉冲数
         
         set = _set * motor->pulses_per_revolution / 360; // 设定角度对应的脉冲数
@@ -32,7 +32,23 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
         con_val = PID_calc(motor->pid, get, set); // PID 计算
         motor->motor_control_function(con_val);   // 控制电机
         
-        _get = get * 360 / motor->pulses_per_revolution; // 转动角度
+/*        _get = get * 360 / motor->pulses_per_revolution; // 转动角度
+#if PID_ASSISTANT_EN
+		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值
+#else	
+		static uint16_t i = 0;
+		if(i == 0)
+		{
+			printf("%4s %4s %6s %7s %5s %4s\n",
+           "预期角度", "实际角度", "编码器数", "总脉冲数", "占空比", "溢出次数");
+		}
+		else if(i ==201)// ms计算一次 
+		{
+			printf("%4d%4d%5d%7d%4.1f%4d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Big_Encoder_htim),con_val,g_bigEncoderOverflowCount );
+			i=1;
+		}
+		i++;	
+#endif*/
     }
 }
 void motor_jian_fun(int16_t pwm)
@@ -114,24 +130,31 @@ void motor_wan_fun(int16_t pwm)
 
 
 
-//void zhua_set(uint8_t _set)
-//{
-//	if(_set==0x0A)
-//	{
-//			Zhua1_SETCOMPARE(pwm);  //同高停转
-//			Zhua2_SETCOMPARE(0);	
-//	}
-//	else if(_set==0x0F)
-//	{
-//	     	Zhua1_SETCOMPARE(0);  //同高停转
-//			Zhua2_SETCOMPARE(pwm);	
-//	}
-
-//}
+void zhua_set(uint8_t _set)
+{
+	static int8_t i = 0;
+	if(_set==0x0A&& i<10)//i=10待测
+	{      
+			Zhua1_SETCOMPARE(999);  
+			Zhua2_SETCOMPARE(0);
+			i++;	
+	}
+	else if(_set==0x0F && i>0)
+	{
+	     	Zhua1_SETCOMPARE(0);  
+			Zhua2_SETCOMPARE(999);	
+          i--;
+	}
+	else
+	{
+	     	Zhua1_SETCOMPARE(0);  //停转
+			Zhua2_SETCOMPARE(0);
+	}
+}
 
 
 /*大臂*/
-void big_set_postion(int16_t _set)//闭环控制；设定角度
+/*void big_set_postion(int16_t _set)//闭环控制；设定角度
 {
 	 static int _get = 0;//实际转动角度
 	 if (g_motorEnable == 1)
@@ -168,7 +191,7 @@ void big_set_postion(int16_t _set)//闭环控制；设定角度
 			printf("%4s %4s %6s %7s %5s %4s\n",
            "预期角度", "实际角度", "编码器数", "总脉冲数", "占空比", "溢出次数");
 		}
-		else if(i ==201)/* ms计算一次 */
+		else if(i ==201)// ms计算一次 
 		{
 			printf("%4d%4d%5d%7d%4.1f%4d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Big_Encoder_htim),con_val,g_bigEncoderOverflowCount );
 			i=1;
@@ -177,11 +200,11 @@ void big_set_postion(int16_t _set)//闭环控制；设定角度
 #endif
 	}
 
-}
+}*/
 
 
 /*小臂*/
-void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
+/*void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 {
 	 static int16_t _get = 0;//实际转动角度
 	 if (g_motorEnable == 1)
@@ -214,16 +237,16 @@ void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 			printf("%4s %4s %10s %10s %5s %4s\n",
            "预期角度", "实际角度", "编码器数", "总脉冲数", "占空比", "溢出次数");
 		}
-		else if(i ==201)/* ms计算一次 */
+		else if(i ==201)//ms计算一次 
 		{
-			printf("%4d%4d%10d%10d%4.1f%4d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Small_Encoder_htim),con_val,g_smallEncoderOverflowCount);
+			printf("%4d %4d %10d %10d %4.1f %4d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Small_Encoder_htim),con_val,g_smallEncoderOverflowCount);
 			i=1;
 		}
 		i++;
 #endif
 	}
 
-}
+}*/
 
 /*控制侧推*/
 void motor_cetui_set_postion(int _set)

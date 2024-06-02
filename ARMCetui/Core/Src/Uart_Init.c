@@ -9,7 +9,7 @@ int16_t  g_jianPosition=0;
 int16_t  g_bigPosition=0;
 int16_t  g_smallPosition=0;
 int16_t  g_wanPosition=0;
-uint8_t     g_zhua=0;
+uint8_t  g_zhua=0;
 
 uint16_t Ce_Speed=0;
 
@@ -41,7 +41,7 @@ void process_data(uint8_t *data)
 		g_smallPosition=recPosition[2];
 		g_wanPosition=recPosition[3];
 		g_zhua = data[21];
-		// Ce_Speed=recPosition[0];//占空比
+		Ce_Speed=recPosition[0];//占空比
 }
 void handle_receidved_data(uint8_t* recBuffer, uint8_t dataSize)//遍历
 {

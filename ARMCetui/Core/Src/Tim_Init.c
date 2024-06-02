@@ -1,7 +1,9 @@
 #include "tim_init.h"
-
+int16_t g_jianEncoderOverflowCount = 0;
 int16_t g_bigEncoderOverflowCount = 0;
 int16_t g_smallEncoderOverflowCount = 0;
+int16_t g_wanEncoderOverflowCount = 0;
+
 /* 使能对应PWM通道定时器 */
 void tim_pwm_enable(void)
 {
@@ -86,22 +88,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		set_position(&Motor_Big, g_bigPosition);
 		set_position(&Motor_Small, g_smallPosition);
 		set_position(&Motor_Wan, g_wanPosition);
-//		zhua_set( g_zhua);
+		zhua_set( g_zhua);
+		motor_cetui_set_postion(Ce_Speed);
 //		big_set_postion(g_bigPosition);
 //		small_set_postion(g_smallPosition);
+		   	
 		
-//		Motor_CeTui_Set(ROL_Angle);     
-		
-//Motor_Big_Set_Position(Big_Position);
-// Motor_Small_Set_Position(Small_Position);
-		
-//		static int i =0;
-//		i++;
-//		if(i==1000)
-//		{
-//			Usart_SendString((uint8_t *)"1");
-//			i=0;
-//		}
+
 	}
 	else if(htim==(&Jian_Encoder_htim))
     {

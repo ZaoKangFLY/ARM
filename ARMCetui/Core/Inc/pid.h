@@ -1,8 +1,8 @@
 #ifndef __PID_H
 #define __PID_H
 
-#include "App.h"
-//#define ABS(x)		((x>0)? (x): (-x)) //取绝对值,运算性能更高
+#include "main.h"
+#define ABS(x)		((x>0)? (x): (-x)) //取绝对值,运算性能更高
 enum{
     LLAST	= 0,
     LAST 	= 1,
