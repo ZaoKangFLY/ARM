@@ -40,10 +40,10 @@ void system_init()
 #endif	
 
     /*侧推12的上电初始化*/
-//    Ce1_SETCOMPARE(2000);
-//    Ce1_SETCOMPARE(1500);
-//    Ce2_SETCOMPARE(2000);
-//    Ce2_SETCOMPARE(1500);
+    Ce1_SETCOMPARE(2000);
+    Ce1_SETCOMPARE(1500);
+    Ce2_SETCOMPARE(2000);
+    Ce2_SETCOMPARE(1500);
 //	/*悬浮*/
 //	Ce1_SETCOMPARE(1600);
 //	Ce2_SETCOMPARE(1600);

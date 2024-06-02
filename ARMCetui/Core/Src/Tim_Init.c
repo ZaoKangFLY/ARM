@@ -84,14 +84,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim==(&Basic_htim))//1ms进一次中断
 	{  
+		if(g_zhua!=0xFF)
+		{
 		set_position(&Motor_Jian, g_jianPosition);
 		set_position(&Motor_Big, g_bigPosition);
 		set_position(&Motor_Small, g_smallPosition);
 		set_position(&Motor_Wan, g_wanPosition);
 		zhua_set( g_zhua);
-		motor_cetui_set_postion(Ce_Speed);
+
 //		big_set_postion(g_bigPosition);
 //		small_set_postion(g_smallPosition);
+		}
 		   	
 		
 
