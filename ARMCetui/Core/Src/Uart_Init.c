@@ -12,13 +12,14 @@ int16_t  g_wanPosition=0;
 uint8_t  g_zhua=0;
 
 uint16_t Ce_Speed=0;
-
 /*开启接收串口*/
 void uart_enable()
 {
-	__HAL_UART_ENABLE_IT(&uart232, UART_IT_IDLE);
-	//HAL_UART_Receive_IT(&uart232 ,Uart_Rx_Buffer,Uart_Rx_Information_Size);//未使用DMA
-    HAL_UART_Receive_DMA(&uart232,recBuffer,recSize);
+//	__HAL_UART_ENABLE_IT(&uart232, UART_IT_IDLE);
+//    HAL_UART_Receive_DMA(&uart232,recBuffer,recSize);
+	HAL_UARTEx_ReceiveToIdle_DMA(&uart232 ,recBuffer,recSize);
+	__HAL_DMA_DISABLE_IT(&uartDMA232,DMA_IT_HT);
+	//HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//未使用DMA
 }
 int8_t validate_data(uint8_t *data, uint8_t length)
 {
@@ -130,14 +131,11 @@ static void Uart_Filter_Data(uint8_t* _header,uint8_t* _input,uint8_t* _output,u
 }*/
 
 
-/*串口中断回调函数中接收处理*/
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-    if(huart == (&uart232) )
+/*串口DMA中断回调函数中接收处理*/
+void HAL_UARTx_RxEvenCallback(UART_HandleTypeDef *huart,uint16_t Size)
+{	
+	if(huart == (&uart232) )
     {
-#if 	PID_ASSISTANT_EN
-
-#else
 		if(RESET != __HAL_UART_GET_FLAG(&uart232, UART_FLAG_IDLE))   //判断是否是空闲中断
 		{
 			__HAL_UART_CLEAR_IDLEFLAG(&uart232);                       //清除空闲中断标志
@@ -145,28 +143,50 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			uint8_t data_length  = recSize - __HAL_DMA_GET_COUNTER(&uartDMA232);   //计算接收到的数据长度
 		    handle_receidved_data(recBuffer, data_length);
 			//HAL_UART_Transmit(&uart232,recBuffer,data_length,0x200);             //测试函数：将接收到的数据打印出去
+			
+			memset(recBuffer,0,data_length);			// 重置缓冲区并重新启动DMA传输                                           
+			data_length = 0;
+			HAL_UARTEx_ReceiveToIdle_DMA(&uart232 ,recBuffer,recSize);     //重启开始DMA传输
+			__HAL_DMA_DISABLE_IT(&uartDMA232,DMA_IT_HT);
+		 }
+	 }
+	
+
+}
+
+
+
+/*串口中断回调函数中接收处理*/
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+   /*
+#if PID_ASSISTANT_EN
+
+#else
+	if(huart == (&uart232) )
+    {
+
+		if(RESET != __HAL_UART_GET_FLAG(&uart232, UART_FLAG_IDLE))   //判断是否是空闲中断
+		{
+			__HAL_UART_CLEAR_IDLEFLAG(&uart232);                       //清除空闲中断标志
+			HAL_UART_DMAStop(&uart232);                                //停止本次DMA传输 		
+			uint8_t data_length  = recSize - __HAL_DMA_GET_COUNTER(&uartDMA232);   //计算接收到的数据长度
+		    handle_receidved_data(recBuffer, data_length);
+			//HAL_UART_Transmit(&uart232,recBuffer,data_length,0x200);             //测试函数：将接收到的数据打印出去
+			
 			memset(recBuffer,0,data_length);			// 重置缓冲区并重新启动DMA传输                                           
 			data_length = 0;
 			HAL_UART_Receive_DMA(&uart232, recBuffer, recSize);      //重启开始DMA传输
-         }                    
-/*		g_motorEnable = 1;
-		g_cemotorEnable= 1;
-		Uart_Filter_Data(Frama_Header,recBuffer,recData,recSize);//将接收的数据筛选出来（未做SUM校验）
-        memcpy(recPosition,&recData[5],16);//将电机的位置信息摘出来
-		g_jianPosition=recPosition[0];//占空比
-		g_bigPosition=recPosition[1];
-		g_smallPosition=recPosition[2];
-		g_wanPosition=recPosition[3];
-		 Ce_Speed=recPosition[0];//占空比
-        printf("*****************************新数据********************************\r\n");*/
-#endif
-		//HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+         }
+	
+	printf("%4s %4s %6s %7s %5s %4s\n","预期角度", "实际角度", "编码器数", "总脉冲数", "占空比", "溢出次数");
+	handle_receidved_data(recBuffer, 24); 
+	HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+	 
+	
 	}
-//	else if(huart == (&Uart_485))
-//	{
-//		 //ROL_Angle=;
-//	
-//	}
+#endif
+	*/
      
 }
 

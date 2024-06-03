@@ -94,9 +94,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 //		big_set_postion(g_bigPosition);
 //		small_set_postion(g_smallPosition);
-		}
-		   	
-		
+		}	
 
 	}
 	else if(htim==(&Jian_Encoder_htim))

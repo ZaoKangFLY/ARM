@@ -20,7 +20,7 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
 {
     if (g_motorEnable == 1)
     {   
-//		static int _get = 0; 		// 实际转动角度
+		static int _get = 0; 		// 实际转动角度
         static int16_t con_val = 0; // 控制占空比
         static int32_t set = 0;     // pid设定脉冲数
         static int32_t get = 0;     // 实际转过脉冲数
@@ -29,23 +29,18 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
         get = __HAL_TIM_GET_COUNTER(motor->encoder_timer) + 
               (*motor->encoder_overflow_count) * motor->encoder_period; // 总脉冲数
         
-        con_val = PID_calc(motor->pid, get, set); // PID 计算
+        con_val = (int16_t)(PID_calc(motor->pid, get, set)); // PID 计算
         motor->motor_control_function(con_val);   // 控制电机
         
-/*        _get = get * 360 / motor->pulses_per_revolution; // 转动角度
-#if PID_ASSISTANT_EN
+        _get = get * 360 / motor->pulses_per_revolution; // 转动角度
+/*#if PID_ASSISTANT_EN
 		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值
 #else	
 		static uint16_t i = 0;
-		if(i == 0)
+		if(i ==100)// ms计算一次 
 		{
-			printf("%4s %4s %6s %7s %5s %4s\n",
-           "预期角度", "实际角度", "编码器数", "总脉冲数", "占空比", "溢出次数");
-		}
-		else if(i ==201)// ms计算一次 
-		{
-			printf("%4d%4d%5d%7d%4.1f%4d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(&Big_Encoder_htim),con_val,g_bigEncoderOverflowCount );
-			i=1;
+			printf("%8d%10d%14d%14d%14d%8d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(motor->encoder_timer), get,con_val, (*motor->encoder_overflow_count)  );
+			i=0;
 		}
 		i++;	
 #endif*/
@@ -58,13 +53,13 @@ void motor_jian_fun(int16_t pwm)
 	{
 		if(pwm>0)//电机控制
 		{
-			Jian1_SETCOMPARE(pwm);  //同高停转
+			Jian1_SETCOMPARE((uint16_t)pwm);  //同高停转
 			Jian2_SETCOMPARE(0);	    	
 		}
 		else 
 		{
 			Jian1_SETCOMPARE(0); 
-			Jian2_SETCOMPARE(-pwm);
+			Jian2_SETCOMPARE((uint16_t)(-pwm));
 		}
 		val=pwm;
 	}
@@ -76,13 +71,13 @@ void motor_big_fun(int16_t pwm)
 	{
 		if(pwm>0)//电机控制
 		{
-			Big1_SETCOMPARE(pwm);  //同高停转
+			Big1_SETCOMPARE((uint16_t)pwm);  //同高停转
 			Big2_SETCOMPARE(0);	    	
 		}
 		else 
 		{
 			Big1_SETCOMPARE(0); 
-			Big2_SETCOMPARE(-pwm);
+			Big2_SETCOMPARE((uint16_t)(-pwm));
 		}
 		val=pwm;
 	}
@@ -95,13 +90,13 @@ void motor_small_fun(int16_t pwm)
 	{
 		if(pwm>0)//电机控制
 		{
-			Small1_SETCOMPARE(pwm);  //同高停转
+			Small1_SETCOMPARE((uint16_t)pwm);  //同高停转
 			Small2_SETCOMPARE(0);	    	
 		}
 		else 
 		{
 			Small1_SETCOMPARE(0); 
-			Small2_SETCOMPARE(-pwm);
+			Small2_SETCOMPARE((uint16_t)(-pwm));
 		}
 		val=pwm;
 	}
@@ -113,13 +108,13 @@ void motor_wan_fun(int16_t pwm)
 	{
 		if(pwm>0)//电机控制
 		{
-			Wan1_SETCOMPARE(pwm);  //同高停转
+			Wan1_SETCOMPARE((uint16_t)pwm);  //同高停转
 			Wan2_SETCOMPARE(0);	    	
 		}
 		else 
 		{
 			Wan1_SETCOMPARE(0); 
-			Wan2_SETCOMPARE(-pwm);
+			Wan2_SETCOMPARE((uint16_t)(-pwm));
 		}
 		val=pwm;
 	}

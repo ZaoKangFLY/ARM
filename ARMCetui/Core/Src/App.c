@@ -11,16 +11,16 @@ void system_init()
 	tim_pwm_disable();
 #else
 	tim_pwm_enable();
-	/*调试回传，PC104可能要去掉*/
-    //Usart_SendString((uint8_t *)"初始化完成！");
+	/*调试回传，PC104要去掉*/
+    //Usart_SendString((uint8_t *)"初始化完成！\n");
 #endif
 	uart_enable();
 	tim_econder_enable();
     tim_basic_enable(); 		
 	/*初始化结构体*/							/*(最大输出值,积分限幅,p,i,d,最大误差,死区值 )*/
 	pid_param_init(&Pid_Jian,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,500.0f);//
-	pid_param_init(&Pid_Big,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,500.0f);//初始化大臂PID结构体
-	pid_param_init(&Pid_Small,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,1000.0f);//初始化小臂PID结构体 
+	pid_param_init(&Pid_Big,POSITION_PID,999.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,500.0f);//初始化大臂PID结构体
+	pid_param_init(&Pid_Small,POSITION_PID,999.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,1000.0f);//初始化小臂PID结构体 
 	pid_param_init(&Pid_Wan,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,1000.0f);//初始
 	//pid_param_init(&Motor_Ce,POSITION_PID,500.0f,200.0f,2.1f,1.0f,0.0f,10000.0f,100.0f);//初始化小臂PID结构体 
 	//PID_struct_init(&Motor_Small,POSITION_PID,999.0f,200.0f,2000.0f,20.5f,50.0f,10000.0f,0.02f);
@@ -44,6 +44,7 @@ void system_init()
     Ce1_SETCOMPARE(1500);
     Ce2_SETCOMPARE(2000);
     Ce2_SETCOMPARE(1500);
+	HAL_Delay(1385);//延时后自启动
 //	/*悬浮*/
 //	Ce1_SETCOMPARE(1600);
 //	Ce2_SETCOMPARE(1600);
