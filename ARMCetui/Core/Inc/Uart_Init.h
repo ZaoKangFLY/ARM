@@ -7,7 +7,7 @@
 #define uartDMA232         		hdma_usart3_rx
 #define uart232               huart3
 //#define Uart_485                huart2
-
+extern  uint8_t  recBuffer[recSize]; //Êý¾Ý»º´æ
 extern int16_t  g_jianPosition;
 extern int16_t  g_smallPosition;
 extern int16_t  g_bigPosition;

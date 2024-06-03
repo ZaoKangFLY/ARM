@@ -84,17 +84,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim==(&Basic_htim))//1ms进一次中断
 	{  
-		if(g_zhua!=0xFF)
-		{
-		set_position(&Motor_Jian, g_jianPosition);
-		set_position(&Motor_Big, g_bigPosition);
-		set_position(&Motor_Small, g_smallPosition);
-		set_position(&Motor_Wan, g_wanPosition);
+//		if(g_zhua!=0xFF)
+//		{
+//		set_position(&Motor_Jian, g_jianPosition);
+//		set_position(&Motor_Big, g_bigPosition);
+//		set_position(&Motor_Small, g_smallPosition);
+//		set_position(&Motor_Wan, g_wanPosition);
+		
+		big_set_postion(g_bigPosition);
+		small_set_postion(g_smallPosition);
 		zhua_set( g_zhua);
 
-//		big_set_postion(g_bigPosition);
-//		small_set_postion(g_smallPosition);
-		}	
+
+//		}	
 
 	}
 	else if(htim==(&Jian_Encoder_htim))
