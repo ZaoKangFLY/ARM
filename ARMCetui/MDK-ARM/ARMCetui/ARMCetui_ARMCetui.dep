@@ -1,5 +1,5 @@
 Dependencies for Project 'ARMCetui', Target 'ARMCetui': (DO NOT MODIFY !)
-F (startup_stm32f407xx.s)(0x665AB0E5)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 518" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list startup_stm32f407xx.lst --xref -o armcetui\startup_stm32f407xx.o --depend armcetui\startup_stm32f407xx.d)
+F (startup_stm32f407xx.s)(0x665D4B83)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 518" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list startup_stm32f407xx.lst --xref -o armcetui\startup_stm32f407xx.o --depend armcetui\startup_stm32f407xx.d)
 F (..\Core\Src\App.c)(0x665C7666)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\app.o --depend armcetui\app.d)
 I (../Core/Inc/App.h)(0x665C500E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x569DEA3A)
@@ -38,7 +38,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x660A9EFD)
 I (../Core/Inc/protocol.h)(0x660C1988)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/tim_init.h)(0x665C500E)
 I (../Core/Inc/motor_control.h)(0x665C500E)
 I (../Core/Inc/pid.h)(0x665C500E)
@@ -115,13 +115,13 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x660A9EFD)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/tim_init.h)(0x665C500E)
 I (../Core/Inc/motor_control.h)(0x665C500E)
 I (../Core/Inc/pid.h)(0x665C500E)
 I (../Core/Inc/tim.h)(0x665C500E)
 I (../Core/Inc/usart.h)(0x665C500E)
-F (..\Core\Src\motor_control.c)(0x665C7B14)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\motor_control.o --depend armcetui\motor_control.d)
+F (..\Core\Src\motor_control.c)(0x665D5CED)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\motor_control.o --depend armcetui\motor_control.d)
 I (../Core/Inc/motor_control.h)(0x665C500E)
 I (../Core/Inc/App.h)(0x665C500E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x569DEA3A)
@@ -160,7 +160,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x660A9EFD)
 I (../Core/Inc/protocol.h)(0x660C1988)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/tim_init.h)(0x665C500E)
 I (../Core/Inc/tim.h)(0x665C500E)
 I (../Core/Inc/usart.h)(0x665C500E)
@@ -204,13 +204,13 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x660A9EFD)
 I (../Core/Inc/protocol.h)(0x660C1988)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/motor_control.h)(0x665C500E)
 I (../Core/Inc/pid.h)(0x665C500E)
 I (../Core/Inc/tim.h)(0x665C500E)
 I (../Core/Inc/usart.h)(0x665C500E)
-F (..\Core\Src\Uart_Init.c)(0x665D1739)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\uart_init.o --depend armcetui\uart_init.d)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+F (..\Core\Src\Uart_Init.c)(0x665D5CED)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\uart_init.o --depend armcetui\uart_init.d)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/App.h)(0x665C500E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x569DEA3A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
@@ -295,7 +295,7 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x569DEA3A)
 I (../Core/Inc/protocol.h)(0x660C1988)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/tim_init.h)(0x665C500E)
 I (../Core/Inc/motor_control.h)(0x665C500E)
 I (../Core/Inc/pid.h)(0x665C500E)
@@ -398,7 +398,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x660A9EFD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x660A9EFD)
-F (../Core/Src/usart.c)(0x665C500E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\usart.o --depend armcetui\usart.d)
+F (../Core/Src/usart.c)(0x665D4B78)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I D:\Documents\KeTi\Arm-32\ArmCetui\ARM_CeTui_1\ARMCetui\MDK-ARM\RTE-I "D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include"-I "D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="518" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o armcetui\usart.o --depend armcetui\usart.d)
 I (../Core/Inc/usart.h)(0x665C500E)
 I (../Core/Inc/main.h)(0x660A9F36)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x660A9EFD)
@@ -470,7 +470,7 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x569DEA3A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x569DEA3A)
-I (../Core/Inc/uart_init.h)(0x665C500E)
+I (../Core/Inc/uart_init.h)(0x665D4F86)
 I (../Core/Inc/tim_init.h)(0x665C500E)
 I (../Core/Inc/motor_control.h)(0x665C500E)
 I (../Core/Inc/pid.h)(0x665C500E)

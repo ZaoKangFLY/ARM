@@ -39,7 +39,7 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
 		static uint16_t i = 0;
 		if(i ==100)// ms¼ÆËãÒ»´Î 
 		{
-			printf("%8d%10d%14d%14d%14d%8d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(motor->encoder_timer), get,con_val, (*motor->encoder_overflow_count)  );
+			printf("%8d%18d%8d%8d%8d%8d\r\n",_set,_get,__HAL_TIM_GET_COUNTER(motor->encoder_timer), get,con_val, (*motor->encoder_overflow_count)  );
 			i=0;
 		}
 		i++;	
