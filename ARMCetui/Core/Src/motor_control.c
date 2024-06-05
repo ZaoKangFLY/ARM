@@ -1,5 +1,4 @@
 #include "motor_control.h"
-
 uint8_t  g_motorEnable = 0;             // 电机使能
 uint8_t  g_cemotorEnable = 0;             // 电机使能
 /*motor_t Motor_Jian;
@@ -33,7 +32,7 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
         motor->motor_control_function(con_val);   // 控制电机
         
         _get = get * 360 / motor->pulses_per_revolution; // 转动角度
-#if PID_ASSISTANT_EN
+#if YeHuoPID
 		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值
 #else	
 		static uint16_t i = 0;
@@ -148,6 +147,35 @@ void zhua_set(uint8_t _set)
 }
 
 
+void jian_set_postion(int16_t _set)
+{
+	 if (g_motorEnable == 1)
+	 {	
+		static int16_t _get = 0;//实际转动角度
+		static int16_t con_val = 0;//控制占空比
+	    static int32_t set = 0;//设定脉冲数
+        static int32_t get = 0;////实际转过脉冲数	
+		set=_set*J_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
+		get =__HAL_TIM_GET_COUNTER(&Jian_Encoder_htim) + (g_jianEncoderOverflowCount * J_ENCODER_PERIOD);//读取编码器脉冲数	
+		con_val=PID_calc(&Pid_Jian,get,set);
+        motor_jian_fun(con_val);	
+		_get=get*360/J_ARM_PULSES_PER_REVOLUTION;		
+#if YeHuoPID
+		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值				
+#endif
+#if ShangweiJi 
+	static uint16_t i = 0;
+	if(i ==200)// ms计算一次 
+	{
+		printf("%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_jianEncoderOverflowCount );
+		i=1;
+	}
+	i++;
+#endif
+
+	}
+
+}
 /*大臂*/
 void big_set_postion(int16_t _set)//闭环控制；设定角度
 {
@@ -163,13 +191,15 @@ void big_set_postion(int16_t _set)//闭环控制；设定角度
 		con_val=PID_calc(&Pid_Big,get,set);//pid计算	
         motor_big_fun(con_val);	
         _get=get*360/B_ARM_PULSES_PER_REVOLUTION ;//转动角度		
-#if PID_ASSISTANT_EN
+#if YeHuoPID
 		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值
-#else	
+#endif
+
+#if	ShangweiJi 
 		static uint16_t i = 0;
-		if(i ==200)// ms计算一次 
+		if(i ==100)// ms计算一次 
 		{
-			printf("%4d%4d%5d%7d%4d%4d\r\n",_set,_get,set,get,con_val,g_bigEncoderOverflowCount );
+			printf("%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_bigEncoderOverflowCount );
 			i=1;
 		}
 		i++;	
@@ -181,10 +211,10 @@ void big_set_postion(int16_t _set)//闭环控制；设定角度
 /*小臂*/
 void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 {
-	 static int16_t _get = 0;//实际转动角度
+
 	 if (g_motorEnable == 1)
 	 {	
-		 
+		static int16_t _get = 0;//实际转动角度
 		static int16_t con_val = 0;//控制占空比
 	    static int32_t set = 0;//设定脉冲数
         static int32_t get = 0;////实际转过脉冲数	
@@ -193,13 +223,43 @@ void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 		con_val=PID_calc(&Pid_Small,get,set);
         motor_small_fun(con_val);	
 		_get=get*360/S_ARM_PULSES_PER_REVOLUTION;		
-#if PID_ASSISTANT_EN
+#if YeHuoPID
 		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值
-#else	
+#endif
+#if	ShangweiJi 
+		static uint16_t i = 0;
+		if(i ==100)// ms计算一次 
+		{
+			printf("%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_smallEncoderOverflowCount );
+			i=1;
+		}
+		i++;	
+#endif
+	}
+
+}
+
+void wan_set_postion(int16_t _set)
+{
+	 if (g_motorEnable == 1)
+	 {	
+		static int16_t _get = 0;//实际转动角度
+		static int16_t con_val = 0;//控制占空比
+	    static int32_t set = 0;//设定脉冲数
+        static int32_t get = 0;////实际转过脉冲数	
+		set=_set*W_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
+		get =__HAL_TIM_GET_COUNTER(&Wan_Encoder_htim) + (g_wanEncoderOverflowCount * W_ENCODER_PERIOD);//读取编码器脉冲数	
+		con_val=PID_calc(&Pid_Wan,get,set);
+        motor_wan_fun(con_val);	
+		_get=get*360/W_ARM_PULSES_PER_REVOLUTION;		
+#if YeHuoPID
+		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值
+#endif
+#if ShangweiJi 
 		static uint16_t i = 0;
 		if(i ==200)// ms计算一次 
 		{
-			printf("%4d%4d%5d%7d%4d%4d\r\n",_set,_get,set,get,con_val,g_smallEncoderOverflowCount );
+			printf("%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_wanEncoderOverflowCount );
 			i=1;
 		}
 		i++;	
@@ -276,7 +336,7 @@ void cetui_set_postion(float _get)//当前姿态角度
 		if(motor_pwm_2<1500){motor_pwm_2=1500;}
 		Ce1_SETCOMPARE(motor_pwm_1) ;
 		Ce2_SETCOMPARE(motor_pwm_2) ;		
-#if PID_ASSISTANT_EN
+#if YeHuoPID
 
 #endif
 	}
@@ -477,7 +537,7 @@ float count(float x)
 //		float Shaft_Speed = 0.0f;
 //		static int  Last_Count=0;
 //		static int32_t Capture_Count=0; // 当前时刻总计数值
-//#if PID_ASSISTANT_EN
+//#if YeHuoPID
 //		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &Small_Position_Now, 1);                // 给通道 1 发送实际值
 //#else
 //		i++;

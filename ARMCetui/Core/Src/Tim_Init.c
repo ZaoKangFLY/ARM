@@ -7,7 +7,7 @@ int16_t g_wanEncoderOverflowCount = 0;
 /* 使能对应PWM通道定时器 */
 void tim_pwm_enable(void)
 {
-#if PID_ASSISTANT_EN
+#if YeHuoPID
 	g_motorEnable=1;
 #endif
 	Jian1_PWM_ENABLE();
@@ -70,7 +70,7 @@ void tim_econder_enable(void)
 void tim_basic_enable(void)
 {
 	Basic_TIM_ENABLE();	
-#if PID_ASSISTANT_EN
+#if YeHuoPID
     uint32_t temp = GET_BASIC_TIM_PERIOD();     // 计算周期，单位ms  
 	set_computer_value(SEND_PERIOD_CMD, CURVES_CH1, &temp, 1);     // 给通道 1 发送目标值
 	set_computer_value(SEND_PERIOD_CMD, CURVES_CH2, &temp, 1);     // 给通道 1 发送目标值
@@ -84,19 +84,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim==(&Basic_htim))//1ms进一次中断
 	{  
-//		if(g_zhua!=0xFF)
-//		{
-//		set_position(&Motor_Jian, g_jianPosition);
-//		set_position(&Motor_Big, g_bigPosition);
-//		set_position(&Motor_Small, g_smallPosition);
-//		set_position(&Motor_Wan, g_wanPosition);
+#if UVMS 	
+		if(g_zhua!=0xFF)
+		{
+#endif
 		
 		big_set_postion(g_bigPosition);
 		small_set_postion(g_smallPosition);
-		zhua_set( g_zhua);
+		//zhua_set( g_zhua);
 
-
-//		}	
+#if UVMS 	
+		}
+#endif
+	
 
 	}
 	else if(htim==(&Jian_Encoder_htim))

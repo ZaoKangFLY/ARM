@@ -266,17 +266,30 @@ void TIM2_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_IRQn 0 */
-#if PID_ASSISTANT_EN
+#if YeHuoPID
 	uint8_t dr = __HAL_UART_FLUSH_DRREGISTER(&uart232 );
 	protocol_data_recv(&dr, 1);
 	/* 接收数据处理 */
 	receiving_process();
 #endif	
-
+		g_motorEnable = 1;
+		g_cemotorEnable = 1;
+if(RESET != __HAL_UART_GET_FLAG(&uart232, UART_FLAG_IDLE))   //判断是否是空闲中断
+		{
+			g_motorEnable = 1;
+			__HAL_UART_CLEAR_IDLEFLAG(&uart232);                       //清除空闲中断标志
+			HAL_UART_DMAStop(&uart232);                                //停止本次DMA传输 		
+			 rx_len  = recSize - __HAL_DMA_GET_COUNTER(&uartDMA232);   //计算接收到的数据长度
+		    handle_receidved_data_1(recBuffer, rx_len);
+			HAL_UART_Transmit(&uart232,recBuffer, rx_len,0x200);             //测试函数：将接收到的数据打印出去
+			memset(recBuffer,0, rx_len);			// 重置缓冲区并重新启动DMA传输                                           
+			rx_len = 0;                           // 重置接收长度
+         }
   /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */
-   HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+HAL_UART_Receive_DMA(&uart232, recBuffer, recSize);     //重启开始DMA传输  
+ //  HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
   /* USER CODE END USART3_IRQn 1 */
 }
 

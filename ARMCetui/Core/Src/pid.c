@@ -4,6 +4,21 @@ pid_t Pid_Big;    //创建大臂PID结构体
 pid_t Pid_Small;  //创建小臂PID结构体 
 pid_t Pid_Wan;  //
 pid_t Pid_Ce;     // 
+#define ABS(x)		((x>0)? (x): (-x)) //取绝对值,运算性能更高
+void abs_limit(float *a, float ABS_MAX)//取限定最值
+{
+    if(*a > ABS_MAX)
+        *a = ABS_MAX;
+    if(*a < -ABS_MAX)
+        *a = -ABS_MAX;
+}
+void abs_limit_min(float *a, float ABS_MIN)//取限定最值
+{
+    if(0<*a < ABS_MIN)
+        *a = ABS_MIN;
+    else if(0>*a > -ABS_MIN)
+        *a = -ABS_MIN;
+}
 
 /* PID控制------位置式和增量式 */
 float PID_calc(pid_t* pid, float get, float set)
@@ -12,8 +27,8 @@ float PID_calc(pid_t* pid, float get, float set)
     pid->get[NOW] = get;
     pid->set[NOW] = set;
     pid->err[NOW] = set - get;//当前误差
-   
-/*	if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  // 积分分离
+#if JiFenFenLi  
+	if (pid->fenli_err  != 0 && ABS(pid->err[NOW]) >  pid->fenli_err  )  // max_err积分分离（量程和积分分离只能二选一）
     {
 		index=0;
 	
@@ -21,11 +36,12 @@ float PID_calc(pid_t* pid, float get, float set)
 	else
 	{
 		index=1;
-	}*/
-  /*  if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  //10000设置量程 如果超量程 则失能   
+	}
+#endif
+  /*  if (pid->max_err != 0 && fabs(pid->err[NOW]) >  pid->max_err  )  //max_err设置量程 如果超量程则失能,这里是核子脉冲误差   
     {return 0;}*/
 	
-	if (pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband)     //0.001设置死区 与上述参数相同 可单独初始化
+	if (pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband)     //设置死区 
 	{return 0;}
     if(pid->pid_mode == POSITION_PID) //位置式PID
     {
@@ -72,17 +88,19 @@ void PID_CascadeCalc(CascadePID *pid,float angleGet,float speedGet,float angleSe
 /*pid参数设定 */
 void pid_param_init( pid_t* pid, //结构体指针所以下文->
                             uint32_t Mode, //模式
-                           float MaxOutput,//最大输出值
-                           float IntergralLimit,//积分限幅
+							float MaxOutput,//最大输出值
+							float FenLi_err,
+							float IntergralLimit,//积分限幅
                             float 	kp,
                             float 	ki,
                             float 	kd,
                             float Max_err, //最大误差
                             float Deadband)//死区值
 {   
+    pid->pid_mode = Mode; 
+	pid->maxOutput = MaxOutput;
+	pid->fenli_err = FenLi_err;
     pid->integralLimit = IntergralLimit;
-    pid->maxOutput = MaxOutput;
-    pid->pid_mode = Mode;    
     pid->p = kp;
     pid->i = ki;
     pid->d = kd;
@@ -102,6 +120,7 @@ void pid_param_init( pid_t* pid, //结构体指针所以下文->
 void PID_struct_init(pid_t* pid,
                     uint32_t Mode,
                     float MaxOutput,
+					float FenLi_err,
                     float IntergralLimit,
                     float kp,
                     float ki,
@@ -112,7 +131,7 @@ void PID_struct_init(pid_t* pid,
 
     pid->f_param_init = pid_param_init;    //获取函数地址（函数名就是函数地址赋给函数指针从而指向该函数）
     pid->f_pid_reset = pid_reset;
-    pid->f_param_init(pid, Mode, MaxOutput, IntergralLimit, kp, ki, kd,Max_err,Deadband);   //初始化函数参数（可以视为pid_param_init（a,b））
+    pid->f_param_init(pid, Mode, MaxOutput, FenLi_err, IntergralLimit, kp, ki, kd,Max_err,Deadband);   //初始化函数参数（可以视为pid_param_init（a,b））
     pid->f_pid_reset(pid, kp, ki, kd);	
 
 
@@ -128,18 +147,5 @@ float get_pid_target(void)
   return Small_Position;    // 设置当前的目标值
 }*/
 
-void abs_limit(float *a, float ABS_MAX)//取限定最值
-{
-    if(*a > ABS_MAX)
-        *a = ABS_MAX;
-    if(*a < -ABS_MAX)
-        *a = -ABS_MAX;
-}
-void abs_limit_min(float *a, float ABS_MIN)//取限定最值
-{
-    if(0<*a < ABS_MIN)
-        *a = ABS_MIN;
-    else if(0>*a > -ABS_MIN)
-        *a = -ABS_MIN;
-}
+
 
