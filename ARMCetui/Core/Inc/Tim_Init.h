@@ -1,10 +1,8 @@
 #ifndef __TIM_INIT_H__
 #define __TIM_INIT_H__
 #include "App.h"
-
 /*句柄*/
-#define  Basic_htim                    htim6
-
+#define  Basic_htim                    htim6//中断定时器
 #define  Jian_Encoder_htim 			   htim4
 #define  Big_Encoder_htim              htim1
 #define  Small_Encoder_htim            htim2
@@ -29,7 +27,6 @@
 #define Zhua2_CHANNEL                 TIM_CHANNEL_4
 #define Ce1_CHANNEL                   TIM_CHANNEL_1
 #define Ce2_CHANNEL                   TIM_CHANNEL_2
-
 /*PWM*/
 //使能
 #define  Jian1_PWM_ENABLE()                     HAL_TIM_PWM_Start(&Jian_Encoder_htim ,Jian1_CHANNEL  )
@@ -68,10 +65,10 @@
               
 
 /* 清零计数器 */
-#define   Jian_TIM_SETCOUNTER()                 __HAL_TIM_SET_COUNTER(&Jian_Encoder_htim , 0)
-#define   Big_TIM_SETCOUNTER()                  __HAL_TIM_SET_COUNTER(&Big_Encoder_htim , 0)
-#define   Small_TIM_SETCOUNTER()                __HAL_TIM_SET_COUNTER(&Small_Encoder_htim, 0)//定义电机编码器初值 Big_Econder_TIM->CNT=value;
-#define   Wan_TIM_SETCOUNTER()                  __HAL_TIM_SET_COUNTER(&Wan_Encoder_htim , 0)
+#define   Jian_TIM_SETCOUNTER()                 do {__HAL_TIM_SET_COUNTER(&Jian_Encoder_htim , 1);}while(0)
+#define   Big_TIM_SETCOUNTER()                  do {__HAL_TIM_SET_COUNTER(&Big_Encoder_htim , 1);}while(0)
+#define   Small_TIM_SETCOUNTER()                do {__HAL_TIM_SET_COUNTER(&Small_Encoder_htim, 1);}while(0)//定义电机编码器初值 Big_Econder_TIM->CNT=value;
+#define   Wan_TIM_SETCOUNTER()                  do {__HAL_TIM_SET_COUNTER(&Wan_Encoder_htim , 1);}while(0)
 
 #define  Jian1_SETCOMPARE(ChannelPulse)         __HAL_TIM_SET_COMPARE(&Jian_PWM_htim, Jian1_CHANNEL,ChannelPulse);
 #define  Jian2_SETCOMPARE(ChannelPulse)         __HAL_TIM_SET_COMPARE(&Jian_PWM_htim, Jian2_CHANNEL,ChannelPulse);

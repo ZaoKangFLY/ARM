@@ -13,17 +13,15 @@
 #include "tim.h"
 #include "usart.h"
 
+#define  YeHuoPID    					0/* 1:使用野火PID调试助手显示波形,注意protocol.c里 case SET_TARGET_CMD:只能一个通道调试*/
+#define  UVMS    						1/* 1:使用UVMS上位机*/
+#define  VoFa    						0/* 1VoFa只能一个通道调试*/
+#define  CeShi    						0/* 1:回显数据*/
 
-
-#define  YeHuoPID    					0/* 1:使用野火PID调试助手显示波形*/
-#define  ShangweiJi    					1/* 1:回显数据*/
-#define  UVMS    						0/* 1:使用UVMS上位机*/
 #define  JiFenFenLi 					0/* 1:积分分离使能*/
-/*预装载值*/
-#define  J_ENCODER_PERIOD      		65535 
-#define  B_ENCODER_PERIOD      		65535 
-#define  S_ENCODER_PERIOD			4294967295
-#define  W_ENCODER_PERIOD      		65535 
+/*建议以后采用modbus通信，可以通过协议改变相应寄存器可调节数值，以下值都放寄存器中读写操作
+或者定义结构体放入结构体，通过函数给结构体赋值来实现上位机改变值
+*/
 
 /* 减速电机减速比 */
 #define J_REDUCTION_RATIO                 1//25

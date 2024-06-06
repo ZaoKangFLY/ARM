@@ -18,10 +18,9 @@ void tim_pwm_enable(void)
     Small2_PWM_ENABLE();
 	Wan1_PWM_ENABLE();
     Wan2_PWM_ENABLE();
-#if 0   
-    Ce_PWM1_ENABLE();    
-    Ce_PWM2_ENABLE();  
-#endif
+    Ce1_PWM_ENABLE() ;    
+    Ce2_PWM_ENABLE() ;  
+
 }
 /* 失能对应PWM通道定时器 */
 void tim_pwm_disable(void)
@@ -35,20 +34,13 @@ void tim_pwm_disable(void)
     Small2_PWM_DISABLE();
 	Wan1_PWM_DISABLE();
     Wan2_PWM_DISABLE();
-	
-#if 0   
-	Ce_PWM1_DISABLE() 
-	Ce_PWM2_DISABLE() 
-#endif
+	Ce1_PWM_DISABLE();
+	Ce2_PWM_DISABLE();
+
 }
 /* 使能编码器定时器 */
 void tim_econder_enable(void)
 {
-	/* 清零计数器 */
-	Jian_TIM_SETCOUNTER();
-	Big_TIM_SETCOUNTER();
-    Small_TIM_SETCOUNTER();
-	Wan_TIM_SETCOUNTER();
 	/*清空标志位*/
     __HAL_TIM_CLEAR_IT(&Jian_Encoder_htim,TIM_IT_UPDATE);
 	__HAL_TIM_CLEAR_IT(&Big_Encoder_htim,TIM_IT_UPDATE);
@@ -64,6 +56,11 @@ void tim_econder_enable(void)
 	Big_Encoder_ENABLE(); 
     Small_Encoder_ENABLE();
 	Wan_Encoder_ENABLE(); 
+		/* 清零计数器 */
+	Jian_TIM_SETCOUNTER();
+	Big_TIM_SETCOUNTER();
+    Small_TIM_SETCOUNTER();
+	Wan_TIM_SETCOUNTER();
    
 }
 /*使能定时器中断*/	
@@ -83,20 +80,15 @@ void tim_basic_enable(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) 
 {
 	if(htim==(&Basic_htim))//1ms进一次中断
-	{  
-#if UVMS 	
-		if(g_zhua!=0xFF)
+	{  	
+		if(g_motorEnable == 1)
 		{
-#endif
-		
-		big_set_postion(g_bigPosition);
-		small_set_postion(g_smallPosition);
-		//zhua_set( g_zhua);
-
-#if UVMS 	
+			jian_set_postion(g_jianPosition);
+			big_set_postion(g_bigPosition);
+			small_set_postion(g_smallPosition);
+			wan_set_postion(g_wanPosition);
+			zhua_set_postion( g_zhua);
 		}
-#endif
-	
 
 	}
 	else if(htim==(&Jian_Encoder_htim))

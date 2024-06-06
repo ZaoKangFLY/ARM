@@ -15,13 +15,17 @@ uint16_t Ce_Speed=0;
 /*开启接收串口*/
 void uart_enable()
 {
+#if UVMS
 	__HAL_UART_ENABLE_IT(&uart232, UART_IT_IDLE);
     HAL_UART_Receive_DMA(&uart232,recBuffer,recSize);
-	//HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//未使用DMA
-		
+#endif
+#if YeHuoPID
+	HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//未使用DMA
+#endif		
 	//HAL_UARTEx_ReceiveToIdle_DMA(&uart232 ,recBuffer,recSize);
 	//__HAL_DMA_DISABLE_IT(&uartDMA232,DMA_IT_HT);
 }
+//求和
 int8_t validate_data(uint8_t *data, uint16_t length)//求和
 {
     // 这里实现你的数据校验逻辑，例如CRC校验或校验和校验
@@ -37,29 +41,28 @@ int8_t validate_data(uint8_t *data, uint16_t length)//求和
 }
 void process_data(uint8_t *data)//赋值
 {
-     memcpy(recPosition,&data[5],16);//将电机的位置信息摘出来
-		g_jianPosition=recPosition[0];//占空比
-		g_bigPosition=recPosition[1];
-		g_smallPosition=recPosition[2];
-		g_wanPosition=recPosition[3];
-		g_zhua = data[21];
-		Ce_Speed=recPosition[0];//占空比
-#if UVMS 
-		if(g_zhua==0xFF)
-		{
-			g_motorEnable = 0;
-			Ce_Speed=1500;
-			Jian_TIM_SETCOUNTER();
-			Big_TIM_SETCOUNTER();
-			Small_TIM_SETCOUNTER();
-			Wan_TIM_SETCOUNTER();
-			g_jianEncoderOverflowCount = 0;
-			g_bigEncoderOverflowCount = 0;
-			g_smallEncoderOverflowCount = 0;
-			g_wanEncoderOverflowCount = 0;
+	memcpy(recPosition,&data[5],16);//将电机的位置信息摘出来
+	g_jianPosition=recPosition[0];//占空比
+	g_bigPosition=recPosition[1];
+	g_smallPosition=recPosition[2];
+	g_wanPosition=recPosition[3];
+	g_zhua = data[21];
+	Ce_Speed=recPosition[0];//占空比
+	if(g_zhua==0xFF)//停机指令
+	{
+		g_motorEnable = 0;
+		Ce_Speed=1500;
+		Jian_TIM_SETCOUNTER();
+		Big_TIM_SETCOUNTER();
+		Small_TIM_SETCOUNTER();
+		Wan_TIM_SETCOUNTER();
+		g_jianEncoderOverflowCount = 0;
+		g_bigEncoderOverflowCount = 0;
+		g_smallEncoderOverflowCount = 0;
+		g_wanEncoderOverflowCount = 0;
 
-		}
-#endif	
+	}
+
 }
 void handle_receidved_data(uint8_t* recBuffer, uint16_t dataSize)//遍历查找
 {
@@ -115,8 +118,32 @@ void handle_receidved_data_1(uint8_t* recBuffer, uint8_t dataSize)//固定帧查找
 		}
 }
 
+/*****************  发送字符 **********************/
+void Usart_SendByte(uint8_t str)
+{
+  HAL_UART_Transmit(&uart232 , &str, 1, 1000);
+}
 
+/*****************  发送字符串 **********************/
+void Usart_SendString(uint8_t *str)
+{
+	unsigned int k=0;
+  do 
+  {
+      HAL_UART_Transmit(&uart232 ,(uint8_t *)(str + k) ,1,1000);
+	 //HAL_UART_Transmit_DMA(&uart232 ,(uint8_t *)(str + k) ,1);
+      k++;
+  } while(*(str + k)!='\0');
+}
 
+///重定向c库函数printf到串口DEBUG_USART，重定向后可使用printf函数
+int fputc(int ch, FILE *f)
+{
+	/* 发送一个字节数据到串口DEBUG_USART */
+	HAL_UART_Transmit(&uart232 , (uint8_t *)&ch, 1, 1000);	
+	
+	return (ch);
+}
 
 /*串口中断回调函数中接收处理*/
 /*void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
@@ -154,31 +181,11 @@ void handle_receidved_data_1(uint8_t* recBuffer, uint8_t dataSize)//固定帧查找
 
 
 
-/*****************  发送字符 **********************/
-void Usart_SendByte(uint8_t str)
-{
-  HAL_UART_Transmit(&uart232 , &str, 1, 1000);
-}
 
-/*****************  发送字符串 **********************/
-void Usart_SendString(uint8_t *str)
-{
-	unsigned int k=0;
-  do 
-  {
-      HAL_UART_Transmit(&uart232 ,(uint8_t *)(str + k) ,1,1000);
-      k++;
-  } while(*(str + k)!='\0');
-}
 
-///重定向c库函数printf到串口DEBUG_USART，重定向后可使用printf函数
-int fputc(int ch, FILE *f)
-{
-	/* 发送一个字节数据到串口DEBUG_USART */
-	HAL_UART_Transmit(&uart232 , (uint8_t *)&ch, 1, 1000);	
-	
-	return (ch);
-}
+
+
+#if 0
 
 /*
 static void Uart_Filter_Data(uint8_t* _header,uint8_t* _input,uint8_t* _output,uint8_t _size)   //防止数据错位
@@ -210,3 +217,4 @@ static void Uart_Filter_Data(uint8_t* _header,uint8_t* _input,uint8_t* _output,u
     }
 }*/
 
+#endif

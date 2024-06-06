@@ -23,7 +23,7 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
 void set_position(motor_t *motor, int16_t _set) ;*/
 
 extern  uint8_t  g_motorEnable;
-extern uint8_t    g_cemotorEnable;
+
 
 void motor_jian_fun(int16_t pwm);
 void motor_big_fun(int16_t pwm);
@@ -34,7 +34,7 @@ void jian_set_postion(int16_t _set);
 void big_set_postion(int16_t _set);
 void small_set_postion(int16_t _set);
 void wan_set_postion(int16_t _set);
-void zhua_set(uint8_t _set);
+void zhua_set_postion(uint8_t _set);
 
 void motor_cetui_set_postion(int _set);
 void cetui_set_postion(float _get);

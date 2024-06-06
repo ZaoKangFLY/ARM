@@ -111,10 +111,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	if(g_zhua!=0xFF)
-//	{
-		//motor_cetui_set_postion(Ce_Speed);
-//	}
+
+	motor_cetui_set_postion(Ce_Speed);
+
   }
   /* USER CODE END 3 */
 }

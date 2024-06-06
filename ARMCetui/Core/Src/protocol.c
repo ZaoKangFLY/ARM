@@ -298,33 +298,28 @@ int8_t receiving_process(void)
         d_temp = *(float *)&temp2;
         
       //PID_struct_init(&Motor_Small,POSITION_PID,1000.0f,200.0f,p_temp, i_temp, d_temp,10000.0f,0.001f);//笨方法
-//		  Motor_Small.p=p_temp;
-//		  Motor_Small.i=i_temp;
-//		  Motor_Small.d=d_temp;
-			Pid_Small.f_pid_reset(&Pid_Small,p_temp, i_temp, d_temp);
-			Pid_Small.f_pid_reset(&Pid_Big,p_temp, i_temp, d_temp);
-       // set_p_i_d(p_temp, i_temp, d_temp);    // 设置 P I D
+
+		Pid_Big.f_pid_reset(&Pid_Big,p_temp, i_temp, d_temp);
+		Pid_Small.f_pid_reset(&Pid_Small,p_temp, i_temp, d_temp);
+		Pid_Jian.f_pid_reset(&Pid_Jian,p_temp, i_temp, d_temp);
+		Pid_Wan.f_pid_reset(&Pid_Wan,p_temp, i_temp, d_temp);	
+      
       }
       break;
 
       case SET_TARGET_CMD:
       {
-        int actual_temp = COMPOUND_32BIT(&frame_data[13]);    // 得到数据
-     
-		//  Small_Position=actual_temp;
-		   g_bigPosition=actual_temp;
-		  // Small_Speed=actual_temp;
-		  
-       // set_pid_target(actual_temp);    // 设置目标值
-		 // is_motor_en = 1;
+        int actual_temp = COMPOUND_32BIT(&frame_data[13]);    // 得到数据   
+//		g_jianPosition=actual_temp;
+		g_bigPosition=actual_temp;
+//		g_smallPosition=actual_temp;
+//		g_wanPosition=actual_temp;	   
       }
       break;
       
       case START_CMD:
       {
-		
-		tim_pwm_enable();              // 启动电机
-		//g_motorEnable = 1;验证
+		tim_pwm_enable();              //启动电机
       }
       break;
       
