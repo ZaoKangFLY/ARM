@@ -31,7 +31,6 @@ float PID_calc(pid_t* pid, float get, float set)
 	if (pid->fenli_err  != 0 && ABS(pid->err[NOW]) >  pid->fenli_err  )  // max_err积分分离（量程和积分分离只能二选一）
     {
 		index=0;
-	
 	}
 	else
 	{
@@ -48,7 +47,7 @@ float PID_calc(pid_t* pid, float get, float set)
         pid->pout = pid->p * pid->err[NOW];
         pid->iout += pid->i * pid->err[NOW];
         pid->dout = pid->d * (pid->err[NOW] - pid->err[LAST] );
-        abs_limit(&(pid->iout), pid->integralLimit);//积分限值
+       abs_limit(&(pid->iout), pid->integralLimit);//积分限值
         pid->pos_out = pid->pout +index* pid->iout + pid->dout;
         abs_limit(&(pid->pos_out), pid->maxOutput);//输出限值
         pid->last_pos_out = pid->pos_out;	//update last time 

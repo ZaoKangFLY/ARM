@@ -1,8 +1,8 @@
 #include "tim_init.h"
-int16_t g_jianEncoderOverflowCount = 0;
-int16_t g_bigEncoderOverflowCount = 0;
-int16_t g_smallEncoderOverflowCount = 0;
-int16_t g_wanEncoderOverflowCount = 0;
+__IO  int16_t g_jianEncoderOverflowCount = 0;
+__IO  int16_t g_bigEncoderOverflowCount = 0;
+__IO  int16_t g_smallEncoderOverflowCount = 0;
+__IO  int16_t g_wanEncoderOverflowCount = 0;
 
 /* 使能对应PWM通道定时器 */
 void tim_pwm_enable(void)
@@ -41,6 +41,11 @@ void tim_pwm_disable(void)
 /* 使能编码器定时器 */
 void tim_econder_enable(void)
 {
+
+   Jian_TIM_SETCOUNTER();          
+   Big_TIM_SETCOUNTER() ;              
+   Small_TIM_SETCOUNTER() ;        
+   Wan_TIM_SETCOUNTER() ; 
 	/*清空标志位*/
     __HAL_TIM_CLEAR_IT(&Jian_Encoder_htim,TIM_IT_UPDATE);
 	__HAL_TIM_CLEAR_IT(&Big_Encoder_htim,TIM_IT_UPDATE);
@@ -56,11 +61,7 @@ void tim_econder_enable(void)
 	Big_Encoder_ENABLE(); 
     Small_Encoder_ENABLE();
 	Wan_Encoder_ENABLE(); 
-		/* 清零计数器 */
-	Jian_TIM_SETCOUNTER();
-	Big_TIM_SETCOUNTER();
-    Small_TIM_SETCOUNTER();
-	Wan_TIM_SETCOUNTER();
+
    
 }
 /*使能定时器中断*/	
@@ -83,11 +84,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{  	
 		if(g_motorEnable == 1)
 		{
-			jian_set_postion(g_jianPosition);
+			/*static int c =0; 
+			if(c==100)// ms计算一次 
+			{
+				printf("\n%d----%d\n",g_bigPosition,g_smallPosition);
+				c=0;
+			}
+			c++;*/
+			
+			//jian_set_postion(g_jianPosition);
 			big_set_postion(g_bigPosition);
 			small_set_postion(g_smallPosition);
-			wan_set_postion(g_wanPosition);
-			zhua_set_postion( g_zhua);
+			//wan_set_postion(g_wanPosition);
+			//zhua_set_postion( g_zhua);
 		}
 
 	}

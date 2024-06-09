@@ -1,12 +1,19 @@
 #include "motor_control.h"
 uint8_t  g_motorEnable = 0;             // 第一次通信的电机使能
 
-void motor_jian_fun(int16_t pwm)
+/*肩部*/
+void jian_set_postion(int16_t _set)
 {
-	static int16_t val=0; 
-    if(pwm!=val)
-	{
-		if(pwm>0)//电机控制
+
+
+		int16_t _get = 0;//实际转动角度
+		 int16_t pwm = 0;//控制占空比
+	     int32_t set = 0;//设定脉冲数
+         static int32_t get = 0;////实际转过脉冲数	
+		set=_set*J_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
+		get =__HAL_TIM_GET_COUNTER(&Jian_Encoder_htim) + (g_jianEncoderOverflowCount * Jian_Encoder_htim.Init.Period);//读取编码器脉冲数	
+		pwm=PID_calc(&Pid_Jian,get,set);
+     	if(pwm>0)//电机控制
 		{
 			Jian1_SETCOMPARE((uint16_t)pwm);  //同高停转
 			Jian2_SETCOMPARE(0);	    	
@@ -16,124 +23,18 @@ void motor_jian_fun(int16_t pwm)
 			Jian1_SETCOMPARE(0); 
 			Jian2_SETCOMPARE((uint16_t)(-pwm));
 		}
-		val=pwm;
-	}
-}
-void motor_big_fun(int16_t pwm)
-{
-	static int16_t val=0; 
-    if(pwm!=val)
-	{
-		if(pwm>0)//电机控制
-		{
-			Big1_SETCOMPARE((uint16_t)pwm);  //同高停转
-			Big2_SETCOMPARE(0);	    	
-		}
-		else 
-		{
-			Big1_SETCOMPARE(0); 
-			Big2_SETCOMPARE((uint16_t)(-pwm));
-		}
-		val=pwm;
-	}
-}
-
-void motor_small_fun(int16_t pwm)
-{
-	static int16_t val=0; 
-    if(pwm!=val)
-	{
-		if(pwm>0)//电机控制
-		{
-			Small1_SETCOMPARE((uint16_t)pwm);  //同高停转
-			Small2_SETCOMPARE(0);	    	
-		}
-		else 
-		{
-			Small1_SETCOMPARE(0); 
-			Small2_SETCOMPARE((uint16_t)(-pwm));
-		}
-		val=pwm;
-	}
-}
-void motor_wan_fun(int16_t pwm)
-{
-	static int16_t val=0; 
-    if(pwm!=val)
-	{
-		if(pwm>0)//电机控制
-		{
-			Wan1_SETCOMPARE((uint16_t)pwm);  //同高停转
-			Wan2_SETCOMPARE(0);	    	
-		}
-		else 
-		{
-			Wan1_SETCOMPARE(0); 
-			Wan2_SETCOMPARE((uint16_t)(-pwm));
-		}
-		val=pwm;
-	}
-}
-
-
-
-
-
-
-void zhua_set_postion(uint8_t _set)
-{
-//	if (g_motorEnable == 1)
-//	{	
-		static int8_t i = 0;
-		if(_set==0x0A&& i<10)//i=10待测
-		{      
-				Zhua1_SETCOMPARE(999);  
-				Zhua2_SETCOMPARE(0);
-				i++;	
-		}
-		else if(_set==0x0F && i>0)
-		{
-				Zhua1_SETCOMPARE(0);  
-				Zhua2_SETCOMPARE(999);	
-				i--;
-		}
-		else
-		{
-				Zhua1_SETCOMPARE(0);  //停转
-				Zhua2_SETCOMPARE(0);
-		}
-//	}
-}
-
-
-void jian_set_postion(int16_t _set)
-{
-//	 if (g_motorEnable == 1)
-//	 {	
-
-		 int16_t _get = 0;//实际转动角度
-		 int16_t con_val = 0;//控制占空比
-	    int32_t set = 0;//设定脉冲数
-        static  __IO int32_t get = 0;////实际转过脉冲数	
-		set=_set*J_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
-		get =__HAL_TIM_GET_COUNTER(&Jian_Encoder_htim) + (g_jianEncoderOverflowCount * Jian_Encoder_htim.Init.Period);//读取编码器脉冲数	
-		con_val=PID_calc(&Pid_Jian,get,set);
-        motor_jian_fun(con_val);	
+		
 		_get=get*360/J_ARM_PULSES_PER_REVOLUTION;
 	
 #if YeHuoPID
-		set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值				
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH1, &_get, 1);  // 给通道 1 发送实际值				
 #endif
 #if CeShi   
-	static uint16_t i = 100;
-	if(i ==100&&con_val!=0)// ms计算一次 
-	{
-		printf("Jian%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_jianEncoderOverflowCount );
-		i=1;
-	}
-	i++;
+if(pwm!=0)// ms计算一次 
+{
+	printf("Jian（%d，%d）（%d，%d=%d*T+%d）%d\n",_set,_get,set,get,g_jianEncoderOverflowCount,__HAL_TIM_GET_COUNTER(&Jian_Encoder_htim) ,pwm);	
+}
 #endif
-
 #if VoFa
 printf("%d, %d, %d, %d\n",_set,_get, set, get);
 #endif
@@ -143,32 +44,40 @@ printf("%d, %d, %d, %d\n",_set,_get, set, get);
 void big_set_postion(int16_t _set)//闭环控制；设定角度
 {
 	 	
-		static int _get = 0;//实际转动角度
-		static int16_t con_val = 0;//控制占空比
-	    static int32_t set = 0;//设定脉冲数
-        static int32_t get = 0;////实际转过脉冲数		
+		 int16_t _get = 0;//实际转动角度
+		 float pwm = 0;//控制占空比
+	     int32_t set = 0;//设定脉冲数
+         static __IO int32_t get = 0;////实际转过脉冲数		
 		set=_set*B_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
+#if YeHuoPID
+//set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
+#endif
 		get =__HAL_TIM_GET_COUNTER(&Big_Encoder_htim)+ g_bigEncoderOverflowCount*Big_Encoder_htim.Init.Period   ; //总脉冲数	
-		con_val=PID_calc(&Pid_Big,get,set);//pid计算	
-        motor_big_fun(con_val);	
+		pwm=PID_calc(&Pid_Big,get,set);//pid计算	
+			if(pwm>0)//电机控制
+		{
+			Big1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Big2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Big1_SETCOMPARE(0); 
+			Big2_SETCOMPARE((uint16_t)(-pwm));
+		}
         _get=get*360/B_ARM_PULSES_PER_REVOLUTION ;//转动角度		
 #if YeHuoPID
-		set_computer_value(SEND_FACT_CMD, CURVES_CH2, &_get, 2);  // 给通道 2 发送实际值
-		/*set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
-		set_computer_value(SEND_FACT_CMD, CURVES_CH5, &get, 2);  */
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH2, &_get, 2);  // 给通道 2 发送实际值
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH5, &get, 4);  
 #endif
-
 #if	CeShi  
-//		static uint16_t i = 100;
-//		if(i ==100&&con_val!=0)// ms计算一次 
-//		{
-		if(con_val!=0)// ms计算一次 
-		{
-			printf("Big%8d%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_bigEncoderOverflowCount,__HAL_TIM_GET_COUNTER(&Big_Encoder_htim) );
-		}
-//			i=1;
-//		}
-//		i++;	
+static int n =0; 
+if(n==100&&pwm!=0)// ms计算一次 
+{
+	printf("Big（%d，%d）（%d,%d,%d*T）%.2f\n",_set,_get,set,get,g_bigEncoderOverflowCount,pwm );
+	n=0;
+}
+n++;
 #endif
 #if VoFa
 printf("%d, %d, %d, %d\n",_set,_get, set, get);
@@ -180,66 +89,102 @@ printf("%d, %d, %d, %d\n",_set,_get, set, get);
 void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 {
 
-//	 if (g_motorEnable == 1)
-//	 {	
+
 		 int16_t _get = 0;//实际转动角度
-		 int16_t con_val = 0;//控制占空比
+		 float pwm = 0;//控制占空比
 	     int32_t set = 0;//设定脉冲数
-        static __IO int32_t get = 0;////实际转过脉冲数	
-		set=_set*S_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
-		get =__HAL_TIM_GET_COUNTER(&Small_Encoder_htim) + (g_smallEncoderOverflowCount * Small_Encoder_htim.Init.Period);//读取编码器脉冲数	
-		con_val=PID_calc(&Pid_Small,get,set);
-        motor_small_fun(con_val);	
+		static __IO int32_t get = 0;////实际转过脉冲数
+		set=_set*S_ARM_PULSES_PER_REVOLUTION /360 ;	//设定角度对应的脉冲数 
+#if YeHuoPID
+set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
+#endif
+		get = __HAL_TIM_GET_COUNTER(&Small_Encoder_htim)+(g_smallEncoderOverflowCount * Small_Encoder_htim.Init.Period );//读取编码器脉冲数	
+		pwm=PID_calc(&Pid_Small,get,set);
+        if(pwm>0)//电机控制
+		{
+			Small1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Small2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Small1_SETCOMPARE(0); 
+			Small2_SETCOMPARE((uint16_t)(-pwm));
+		}			
 		_get=get*360/S_ARM_PULSES_PER_REVOLUTION;		
 #if YeHuoPID
-		set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_get, 3);  // 给通道 1 发送实际值
+//set_computer_value(SEND_FACT_CMD, CURVES_CH3, &_get, 2);  // 给通道 1 发送实际值
+//	set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
+set_computer_value(SEND_FACT_CMD, CURVES_CH5, &get, 4);  
 #endif
-#if	CeShi   
-//		static uint16_t i = 100;
-//		if(i ==100&&con_val!=0)// ms计算一次 
-//		{
-		if(con_val!=0)// ms计算一次 
-		{
-			printf("Small%8d%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_smallEncoderOverflowCount,__HAL_TIM_GET_COUNTER(&Small_Encoder_htim) );
-//			i=1;
-		}
-//		i++;	
+#if	CeShi  
+static int m =0; 
+if(m==100&&pwm!=0)// ms计算一次 
+{
+	printf("Small（%d，%d）（%d,%d,%d*T）%.2f\n",_set,_get,set,get,g_smallEncoderOverflowCount,pwm );
+	m=0;
+}
+m++;
 #endif
 #if VoFa
 printf("%d, %d, %d, %d\n",_set,_get, set, get);
 #endif
 
 }
-
+/*腕部*/
 void wan_set_postion(int16_t _set)
 {
-//	 if (g_motorEnable == 1)
-//	 {	
-		static int16_t _get = 0;//实际转动角度
-		static int16_t con_val = 0;//控制占空比
-	    static int32_t set = 0;//设定脉冲数
-        static int32_t get = 0;////实际转过脉冲数	
+		int16_t _get = 0;//实际转动角度
+		 int16_t pwm = 0;//控制占空比
+	     int32_t set = 0;//设定脉冲数
+         static int32_t get = 0;////实际转过脉冲数		
 		set=_set*W_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
 		get =__HAL_TIM_GET_COUNTER(&Wan_Encoder_htim) + (g_wanEncoderOverflowCount * Wan_Encoder_htim.Init.Period);//读取编码器脉冲数	
-		con_val=PID_calc(&Pid_Wan,get,set);
-        motor_wan_fun(con_val);	
+		pwm=PID_calc(&Pid_Wan,get,set);
+        if(pwm>0)//电机控制
+		{
+			Wan1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Wan2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Wan1_SETCOMPARE(0); 
+			Wan2_SETCOMPARE((uint16_t)(-pwm));
+		}
 		_get=get*360/W_ARM_PULSES_PER_REVOLUTION;		
 #if YeHuoPID
-		set_computer_value(SEND_FACT_CMD, CURVES_CH4, &_get, 4);  // 给通道 4 发送实际值
+		//set_computer_value(SEND_FACT_CMD, CURVES_CH4, &_get, 4);  // 给通道 4 发送实际值
 #endif
 #if CeShi   
-		static uint16_t i = 0;
-		if(i ==100 && con_val!=0)// ms计算一次 
-		{
-			printf("Wan%8d%8d%8d%8d%8d%8d%8d\r\n",_set,_get,set,get,con_val,g_wanEncoderOverflowCount ,__HAL_TIM_GET_COUNTER(&Wan_Encoder_htim));
-			i=1;
-		}
-		i++;	
+if( pwm!=0)// ms计算一次 
+{
+	printf("Wan（%d，%d）（%d，%d=%d*T+%d）%d\n",_set,_get,set,get,g_wanEncoderOverflowCount ,__HAL_TIM_GET_COUNTER(&Wan_Encoder_htim),pwm);
+}		
 #endif
 #if VoFa
 printf("%d, %d, %d, %d\n",_set,_get, set, get);
 #endif
-
+}
+/*抓*/
+void zhua_set_postion(uint8_t _set)
+{
+	static int16_t i = 0;
+	if(_set==0x0A&& i<10)//i=10待测
+	{      
+		Zhua1_SETCOMPARE(999);  
+		Zhua2_SETCOMPARE(0);
+		i++;	
+	}
+	else if(_set==0x0F && i>0)
+	{
+		Zhua1_SETCOMPARE(0);  
+		Zhua2_SETCOMPARE(999);	
+		i--;
+	}
+	else
+	{
+		Zhua1_SETCOMPARE(0);  //停转
+		Zhua2_SETCOMPARE(0);
+	}
 }
 
 /*控制侧推*/

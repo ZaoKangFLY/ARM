@@ -297,7 +297,7 @@ HAL_UART_Receive_DMA(&uart232, recBuffer, recSize);     //重启开始DMA传输
  #if YeHuoPID
  HAL_UART_Receive_IT(&uart232 ,recBuffer,recSize);//该函数会开启接收中断：标志位 UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
  #endif	
- /* USER CODE END USART3_IRQn 1 */
+  /* USER CODE END USART3_IRQn 1 */
 }
 
 /**

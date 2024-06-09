@@ -24,12 +24,6 @@ void set_position(motor_t *motor, int16_t _set) ;*/
 
 extern  uint8_t  g_motorEnable;
 
-
-void motor_jian_fun(int16_t pwm);
-void motor_big_fun(int16_t pwm);
-void motor_small_fun(int16_t pwm);
-void motor_wan_fun(int16_t pwm);
-
 void jian_set_postion(int16_t _set);
 void big_set_postion(int16_t _set);
 void small_set_postion(int16_t _set);

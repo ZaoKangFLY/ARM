@@ -25,7 +25,7 @@ void uart_enable()
 	//HAL_UARTEx_ReceiveToIdle_DMA(&uart232 ,recBuffer,recSize);
 	//__HAL_DMA_DISABLE_IT(&uartDMA232,DMA_IT_HT);
 }
-//求和
+//求和FA AF 04 18 00 00 00 00 00 00 F0 C1 00 00 F0 C1 00 00 00 00 00 00 27 FE 
 int8_t validate_data(uint8_t *data, uint16_t length)//求和
 {
     // 这里实现你的数据校验逻辑，例如CRC校验或校验和校验
@@ -144,77 +144,3 @@ int fputc(int ch, FILE *f)
 	
 	return (ch);
 }
-
-/*串口中断回调函数中接收处理*/
-/*void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-   
-#if YeHuoPID
-
-#else
-
-#endif
-	    
-}*/
-/*DMA回调函数中接收处理*/
-/*void HAL_UARTx_RxEvenCallback(UART_HandleTypeDef *huart,uint16_t Size)
-{	
-	if(huart == (&uart232) )
-    {
-		//HAL_UART_DMAStop(&uart232);                                //停止本次DMA传输 	 		
-			rx_len = recSize - __HAL_DMA_GET_COUNTER(&uartDMA232);   //计算接收到的数据长度
-		    handle_receidved_data(recBuffer, rx_len );
-			HAL_UART_Transmit(&uart232,recBuffer,rx_len ,0x200);             //测试函数：将接收到的数据打印出去
-			
-			memset(recBuffer,0,rx_len );			// 重置缓冲区并重新启动DMA传输                                           
-			rx_len  = 0;
-			HAL_UARTEx_ReceiveToIdle_DMA(&uart232 ,recBuffer,recSize);     //重启开始DMA传输
-			__HAL_DMA_DISABLE_IT(&uartDMA232,DMA_IT_HT);// 放IRQ.
-		 }
-	 }
-	
-
-}*/
-
-
-
-
-
-
-
-
-
-
-#if 0
-
-/*
-static void Uart_Filter_Data(uint8_t* _header,uint8_t* _input,uint8_t* _output,uint8_t _size)   //防止数据错位
-{
-    // 帧头位置正确，直接复制数据
-    if (_input[0] == _header[0] && _input[1] == _header[1])
-    {
-        memcpy(_output, _input, _size);//C 库函数 void *memcpy(void *str1, const void *str2, size_t n) 从存储区 str2 复制 n 个字节到存储区 str1。
-    }
-    // 帧头在最后一位的情况
-    else if (_input[_size - 1] == _header[0] && _input[0] == _header[1])
-    {
-        _output[0] = _header[0];
-        _output[1] = _header[1];
-        memcpy(_output + 2, _input+1, _size - 2);
-    }
-    // 在循环中查找帧头的位置
-    else
-    {
-        for (uint8_t i = 1; i < _size - 1; i++)
-        {
-            if (_input[i] == _header[0] && _input[i + 1] == _header[1])
-            {
-                memcpy(_output, _input + i, _size - i);
-                memcpy(_output + _size - i, _input, i);
-                break;; 
-            }
-        }
-    }
-}*/
-
-#endif
