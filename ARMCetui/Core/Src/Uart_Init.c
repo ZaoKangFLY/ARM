@@ -41,6 +41,7 @@ int8_t validate_data(uint8_t *data, uint16_t length)//求和
 }
 void process_data(uint8_t *data)//赋值
 {
+	//tim_pwm_enable();
 	memcpy(recPosition,&data[5],16);//将电机的位置信息摘出来
 	g_jianPosition=recPosition[0];//占空比
 	g_bigPosition=recPosition[1];
@@ -48,20 +49,49 @@ void process_data(uint8_t *data)//赋值
 	g_wanPosition=recPosition[3];
 	g_zhua = data[21];
 	Ce_Speed=recPosition[0];//占空比
-	if(g_zhua==0xFF)//停机指令
+	switch(g_zhua)
 	{
-		g_motorEnable = 0;
-		Ce_Speed=1500;
-		Jian_TIM_SETCOUNTER();
-		Big_TIM_SETCOUNTER();
-		Small_TIM_SETCOUNTER();
-		Wan_TIM_SETCOUNTER();
-		g_jianEncoderOverflowCount = 0;
-		g_bigEncoderOverflowCount = 0;
-		g_smallEncoderOverflowCount = 0;
-		g_wanEncoderOverflowCount = 0;
-
+		case 0xAF://启动
+			tim_econder_enable();
+			tim_basic_enable(); 
+			break;
+		case 0xBF://重置新起点
+			tim_basic_disenable();
+			tim_econder_disenable();
+			tim_econder_enable();
+			break;
+		case 0xFF://停止
+			tim_basic_disenable(); 
+			break;
+		case 0xFA://继续
+			tim_basic_enable(); 
+			break;
+		 default:
+		 break;
 	}
+/*	if(g_zhua==0xFF)//停机指令
+	{
+		//g_motorEnable = 0;
+		//tim_pwm_disable();
+		tim_basic_disenable(); 
+		//Ce_Speed=1500;
+	}
+	if(g_zhua==0xFA)
+	{
+		tim_basic_enable(); 
+	}
+	if(g_zhua==0xAF)//启动
+	{
+		tim_econder_enable();
+		tim_basic_enable(); 	
+	}
+	if(g_zhua==0xBF)//重置新起点
+	{
+		//tim_pwm_disable();
+		tim_basic_disenable();
+		tim_econder_disenable();
+		tim_econder_enable();
+	}*/
 
 }
 void handle_receidved_data(uint8_t* recBuffer, uint16_t dataSize)//遍历查找

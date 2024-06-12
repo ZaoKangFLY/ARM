@@ -4,6 +4,10 @@ pid_t Pid_Big;    //创建大臂PID结构体
 pid_t Pid_Small;  //创建小臂PID结构体 
 pid_t Pid_Wan;  //
 pid_t Pid_Ce;     // 
+
+pid_t Pid_Vsmall;     //
+CascadePID cas_small_angle;
+ 
 #define ABS(x)		((x>0)? (x): (-x)) //取绝对值,运算性能更高
 void abs_limit(float *a, float ABS_MAX)//取限定最值
 {
@@ -74,11 +78,12 @@ float PID_calc(pid_t* pid, float get, float set)
 
 
 
-void PID_CascadeCalc(CascadePID *pid,float angleGet,float speedGet,float angleSet)
+float PID_CascadeCalc(CascadePID *pid,float angleSet,float angleGet,float speedGet)
 {
 	PID_calc(&pid->outer,angleGet,angleSet);//计算外环(角度环)
 	PID_calc(&pid->inner,pid->outer.pos_out,speedGet);//计算内环(速度环)
 	pid->output=pid->inner.pos_out;
+	return pid->output;
 }
 
 

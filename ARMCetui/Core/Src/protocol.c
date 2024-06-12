@@ -312,7 +312,7 @@ int8_t receiving_process(void)
         int actual_temp = COMPOUND_32BIT(&frame_data[13]);    // 得到数据   
 //		g_jianPosition=actual_temp;
 //		g_bigPosition=actual_temp;
-		g_smallPosition=actual_temp;
+//		g_smallPosition=actual_temp;
 //		g_wanPosition=actual_temp;	   
       }
       break;

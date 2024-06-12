@@ -1,6 +1,145 @@
 #include "motor_control.h"
-uint8_t  g_motorEnable = 0;             // 第一次通信的电机使能
+//uint8_t  g_motorEnable = 0;             // 第一次通信的电机使能
+/********************************************尝试版本****************************************************/
+/*稳定版以机械臂脉冲数pid控制精度高但稳定性稍差，如有需要可以改为输出轴控制或者机械臂控制*/
+void big_set_angle(int16_t _set)//输出机械臂角度pid
+{
+		 int16_t _get = 0;//实际转动角度
+		 float pwm = 0;//控制占空比
+         static __IO int32_t get = 0;////实际转过脉冲数		
+		get =__HAL_TIM_GET_COUNTER(&Big_Encoder_htim)+ g_bigEncoderOverflowCount*Big_Encoder_htim.Init.Period   ; //总脉冲数	
+		_get=get*360/B_ARM_PULSES_PER_REVOLUTION ;//转动角度		
+		pwm=PID_calc(&Pid_Big,_get,-_set);//pid计算	
+		if(pwm>0)//电机控制
+		{
+			Big1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Big2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Big1_SETCOMPARE(0); 
+			Big2_SETCOMPARE((uint16_t)(-pwm));
+		}
 
+#if YeHuoPID
+		int16_t __get = 0;//实际转动角度
+		 __get=-_get;
+set_computer_value(SEND_FACT_CMD, CURVES_CH2, &__get, 4);  
+#endif
+#if	CeShi  
+static int m =0; 
+if(m==10&&pwm!=0)// ms计算一次 
+{
+	printf("Big（%d，%d）%d\n",_set,_get,pwm );
+	m=0;
+}
+m++;
+#endif
+}
+void small_set_angle(int16_t _set)//输出机械臂角度pid
+{
+		 int16_t _get = 0;//实际转动角度
+		 float pwm = 0;//控制占空比
+		static __IO int32_t get = 0;////实际转过脉冲数
+		get = __HAL_TIM_GET_COUNTER(&Small_Encoder_htim)+(g_smallEncoderOverflowCount * Small_Encoder_htim.Init.Period );//读取编码器脉冲数	
+		_get=get*360/S_ARM_PULSES_PER_REVOLUTION;	
+		pwm=PID_calc(&Pid_Small,_get,-_set);
+        if(pwm>0)//电机控制
+		{
+			Small1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Small2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Small1_SETCOMPARE(0); 
+			Small2_SETCOMPARE((uint16_t)(-pwm));
+		}		
+		
+#if YeHuoPID
+ int16_t __get = 0;//实际转动角度
+		 __get=-_get;
+set_computer_value(SEND_FACT_CMD, CURVES_CH3, &__get, 4);  
+#endif
+#if	CeShi  
+static int m =0; 
+if(m==10&&pwm!=0)// ms计算一次 
+{
+	printf("Small（%d，%d）%d\n",_set,_get,pwm );
+	m=0;
+}
+m++;
+#endif
+}
+/*尝试速度环内环位置环外环的双环控制small*/
+//速度环
+void motor_small_speed(int16_t set_speed)//rpm_输出轴
+{
+		float pwm = 0;//控制占空比
+		static __IO int32_t get = 0;////实际转过脉冲数
+		static __IO int32_t get_last = 0;////上一次实际转过脉冲数
+		float actual_speed=0;
+		get = __HAL_TIM_GET_COUNTER(&Small_Encoder_htim)+(g_smallEncoderOverflowCount * Small_Encoder_htim.Init.Period );//读取编码器脉冲数	
+		actual_speed=(get- get_last)/S_OUTPUT_SHAFT_PULSES_PER_REVOLUTION*60000;//输出轴速度
+		get_last=get;
+		pwm=PID_calc(&Pid_Small,actual_speed,set_speed);
+		if(pwm>0)//电机控制
+		{
+			Small1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Small2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Small1_SETCOMPARE(0); 
+			Small2_SETCOMPARE((uint16_t)(-pwm));
+		}
+}
+//双环外环角度
+void motor_small_speed_angle(int16_t set_angle)//rpm_输出轴
+{
+		float pwm = 0;						//控制占空比
+		static __IO int32_t get_angle  = 0;		//实际转过脉冲数
+		static __IO int32_t get_angle_last = 0;	//上一次实际转过脉冲数
+		float get_speed=0;				//实际速度
+		get_angle = __HAL_TIM_GET_COUNTER(&Small_Encoder_htim)+(g_smallEncoderOverflowCount * Small_Encoder_htim.Init.Period );//读取编码器脉冲数	
+		get_speed=(get_angle - get_angle_last)/S_OUTPUT_SHAFT_PULSES_PER_REVOLUTION*60000;//输出轴速度
+		get_angle_last=get_angle;
+		pwm=PID_CascadeCalc(&cas_small_angle ,set_angle,get_angle,get_speed);
+		if(pwm>0)//电机控制
+		{
+			Small1_SETCOMPARE((uint16_t)pwm);  //同高停转
+			Small2_SETCOMPARE(0);	    	
+		}
+		else 
+		{
+			Small1_SETCOMPARE(0); 
+			Small2_SETCOMPARE((uint16_t)(-pwm));
+		}
+
+}
+/*姿态控制未合并初步想法涉及动力分配*/
+void cetui_set_postion(float _get)//当前姿态角度
+{
+	static int throttle = 1700;//
+	
+		static float ROL_conval = 0;//控制量
+		static uint16_t motor_pwm_1 = 0;//占空比
+		static uint16_t motor_pwm_2 = 0;//占空比
+		static int _set = 0;//设定0
+		_get = deg_to_rad(_get);//当前滚转角转弧度
+		ROL_conval = PID_calc(&Pid_Ce,_get,_set); 
+		motor_pwm_1 = throttle + ROL_conval;//throttle约等于1700
+		motor_pwm_2 = throttle - ROL_conval;
+		if(motor_pwm_1>2000){motor_pwm_1=2000;}
+		if(motor_pwm_2>2000){motor_pwm_2=2000;}
+		if(motor_pwm_1<1500){motor_pwm_1=1500;}
+		if(motor_pwm_2<1500){motor_pwm_2=1500;}
+		Ce1_SETCOMPARE(motor_pwm_1) ;
+		Ce2_SETCOMPARE(motor_pwm_2) ;		
+
+
+
+}
+/*********************************************稳定版本*******************************************/
 /*肩部*/
 void jian_set_postion(int16_t _set)
 {
@@ -41,20 +180,20 @@ printf("%d, %d, %d, %d\n",_set,_get, set, get);
 
 }
 /*大臂*/
-void big_set_postion(int16_t _set)//闭环控制；设定角度
+void big_set_postion(int16_t _set)
 {
 	 	
 		 int16_t _get = 0;//实际转动角度
 		 float pwm = 0;//控制占空比
 	     int32_t set = 0;//设定脉冲数
          static __IO int32_t get = 0;////实际转过脉冲数		
-		set=_set*B_ARM_PULSES_PER_REVOLUTION/360 ;	//设定角度对应的脉冲数 
+		set=-(_set*B_ARM_PULSES_PER_REVOLUTION/360) ;	//设定角度对应的脉冲数 
 #if YeHuoPID
 //set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
 #endif
 		get =__HAL_TIM_GET_COUNTER(&Big_Encoder_htim)+ g_bigEncoderOverflowCount*Big_Encoder_htim.Init.Period   ; //总脉冲数	
 		pwm=PID_calc(&Pid_Big,get,set);//pid计算	
-			if(pwm>0)//电机控制
+		if(pwm>0)//电机控制
 		{
 			Big1_SETCOMPARE((uint16_t)pwm);  //同高停转
 			Big2_SETCOMPARE(0);	    	
@@ -86,7 +225,7 @@ printf("%d, %d, %d, %d\n",_set,_get, set, get);
 }
 
 /*小臂*/
-void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
+void small_set_postion(int16_t _set)
 {
 
 
@@ -94,7 +233,7 @@ void small_set_postion(int16_t _set)//_set设定角度，臂的向下负角度
 		 float pwm = 0;//控制占空比
 	     int32_t set = 0;//设定脉冲数
 		static __IO int32_t get = 0;////实际转过脉冲数
-		set=_set*S_ARM_PULSES_PER_REVOLUTION /360 ;	//设定角度对应的脉冲数 
+		set=-(_set*S_ARM_PULSES_PER_REVOLUTION /360) ;	//设定角度对应的脉冲数 
 #if YeHuoPID
 set_computer_value(SEND_FACT_CMD, CURVES_CH4, &set, 2);  // 以两个通道换取显示脉冲记得注释其他同一此通道
 #endif
@@ -130,6 +269,7 @@ printf("%d, %d, %d, %d\n",_set,_get, set, get);
 #endif
 
 }
+
 /*腕部*/
 void wan_set_postion(int16_t _set)
 {
@@ -233,30 +373,7 @@ void motor_cetui_set_postion(int _set)
     
 }
 
-/*姿态控制未合并初步想法涉及动力分配*/
-void cetui_set_postion(float _get)//当前姿态角度
-{
-	static int throttle = 1700;//
-	if (g_motorEnable == 1)//使能
-	{	
-		static float ROL_conval = 0;//控制量
-		static uint16_t motor_pwm_1 = 0;//占空比
-		static uint16_t motor_pwm_2 = 0;//占空比
-		static int _set = 0;//设定0
-		_get = deg_to_rad(_get);//当前滚转角转弧度
-		ROL_conval = PID_calc(&Pid_Ce,_get,_set); 
-		motor_pwm_1 = throttle + ROL_conval;//throttle约等于1700
-		motor_pwm_2 = throttle - ROL_conval;
-		if(motor_pwm_1>2000){motor_pwm_1=2000;}
-		if(motor_pwm_2>2000){motor_pwm_2=2000;}
-		if(motor_pwm_1<1500){motor_pwm_1=1500;}
-		if(motor_pwm_2<1500){motor_pwm_2=1500;}
-		Ce1_SETCOMPARE(motor_pwm_1) ;
-		Ce2_SETCOMPARE(motor_pwm_2) ;		
 
-	}
-
-}
 
 // 弧度转角度
 float rads_to_deg(float radians) {

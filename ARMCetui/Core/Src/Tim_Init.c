@@ -8,7 +8,7 @@ __IO  int16_t g_wanEncoderOverflowCount = 0;
 void tim_pwm_enable(void)
 {
 #if YeHuoPID
-	g_motorEnable=1;
+//	g_motorEnable=1;
 #endif
 	Jian1_PWM_ENABLE();
     Jian2_PWM_ENABLE();
@@ -25,7 +25,7 @@ void tim_pwm_enable(void)
 /* 失能对应PWM通道定时器 */
 void tim_pwm_disable(void)
 {
-	g_motorEnable=0;
+//	g_motorEnable=0;
 	Jian1_PWM_DISABLE();
     Jian2_PWM_DISABLE();
 	Big1_PWM_DISABLE();
@@ -34,18 +34,21 @@ void tim_pwm_disable(void)
     Small2_PWM_DISABLE();
 	Wan1_PWM_DISABLE();
     Wan2_PWM_DISABLE();
-	Ce1_PWM_DISABLE();
-	Ce2_PWM_DISABLE();
+//	Ce1_PWM_DISABLE();
+//	Ce2_PWM_DISABLE();
 
 }
 /* 使能编码器定时器 */
 void tim_econder_enable(void)
 {
-
-   Jian_TIM_SETCOUNTER();          
-   Big_TIM_SETCOUNTER() ;              
-   Small_TIM_SETCOUNTER() ;        
-   Wan_TIM_SETCOUNTER() ; 
+	g_jianEncoderOverflowCount = 0;
+	g_bigEncoderOverflowCount = 0;
+	g_smallEncoderOverflowCount = 0;
+	g_wanEncoderOverflowCount = 0;
+	Jian_TIM_SETCOUNTER();          
+	Big_TIM_SETCOUNTER() ;              
+	Small_TIM_SETCOUNTER() ;        
+	Wan_TIM_SETCOUNTER() ; 
 	/*清空标志位*/
     __HAL_TIM_CLEAR_IT(&Jian_Encoder_htim,TIM_IT_UPDATE);
 	__HAL_TIM_CLEAR_IT(&Big_Encoder_htim,TIM_IT_UPDATE);
@@ -64,6 +67,12 @@ void tim_econder_enable(void)
 
    
 }
+void tim_econder_disenable(void)
+{
+	Big_Encoder_DISENABLE()  ;                
+	Small_Encoder_DISENABLE() ;	
+   
+}
 /*使能定时器中断*/	
 void tim_basic_enable(void)
 {
@@ -76,14 +85,21 @@ void tim_basic_enable(void)
 	set_computer_value(SEND_PERIOD_CMD, CURVES_CH4, &temp, 1);     // 给通道 1 发送目标值
 #endif
 }
+void tim_basic_disenable(void)
+{
+	 Basic_TIM_DISENABLE();
+}
+
+
+
 
 /*定时器中断回调函数中进行PWM*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) 
 {
 	if(htim==(&Basic_htim))//1ms进一次中断
 	{  	
-		if(g_motorEnable == 1)
-		{
+//		if(g_motorEnable == 1)
+//		{
 			/*static int c =0; 
 			if(c==100)// ms计算一次 
 			{
@@ -93,11 +109,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			c++;*/
 			
 			//jian_set_postion(g_jianPosition);
-			big_set_postion(g_bigPosition);
-			small_set_postion(g_smallPosition);
+			//big_set_postion(g_bigPosition);
+			//small_set_postion(g_smallPosition);
 			//wan_set_postion(g_wanPosition);
 			//zhua_set_postion( g_zhua);
-		}
+			big_set_angle(g_bigPosition);
+			small_set_angle(g_smallPosition);
+//		}
 
 	}
 	else if(htim==(&Jian_Encoder_htim))

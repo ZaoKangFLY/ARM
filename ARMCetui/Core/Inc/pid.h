@@ -56,10 +56,12 @@ extern pid_t Pid_Small; //创建小臂PID结构体
 extern pid_t Pid_Wan;    //创建大臂PID结构体
 extern pid_t Pid_Ce;     //创建小臂PID结构体 
 
+extern pid_t Pid_Vsmall; 
+extern CascadePID cas_small_angle;
 
 
 float PID_calc(pid_t* pid, float get, float set);
-void PID_CascadeCalc(CascadePID *pid,float angleGet,float speedGet,float angleSet);					
+float PID_CascadeCalc(CascadePID *pid,float angleSet,float angleGet,float speedGet);
 									
 
 /*void pid_param_init( pid_t* pid, //结构体指针所以下文->

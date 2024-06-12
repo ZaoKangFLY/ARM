@@ -22,7 +22,7 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *encoder_timer, pid_t *pid,
                 uint32_t pulses_per_revolution, void (*motor_control_function)(int16_t));
 void set_position(motor_t *motor, int16_t _set) ;*/
 
-extern  uint8_t  g_motorEnable;
+//extern  uint8_t  g_motorEnable;
 
 void jian_set_postion(int16_t _set);
 void big_set_postion(int16_t _set);
@@ -38,5 +38,8 @@ float rads_to_deg(float radians);
 float deg_to_rad(float degrees);
 float count(float x);
 
+void big_set_angle(int16_t _set);
+void small_set_angle(int16_t _set);
+void motor_small_speed(int16_t set_speed);
 
 #endif

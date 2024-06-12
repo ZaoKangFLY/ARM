@@ -276,7 +276,7 @@ void USART3_IRQHandler(void)
 #if UVMS
 	if(RESET != __HAL_UART_GET_FLAG(&uart232, UART_FLAG_IDLE))   //判断是否是空闲中断
 	{
-		g_motorEnable = 1;
+//		g_motorEnable = 1;
 		__HAL_UART_CLEAR_IDLEFLAG(&uart232);                       //清除空闲中断标志
 		HAL_UART_DMAStop(&uart232);                                //停止本次DMA传输 		
 		rx_len  = recSize - __HAL_DMA_GET_COUNTER(&uartDMA232);   //计算接收到的数据长度

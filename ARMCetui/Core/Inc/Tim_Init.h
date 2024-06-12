@@ -57,12 +57,14 @@
 
 /*定时器中断*/
 #define  Basic_TIM_ENABLE()                     HAL_TIM_Base_Start_IT(&Basic_htim)
+#define  Basic_TIM_DISENABLE() 					HAL_TIM_Base_Stop_IT(&Basic_htim);
 
 #define  Jian_Encoder_ENABLE()                  HAL_TIM_Encoder_Start(&Jian_Encoder_htim, TIM_CHANNEL_ALL)
 #define  Big_Encoder_ENABLE()                   HAL_TIM_Encoder_Start(&Big_Encoder_htim, TIM_CHANNEL_ALL)
 #define  Small_Encoder_ENABLE()                 HAL_TIM_Encoder_Start(&Small_Encoder_htim, TIM_CHANNEL_ALL)
 #define  Wan_Encoder_ENABLE()                   HAL_TIM_Encoder_Start(&Wan_Encoder_htim, TIM_CHANNEL_ALL)
-              
+#define  Big_Encoder_DISENABLE()                   HAL_TIM_Encoder_Stop(&Big_Encoder_htim, TIM_CHANNEL_ALL)
+#define  Small_Encoder_DISENABLE()                 HAL_TIM_Encoder_Stop(&Small_Encoder_htim, TIM_CHANNEL_ALL)  
 
 /* 清零计数器 */
 #define   Jian_TIM_SETCOUNTER()                 __HAL_TIM_SET_COUNTER(&Jian_Encoder_htim , 0);
@@ -95,7 +97,9 @@ extern __IO int16_t g_wanEncoderOverflowCount;
 void tim_pwm_enable(void);
 void tim_pwm_disable(void);
 void tim_econder_enable(void);
+void tim_econder_disenable(void);
 void tim_basic_enable(void);
+void tim_basic_disenable(void);
 
 #endif
 
