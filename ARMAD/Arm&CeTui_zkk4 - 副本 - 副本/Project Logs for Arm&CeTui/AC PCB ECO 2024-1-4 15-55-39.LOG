@@ -1,0 +1,129 @@
+Removed Pin From Net: NetName=+3.3V Pin=C22-1
+Removed Pin From Net: NetName=3.3V Pin=J6-1
+Removed Pin From Net: NetName=+3.3V Pin=R3-2
+Removed Pin From Net: NetName=3.3V Pin=R4-1
+Removed Pin From Net: NetName=+3.3V Pin=R5-2
+Removed Pin From Net: NetName=+3.3V Pin=U2-16
+Removed Pin From Net: NetName=+3.3V Pin=U3-2
+Removed Pin From Net: NetName=+3.3V Pin=U3-2
+Added Pin To Net: NetName=3.3V Pin=C22-1
+Added Pin To Net: NetName=12V Pin=C28-1
+Added Pin To Net: NetName=+3.3V Pin=J6-1
+Added Pin To Net: NetName=3.3V Pin=R3-2
+Added Pin To Net: NetName=+3.3V Pin=R4-1
+Added Pin To Net: NetName=3.3V Pin=R5-2
+Added Pin To Net: NetName=INPUT9 Pin=U1-4
+Added Pin To Net: NetName=INPUT10 Pin=U1-5
+Added Pin To Net: NetName=OSC32IN Pin=U1-8
+Added Pin To Net: NetName=OSC32OUT Pin=U1-9
+Added Pin To Net: NetName=OSCIN Pin=U1-12
+Added Pin To Net: NetName=OSCOUT Pin=U1-13
+Added Pin To Net: NetName=A3 Pin=U1-23
+Added Pin To Net: NetName=B3 Pin=U1-24
+Added Pin To Net: NetName=INPUT1 Pin=U1-40
+Added Pin To Net: NetName=INPUT2 Pin=U1-42
+Added Pin To Net: NetName=TXD Pin=U1-47
+Added Pin To Net: NetName=RXD Pin=U1-48
+Added Pin To Net: NetName=INPUT4 Pin=U1-53
+Added Pin To Net: NetName=INPUT3 Pin=U1-54
+Added Pin To Net: NetName=A1 Pin=U1-63
+Added Pin To Net: NetName=B1 Pin=U1-64
+Added Pin To Net: NetName=INPUT6 Pin=U1-65
+Added Pin To Net: NetName=INPUT5 Pin=U1-66
+Added Pin To Net: NetName=SWDIO Pin=U1-72
+Added Pin To Net: NetName=SWCLK Pin=U1-76
+Added Pin To Net: NetName=INPUT11 Pin=U1-90
+Added Pin To Net: NetName=INPUT12 Pin=U1-91
+Added Pin To Net: NetName=A2 Pin=U1-92
+Added Pin To Net: NetName=B2 Pin=U1-93
+Added Pin To Net: NetName=INPUT8 Pin=U1-95
+Added Pin To Net: NetName=INPUT7 Pin=U1-96
+Added Pin To Net: NetName=3.3V Pin=U2-16
+Added Pin To Net: NetName=3.3V Pin=U3-2
+Added Pin To Net: NetName=3.3V Pin=U3-2
+Change Net Name : Old Net Name=+3.3V New Net Name=3.3V
+Change Net Name : Old Net Name=3.3V New Net Name=+3.3V
+Change Net Name : Old Net Name=A1 New Net Name=A1TIM3
+Change Net Name : Old Net Name=INPUT11 New Net Name=INPUT_CeTui1
+Change Net Name : Old Net Name=INPUT12 New Net Name=INPUT_CeTui2
+Added Pin To Net: NetName=A4TIM1 Pin=U1-67
+Added Net: Name=A4TIM1
+Added Pin To Net: NetName=B4 Pin=U1-68
+Added Net: Name=B4
+Added Member To Class: ClassName=AC Member=Component C1 Cap
+Added Member To Class: ClassName=AC Member=Component C3 Cap
+Added Member To Class: ClassName=AC Member=Component C4 Cap
+Added Member To Class: ClassName=AC Member=Component C5 Cap
+Added Member To Class: ClassName=AC Member=Component C8 Cap
+Added Member To Class: ClassName=AC Member=Component C10 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C16 22pF
+Added Member To Class: ClassName=AC Member=Component C17 22pF
+Added Member To Class: ClassName=AC Member=Component C18 22pF
+Added Member To Class: ClassName=AC Member=Component C21 104
+Added Member To Class: ClassName=AC Member=Component C22 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C23 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C24 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C25 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C26 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C27 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C28 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C30 Cap
+Added Member To Class: ClassName=AC Member=Component C31 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component C32 Cap Pol1
+Added Member To Class: ClassName=AC Member=Component J1 CON3
+Added Member To Class: ClassName=AC Member=Component J2 CON4
+Added Member To Class: ClassName=AC Member=Component J3 CON4
+Added Member To Class: ClassName=AC Member=Component J4 CON4
+Added Member To Class: ClassName=AC Member=Component J5 CON2
+Added Member To Class: ClassName=AC Member=Component J7 CON3
+Added Member To Class: ClassName=AC Member=Component K1 KEY4
+Added Member To Class: ClassName=AC Member=Component LED1 LED
+Added Member To Class: ClassName=AC Member=Component R1 Res2
+Added Member To Class: ClassName=AC Member=Component R3 1.5K
+Added Member To Class: ClassName=AC Member=Component R4 10K
+Added Member To Class: ClassName=AC Member=Component R6 Res2
+Added Member To Class: ClassName=AC Member=Component R7 Res2
+Added Member To Class: ClassName=AC Member=Component R10 Res2
+Added Member To Class: ClassName=AC Member=Component R11 Res2
+Added Member To Class: ClassName=AC Member=Component R12 Res2
+Added Member To Class: ClassName=AC Member=Component R13 Res2
+Added Member To Class: ClassName=AC Member=Component R14 Res2
+Added Member To Class: ClassName=AC Member=Component R15 Res2
+Added Member To Class: ClassName=AC Member=Component R16 Res2
+Added Member To Class: ClassName=AC Member=Component R19 Res2
+Added Member To Class: ClassName=AC Member=Component R20 Res2
+Added Member To Class: ClassName=AC Member=Component R21 Res2
+Added Member To Class: ClassName=AC Member=Component R22 Res2
+Added Member To Class: ClassName=AC Member=Component R23 Res2
+Added Member To Class: ClassName=AC Member=Component R24 Res2
+Added Member To Class: ClassName=AC Member=Component R25 Res2
+Added Member To Class: ClassName=AC Member=Component R26 Res2
+Added Member To Class: ClassName=AC Member=Component R27 Res2
+Added Member To Class: ClassName=AC Member=Component R28 Res2
+Added Member To Class: ClassName=AC Member=Component R29 Res2
+Added Member To Class: ClassName=AC Member=Component R30 Res2
+Added Member To Class: ClassName=AC Member=Component R31 Res2
+Added Member To Class: ClassName=AC Member=Component R32 Res2
+Added Member To Class: ClassName=AC Member=Component R33 Res2
+Added Member To Class: ClassName=AC Member=Component R34 Res2
+Added Member To Class: ClassName=AC Member=Component R35 Res2
+Added Member To Class: ClassName=AC Member=Component R36 Res2
+Added Member To Class: ClassName=AC Member=Component R37 Res2
+Added Member To Class: ClassName=AC Member=Component R38 Res2
+Added Member To Class: ClassName=AC Member=Component R39 Res2
+Added Member To Class: ClassName=AC Member=Component U2 MAX3232
+Added Member To Class: ClassName=AC Member=Component U3 AMS1117-3.3_C347222
+Added Member To Class: ClassName=AC Member=Component U5 URF4824QB-200W
+Added Member To Class: ClassName=AC Member=Component U9 L298P
+Added Member To Class: ClassName=AC Member=Component U11 6n137
+Added Member To Class: ClassName=AC Member=Component U12 7805
+Added Member To Class: ClassName=AC Member=Component U13 6n137
+Added Member To Class: ClassName=AC Member=Component U14 L298P
+Added Member To Class: ClassName=AC Member=Component U15 6n137
+Added Member To Class: ClassName=AC Member=Component U16 6n137
+Added Member To Class: ClassName=AC Member=Component U17 L298P
+Added Member To Class: ClassName=AC Member=Component U18 6n137
+Added Member To Class: ClassName=AC Member=Component U19 6n137
+Added Member To Class: ClassName=AC Member=Component U20 L298P
+Added Member To Class: ClassName=AC Member=Component Y1 XTAL8
+Added Member To Class: ClassName=AC Member=Component Y2 XTAL32-100

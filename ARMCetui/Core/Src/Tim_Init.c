@@ -109,11 +109,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			c++;*/
 			
 			//jian_set_postion(g_jianPosition);
-			//big_set_postion(g_bigPosition);
+			big_set_postion(g_bigPosition);
 			//small_set_postion(g_smallPosition);
 			//wan_set_postion(g_wanPosition);
 			//zhua_set_postion( g_zhua);
-			big_set_angle(g_bigPosition);
+			//big_set_angle(g_bigPosition);
 			small_set_angle(g_smallPosition);
 //		}
 

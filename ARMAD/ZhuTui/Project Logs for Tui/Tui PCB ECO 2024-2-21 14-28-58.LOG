@@ -1,0 +1,14 @@
+Change Component Footprint: Designator=J6 Old Footprint=CONN-TH_4P-P3.81_DB2EVC-3.81-4P New Footprint=CONN-TH_3P-P3.81_DB2EVC-3.81-3P
+Change Component Designator: OldDesignator=J0 NewDesignator=J10
+Added Member To Class: ClassName=Tui Member=Component J6 CON3
+Added Member To Class: ClassName=Tui Member=Component J8 CON3
+Added Member To Class: ClassName=Tui Member=Component LED2
+Added Member To Class: ClassName=Tui Member=Component R10 330R
+Added Member To Class: ClassName=Tui Member=Component R12 10K
+Added Member To Class: ClassName=Tui Member=Component R13 201
+Added Member To Class: ClassName=Tui Member=Component R16 201
+Added Member To Class: ClassName=Tui Member=Component R19 201
+Added Member To Class: ClassName=Tui Member=Component R20 10K
+Added Member To Class: ClassName=Tui Member=Component U6 LM2596S
+Added Member To Class: ClassName=Tui Member=Component U8 URF4824QB-200W
+Added Member To Class: ClassName=Tui Member=Component U9 6n137

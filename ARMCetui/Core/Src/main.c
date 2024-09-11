@@ -113,6 +113,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	motor_cetui_set_postion(Ce_Speed);
+	HAL_Delay(10);
 
   }
   /* USER CODE END 3 */

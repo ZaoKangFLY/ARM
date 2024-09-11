@@ -1,0 +1,6 @@
+Added Component: Designator=J10(CONN-TH_4P-P3.81_DB2EVC-3.81-4P)
+Added Pin To Net: NetName=GND2 Pin=J10-1
+Added Pin To Net: NetName=IN4 Pin=J10-2
+Added Pin To Net: NetName=GND2 Pin=J10-3
+Added Pin To Net: NetName=VCC_12V Pin=J10-4
+Added Member To Class: ClassName=Tui Member=Component J10 CON4

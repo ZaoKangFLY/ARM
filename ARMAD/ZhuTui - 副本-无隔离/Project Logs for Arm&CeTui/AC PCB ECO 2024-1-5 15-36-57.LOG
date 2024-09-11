@@ -1,0 +1,94 @@
+Change Component Designator: OldDesignator=C23 NewDesignator=C27
+Change Component Designator: OldDesignator=C24 NewDesignator=C28
+Change Component Designator: OldDesignator=C25 NewDesignator=C29
+Change Component Designator: OldDesignator=D17 NewDesignator=D18
+Change Component Designator: OldDesignator=D18 NewDesignator=D19
+Change Component Designator: OldDesignator=D19 NewDesignator=D20
+Change Component Designator: OldDesignator=D20 NewDesignator=D21
+Change Component Designator: OldDesignator=D21 NewDesignator=D17
+Change Component Designator: OldDesignator=F1 NewDesignator=F2
+Change Component Designator: OldDesignator=J5 NewDesignator=J8
+Change Component Designator: OldDesignator=J6 NewDesignator=J5
+Change Component Designator: OldDesignator=J7 NewDesignator=J6
+Change Component Designator: OldDesignator=J8 NewDesignator=J7
+Change Component Designator: OldDesignator=J10 NewDesignator=J13
+Change Component Designator: OldDesignator=J11 NewDesignator=J10
+Change Component Designator: OldDesignator=J12 NewDesignator=J11
+Change Component Designator: OldDesignator=J13 NewDesignator=J12
+Change Component Designator: OldDesignator=R4 NewDesignator=R11
+Change Component Designator: OldDesignator=R5 NewDesignator=R4
+Change Component Designator: OldDesignator=R6 NewDesignator=R5
+Change Component Designator: OldDesignator=R7 NewDesignator=R6
+Change Component Designator: OldDesignator=R8 NewDesignator=R7
+Change Component Designator: OldDesignator=R9 NewDesignator=R8
+Change Component Designator: OldDesignator=R10 NewDesignator=R9
+Change Component Designator: OldDesignator=R11 NewDesignator=R10
+Change Component Designator: OldDesignator=R17 NewDesignator=R29
+Change Component Designator: OldDesignator=R18 NewDesignator=R17
+Change Component Designator: OldDesignator=R19 NewDesignator=R18
+Change Component Designator: OldDesignator=R20 NewDesignator=R19
+Change Component Designator: OldDesignator=R21 NewDesignator=R33
+Change Component Designator: OldDesignator=R22 NewDesignator=R20
+Change Component Designator: OldDesignator=R23 NewDesignator=R21
+Change Component Designator: OldDesignator=R25 NewDesignator=R22
+Change Component Designator: OldDesignator=R26 NewDesignator=R23
+Change Component Designator: OldDesignator=R27 NewDesignator=R24
+Change Component Designator: OldDesignator=R28 NewDesignator=R25
+Change Component Designator: OldDesignator=R29 NewDesignator=R26
+Change Component Designator: OldDesignator=R30 NewDesignator=R27
+Change Component Designator: OldDesignator=R31 NewDesignator=R28
+Change Component Designator: OldDesignator=R32 NewDesignator=R30
+Change Component Designator: OldDesignator=R33 NewDesignator=R31
+Change Component Designator: OldDesignator=R34 NewDesignator=R32
+Change Component Designator: OldDesignator=R35 NewDesignator=R34
+Change Component Designator: OldDesignator=R36 NewDesignator=R35
+Change Component Designator: OldDesignator=R37 NewDesignator=R36
+Change Component Designator: OldDesignator=R38 NewDesignator=R37
+Change Component Designator: OldDesignator=R39 NewDesignator=R38
+Change Component Designator: OldDesignator=TVS1 NewDesignator=TVS2
+Change Component Designator: OldDesignator=U5 NewDesignator=U17
+Change Component Designator: OldDesignator=U8 NewDesignator=U19
+Change Component Designator: OldDesignator=U9 NewDesignator=U8
+Change Component Designator: OldDesignator=U10 NewDesignator=U9
+Change Component Designator: OldDesignator=U11 NewDesignator=U10
+Change Component Designator: OldDesignator=U13 NewDesignator=U11
+Change Component Designator: OldDesignator=U14 NewDesignator=U12
+Change Component Designator: OldDesignator=U15 NewDesignator=U13
+Change Component Designator: OldDesignator=U16 NewDesignator=U14
+Change Component Designator: OldDesignator=U17 NewDesignator=U15
+Change Component Designator: OldDesignator=U18 NewDesignator=U16
+Change Component Designator: OldDesignator=U19 NewDesignator=U18
+Added Component: Designator=J9(CON2B)
+Added Component: Designator=TVS1(tvs)
+Added Component: Designator=U5(URF4824QB-200W£®24Œ»—π£©)
+Added Pin To Net: NetName=GND2 Pin=TVS1-1
+Added Pin To Net: NetName=VCC_24V Pin=TVS1-2
+Added Pin To Net: NetName=GND2 Pin=U5-6
+Added Pin To Net: NetName=GND2 Pin=U5-7
+Added Pin To Net: NetName=VCC_24V Pin=U5-9
+Added Pin To Net: NetName=VCC_24V Pin=U5-10
+Change Net Name : Old Net Name=NetC23_1 New Net Name=NetC27_1
+Change Net Name : Old Net Name=NetF1_1 New Net Name=NetF2_1
+Change Net Name : Old Net Name=NetF1_2 New Net Name=NetF2_2
+Change Net Name : Old Net Name=NetR19_2 New Net Name=NetR18_2
+Change Net Name : Old Net Name=NetR23_2 New Net Name=NetR21_2
+Change Net Name : Old Net Name=NetR26_2 New Net Name=NetR23_2
+Change Net Name : Old Net Name=NetR29_2 New Net Name=NetR26_2
+Change Net Name : Old Net Name=NetR31_2 New Net Name=NetR28_2
+Change Net Name : Old Net Name=NetR33_2 New Net Name=NetR31_2
+Change Net Name : Old Net Name=NetR36_2 New Net Name=NetR35_2
+Change Net Name : Old Net Name=NetR38_2 New Net Name=NetR37_2
+Added Pin To Net: NetName=NetC23_1 Pin=U5-1
+Added Net: Name=NetC23_1
+Added Pin To Net: NetName=NetC23_2 Pin=J9-2
+Added Pin To Net: NetName=NetC23_2 Pin=U5-5
+Added Net: Name=NetC23_2
+Added Pin To Net: NetName=NetF1_1 Pin=J9-1
+Added Net: Name=NetF1_1
+Added Member To Class: ClassName=AC Member=Component C27 1uf
+Added Member To Class: ClassName=AC Member=Component C28 1uf
+Added Member To Class: ClassName=AC Member=Component C29 100uf
+Added Member To Class: ClassName=AC Member=Component F2 THERMAL FUSE
+Added Member To Class: ClassName=AC Member=Component J9 CON2
+Added Member To Class: ClassName=AC Member=Component TVS2 TVS
+Added Member To Class: ClassName=AC Member=Component U19 1N4148WS(T4)

@@ -1,0 +1,20 @@
+Added Pin To Net: NetName=pwm1 Pin=U1-44
+Added Net: Name=pwm1
+Added Pin To Net: NetName=pwm2 Pin=U1-45
+Added Net: Name=pwm2
+Added Pin To Net: NetName=pwm11 Pin=U1-35
+Added Net: Name=pwm11
+Added Pin To Net: NetName=pwm22 Pin=U1-36
+Added Net: Name=pwm22
+Added Pin To Net: NetName=pwm31 Pin=U1-31
+Added Net: Name=pwm31
+Added Pin To Net: NetName=pwm32 Pin=U1-32
+Added Net: Name=pwm32
+Added Pin To Net: NetName=pwm95 Pin=U1-95
+Added Net: Name=pwm95
+Added Pin To Net: NetName=pwm96 Pin=U1-96
+Added Net: Name=pwm96
+Added Pin To Net: NetName=pwm111 Pin=U1-61
+Added Net: Name=pwm111
+Added Pin To Net: NetName=pwm222 Pin=U1-62
+Added Net: Name=pwm222

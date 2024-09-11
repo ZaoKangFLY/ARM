@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=GND2 Pin=J4-1
+Removed Pin From Net: NetName=IN3 Pin=J4-2
+Removed Pin From Net: NetName=GND2 Pin=J4-3
+Removed Pin From Net: NetName=VCC_12V Pin=J4-4
+Removed Pin From Net: NetName=GND2 Pin=J5-1
+Removed Pin From Net: NetName=IN1 Pin=J5-2
+Removed Pin From Net: NetName=OUT+ Pin=J5-3
+Removed Pin From Net: NetName=GND2 Pin=J6-1
+Removed Pin From Net: NetName=IN2 Pin=J6-2
+Removed Pin From Net: NetName=OUT+ Pin=J6-3
+Removed Pin From Net: NetName=GND2 Pin=J7-1
+Removed Pin From Net: NetName=IN4 Pin=J7-2
+Removed Pin From Net: NetName=VCC_24V Pin=J7-3
+Removed Pin From Net: NetName=GND2 Pin=J16-1
+Removed Pin From Net: NetName=VCC_24V Pin=J16-3
+Removed Member From Class: ClassName=RD Member=J5
+Change Component Designator: OldDesignator=LED4 NewDesignator=D2
+Added Component: Designator=J4(CONN-TH_4P-P3.81_DB2EVC-3.81-4P)
+Added Pin To Net: NetName=GND2 Pin=J4-1
+Added Pin To Net: NetName=IN4 Pin=J4-2
+Added Pin To Net: NetName=GND2 Pin=J4-3
+Added Pin To Net: NetName=VCC_12V Pin=J4-4
+Added Pin To Net: NetName=IN1 Pin=J6-1
+Added Pin To Net: NetName=OUT+ Pin=J6-2
+Added Pin To Net: NetName=GND2 Pin=J6-3
+Added Pin To Net: NetName=IN2 Pin=J7-1
+Added Pin To Net: NetName=OUT+ Pin=J7-2
+Added Pin To Net: NetName=GND2 Pin=J7-3
+Added Pin To Net: NetName=GND1 Pin=J16-1
+Added Pin To Net: NetName=IN3 Pin=J16-3
+Change Net Name : Old Net Name=NetLED4_1 New Net Name=NetD2_1
+Added Member To Class: ClassName=RD Member=Component D2
+Added Member To Class: ClassName=RD Member=Component J4 CON4

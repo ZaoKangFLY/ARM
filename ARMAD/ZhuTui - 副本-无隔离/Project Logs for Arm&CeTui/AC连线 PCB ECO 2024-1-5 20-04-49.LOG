@@ -1,0 +1,89 @@
+Removed Pin From Net: NetName=OUT4 Pin=D6-1
+Removed Pin From Net: NetName=OUT4 Pin=D8-2
+Removed Pin From Net: NetName=OUT5 Pin=D9-1
+Removed Pin From Net: NetName=OUT5 Pin=D11-2
+Removed Pin From Net: NetName=RXA Pin=D17-2
+Removed Pin From Net: NetName=OUT4 Pin=DS3-1
+Removed Pin From Net: NetName=OUT4 Pin=DS4-2
+Removed Pin From Net: NetName=NetF1_1 Pin=F1-1
+Removed Pin From Net: NetName=NetF1_1 Pin=J9-1
+Removed Pin From Net: NetName=OUT4 Pin=J11-2
+Removed Pin From Net: NetName=OUT5 Pin=J12-1
+Removed Pin From Net: NetName=RXA Pin=LED2-1
+Removed Pin From Net: NetName=INPUT4 Pin=R21-1
+Removed Pin From Net: NetName=INPUT5 Pin=R23-1
+Removed Pin From Net: NetName=OUT5 Pin=R25-2
+Removed Pin From Net: NetName=INPUT4 Pin=U1-53
+Removed Pin From Net: NetName=INPUT5 Pin=U1-66
+Removed Pin From Net: NetName=OUT4 Pin=U8-5
+Removed Pin From Net: NetName=OUT5 Pin=U12-4
+Change Net Name : Old Net Name=INPUT4 New Net Name=VDD
+Change Net Name : Old Net Name=INPUT5 New Net Name=VCC_24V
+Change Net Name : Old Net Name=NetF1_1 New Net Name=5V
+Change Net Name : Old Net Name=OUT4 New Net Name=GND2
+Change Net Name : Old Net Name=OUT5 New Net Name=GND1
+Added Pin To Net: NetName=+3.3V Pin=C1-1
+Added Pin To Net: NetName=+3.3V Pin=C2-1
+Added Pin To Net: NetName=+3.3V Pin=C3-1
+Added Pin To Net: NetName=+3.3V Pin=C4-1
+Added Pin To Net: NetName=+3.3V Pin=C5-1
+Added Pin To Net: NetName=+3.3V Pin=C6-1
+Added Pin To Net: NetName=+3.3V Pin=C7-1
+Added Pin To Net: NetName=+3.3V Pin=C12-1
+Added Pin To Net: NetName=+3.3V Pin=C14-2
+Added Pin To Net: NetName=+3.3V Pin=C22-1
+Added Pin To Net: NetName=+3.3V Pin=J5-4
+Added Pin To Net: NetName=+3.3V Pin=R1-2
+Added Pin To Net: NetName=+3.3V Pin=R3-2
+Added Pin To Net: NetName=+3.3V Pin=R4-2
+Added Pin To Net: NetName=+3.3V Pin=R11-2
+Added Pin To Net: NetName=+3.3V Pin=U1-6
+Added Pin To Net: NetName=+3.3V Pin=U1-11
+Added Pin To Net: NetName=+3.3V Pin=U1-19
+Added Pin To Net: NetName=+3.3V Pin=U1-28
+Added Pin To Net: NetName=+3.3V Pin=U1-50
+Added Pin To Net: NetName=+3.3V Pin=U1-75
+Added Pin To Net: NetName=+3.3V Pin=U1-100
+Added Pin To Net: NetName=+3.3V Pin=U2-16
+Added Pin To Net: NetName=+3.3V Pin=U3-2
+Added Pin To Net: NetName=+3.3V Pin=U3-4
+Added Net: Name=+3.3V
+Added Pin To Net: NetName=+5V Pin=C10-1
+Added Pin To Net: NetName=+5V Pin=C13-2
+Added Pin To Net: NetName=+5V Pin=J2-3
+Added Pin To Net: NetName=+5V Pin=J3-3
+Added Pin To Net: NetName=+5V Pin=J4-3
+Added Pin To Net: NetName=+5V Pin=J6-1
+Added Pin To Net: NetName=+5V Pin=R5-2
+Added Pin To Net: NetName=+5V Pin=R6-2
+Added Pin To Net: NetName=+5V Pin=R7-2
+Added Pin To Net: NetName=+5V Pin=R8-2
+Added Pin To Net: NetName=+5V Pin=R9-2
+Added Pin To Net: NetName=+5V Pin=R10-2
+Added Pin To Net: NetName=+5V Pin=U3-3
+Added Net: Name=+5V
+Added Pin To Net: NetName=24V Pin=D17-2
+Added Pin To Net: NetName=24V Pin=LED2-1
+Added Net: Name=24V
+Added Pin To Net: NetName=INPUT4 Pin=R21-1
+Added Pin To Net: NetName=INPUT4 Pin=U1-53
+Added Net: Name=INPUT4
+Added Pin To Net: NetName=INPUT5 Pin=R23-1
+Added Pin To Net: NetName=INPUT5 Pin=U1-66
+Added Net: Name=INPUT5
+Added Pin To Net: NetName=NetF1_1 Pin=F1-1
+Added Pin To Net: NetName=NetF1_1 Pin=J9-1
+Added Net: Name=NetF1_1
+Added Pin To Net: NetName=OUT4 Pin=D6-1
+Added Pin To Net: NetName=OUT4 Pin=D8-2
+Added Pin To Net: NetName=OUT4 Pin=DS3-1
+Added Pin To Net: NetName=OUT4 Pin=DS4-2
+Added Pin To Net: NetName=OUT4 Pin=J11-2
+Added Pin To Net: NetName=OUT4 Pin=U8-5
+Added Net: Name=OUT4
+Added Pin To Net: NetName=OUT5 Pin=D9-1
+Added Pin To Net: NetName=OUT5 Pin=D11-2
+Added Pin To Net: NetName=OUT5 Pin=J12-1
+Added Pin To Net: NetName=OUT5 Pin=R25-2
+Added Pin To Net: NetName=OUT5 Pin=U12-4
+Added Net: Name=OUT5

@@ -1,0 +1,243 @@
+Removed Pin From Net: NetName=NetC23_2 Pin=C23-2
+Removed Pin From Net: NetName=NetC23_1 Pin=C24-1
+Removed Pin From Net: NetName=NetC23_2 Pin=C24-2
+Removed Pin From Net: NetName=NetC23_1 Pin=C25-1
+Removed Pin From Net: NetName=NetC23_2 Pin=C25-2
+Removed Pin From Net: NetName=VCC_24V Pin=C26-1
+Removed Pin From Net: NetName=GND2 Pin=C26-2
+Removed Pin From Net: NetName=VCC_24V Pin=C27-1
+Removed Pin From Net: NetName=GND2 Pin=C27-2
+Removed Pin From Net: NetName=12V Pin=C28-1
+Removed Pin From Net: NetName=GND2 Pin=C28-2
+Removed Pin From Net: NetName=GND2 Pin=C29-1
+Removed Pin From Net: NetName=VCC_24V Pin=C29-2
+Removed Pin From Net: NetName=GND2 Pin=C30-1
+Removed Pin From Net: NetName=12V Pin=C30-2
+Removed Pin From Net: NetName=12V Pin=C31-1
+Removed Pin From Net: NetName=GND2 Pin=C31-2
+Removed Pin From Net: NetName=5V Pin=C32-1
+Removed Pin From Net: NetName=GND2 Pin=C32-2
+Removed Pin From Net: NetName=NetC23_1 Pin=F1-2
+Removed Pin From Net: NetName=NetC23_2 Pin=J10-2
+Removed Pin From Net: NetName=VCC_24V Pin=LED2-1
+Removed Pin From Net: NetName=12V Pin=LED3-1
+Removed Pin From Net: NetName=5V Pin=LED4-1
+Removed Pin From Net: NetName=GND2 Pin=R24-2
+Removed Pin From Net: NetName=GND2 Pin=TVS1-1
+Removed Pin From Net: NetName=VCC_24V Pin=TVS1-2
+Removed Pin From Net: NetName=NetC23_2 Pin=U5-5
+Removed Pin From Net: NetName=VCC_24V Pin=U5-9
+Removed Pin From Net: NetName=VCC_24V Pin=U5-10
+Removed Pin From Net: NetName=VCC_24V Pin=U8-1
+Removed Pin From Net: NetName=12V Pin=U8-3
+Removed Pin From Net: NetName=12V Pin=U12-1
+Removed Pin From Net: NetName=GND2 Pin=U12-2
+Removed Pin From Net: NetName=5V Pin=U12-3
+Removed Pin From Net: NetName=12V Pin=U20-6
+Removed Member From Class: ClassName=AC Member=C26
+Removed Member From Class: ClassName=AC Member=C27
+Removed Member From Class: ClassName=AC Member=C28
+Removed Member From Class: ClassName=AC Member=C29
+Removed Member From Class: ClassName=AC Member=C30
+Removed Member From Class: ClassName=AC Member=C31
+Removed Member From Class: ClassName=AC Member=C32
+Removed Member From Class: ClassName=AC Member=LED4
+Removed Member From Class: ClassName=AC Member=R24
+Removed Member From Class: ClassName=AC Member=U12
+Change Component Footprint: Designator=F1 Old Footprint=1206F1 New Footprint=0805
+Change Component Footprint: Designator=U8 Old Footprint=7812 New Footprint=1N4148WS(T4)
+Change Component Footprint: Designator=C10 Old Footprint=CAP-BIG New Footprint=钽电容小
+Change Component Footprint: Designator=C22 Old Footprint=CAP-BIG New Footprint=钽电容小
+Change Component Footprint: Designator=C1 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C2 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C3 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C4 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C5 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C6 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C7 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C8 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C9 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C11 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C12 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C13 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C14 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C15 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C16 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C17 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C18 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C19 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C20 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=C21 Old Footprint=cap-small New Footprint=0805
+Change Component Footprint: Designator=D1 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D2 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D3 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D4 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D5 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D6 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D7 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D8 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D9 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D10 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D11 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D12 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D13 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D14 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D15 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D16 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D17 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D18 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D19 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=D20 Old Footprint=Diode New Footprint=肖特基二极管SS34
+Change Component Footprint: Designator=C23 Old Footprint=jxcap-big New Footprint=0805
+Change Component Footprint: Designator=C24 Old Footprint=jxcap-big New Footprint=0805
+Change Component Footprint: Designator=C25 Old Footprint=jxcap-big New Footprint=钽电容中
+Change Component Footprint: Designator=DS1 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS2 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS3 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS4 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS5 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS6 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS7 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS8 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS9 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=DS10 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=LED1 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=LED2 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=LED3 Old Footprint=LED New Footprint=0805
+Change Component Footprint: Designator=R1 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R2 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R3 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R12 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R13 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R15 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R16 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R18 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R19 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R22 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R23 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R25 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R26 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R27 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R29 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R30 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R31 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R32 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R33 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R35 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R36 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R37 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=R38 Old Footprint=res-small New Footprint=0805
+Change Component Footprint: Designator=U5 Old Footprint=URF4824QB-200W（24稳压） New Footprint=XL1509-5.0
+Change Component Comment : Designator=R17 Old Comment=10K New Comment=Res2
+Change Component Comment : Designator=R21 Old Comment=10K New Comment=Res2
+Change Component Comment : Designator=U8 Old Comment=7812 New Comment=1N4148WS(T4)
+Change Component Comment : Designator=C23 Old Comment=Cap Pol1 New Comment=1uf
+Change Component Comment : Designator=C24 Old Comment=Cap Pol1 New Comment=1uf
+Change Component Comment : Designator=C25 Old Comment=Cap Pol1 New Comment=100uf
+Change Component Comment : Designator=U5 Old Comment=URF4824QB-200W New Comment=XL1509-5.0
+Change component parameters: Designator = "C23" ("C23"); Footprint = "jxcap-big"; UniqueID = "\GAFZHVTI" ("\GAFZHVTI")
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Chip Capacitor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "C0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1uf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "贴?"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C24" ("C24"); Footprint = "jxcap-big"; UniqueID = "\PESFCMOU" ("\PESFCMOU")
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Chip Capacitor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "C0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1uf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "贴?"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C25" ("C25"); Footprint = "jxcap-big"; UniqueID = "\LRWDKCJX" ("\LRWDKCJX")
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Chip Capacitor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "C1206"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100uf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "贴?"; Value = "SMT"; VariantName = "[No Variations]"
+Added Component: Designator=L1(电感6.6*7)
+Added Component: Designator=U1(STM32F407VGT6)
+Add component (AddParameter): Name = "16-bit Timers (IC/OC/PWM)"; Value = "12x16-bit(24/24/30)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "32-bit Timer (IC/OC/PWM)"; Value = "2x32-bit (8/8/8)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "A/D Converter"; Value = "16x12-bit"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.st.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "STM32F405/7 Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/DM00037051.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "STM32F4 Web Page"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.st.com/internet/mcu/subclass/1521.jsp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "D/A Converter"; Value = "2x12-bit"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "rev2, Jan-2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal RAM"; Value = "192kB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Frequency (Processor Speed)"; Value = "168MHz"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Other Timer Functions"; Value = "2xWDG, RTC, 24-bit down counter"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "100-Pin Low Profile Quad Flat Package, 14x14 mm Body, 0.5 mm Pitch"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "LQFP100"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Serial Interface"; Value = "3xSPI/2xI2S/2xI2C/3xUSART(IrDa, ISO7816)/3xUART/2xUSB OTG FS/HS, 2xCAN/Ethernet MAC10/100, SDIO"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND2 Pin=C23-2
+Added Pin To Net: NetName=GND2 Pin=C24-1
+Added Pin To Net: NetName=5V Pin=C24-2
+Added Pin To Net: NetName=5V Pin=C25-1
+Added Pin To Net: NetName=GND2 Pin=C25-2
+Added Pin To Net: NetName=NetC23_2 Pin=F1-2
+Added Pin To Net: NetName=GND2 Pin=J10-2
+Added Pin To Net: NetName=12V Pin=L1-1
+Added Pin To Net: NetName=5V Pin=L1-2
+Added Pin To Net: NetName=5V Pin=LED3-1
+Added Pin To Net: NetName=NetC23_2 Pin=TVS1-1
+Added Pin To Net: NetName=INPUT9 Pin=U1-4
+Added Pin To Net: NetName=INPUT10 Pin=U1-5
+Added Pin To Net: NetName=+3.3V Pin=U1-6
+Added Pin To Net: NetName=OSC32IN Pin=U1-8
+Added Pin To Net: NetName=OSC32OUT Pin=U1-9
+Added Pin To Net: NetName=GND1 Pin=U1-10
+Added Pin To Net: NetName=+3.3V Pin=U1-11
+Added Pin To Net: NetName=OSCIN Pin=U1-12
+Added Pin To Net: NetName=OSCOUT Pin=U1-13
+Added Pin To Net: NetName=RST Pin=U1-14
+Added Pin To Net: NetName=+3.3V Pin=U1-19
+Added Pin To Net: NetName=GND1 Pin=U1-20
+Added Pin To Net: NetName=VDD Pin=U1-21
+Added Pin To Net: NetName=VDD Pin=U1-22
+Added Pin To Net: NetName=A3 Pin=U1-23
+Added Pin To Net: NetName=B3 Pin=U1-24
+Added Pin To Net: NetName=GND1 Pin=U1-27
+Added Pin To Net: NetName=+3.3V Pin=U1-28
+Added Pin To Net: NetName=INPUT1 Pin=U1-40
+Added Pin To Net: NetName=INPUT2 Pin=U1-42
+Added Pin To Net: NetName=TXD Pin=U1-47
+Added Pin To Net: NetName=RXD Pin=U1-48
+Added Pin To Net: NetName=NetC8_2 Pin=U1-49
+Added Pin To Net: NetName=+3.3V Pin=U1-50
+Added Pin To Net: NetName=INPUT4 Pin=U1-53
+Added Pin To Net: NetName=INPUT3 Pin=U1-54
+Added Pin To Net: NetName=A1TIM3 Pin=U1-63
+Added Pin To Net: NetName=B1 Pin=U1-64
+Added Pin To Net: NetName=INPUT6 Pin=U1-65
+Added Pin To Net: NetName=INPUT5 Pin=U1-66
+Added Pin To Net: NetName=A4TIM1 Pin=U1-67
+Added Pin To Net: NetName=B4 Pin=U1-68
+Added Pin To Net: NetName=SWDIO Pin=U1-72
+Added Pin To Net: NetName=NetC9_2 Pin=U1-73
+Added Pin To Net: NetName=GND1 Pin=U1-74
+Added Pin To Net: NetName=+3.3V Pin=U1-75
+Added Pin To Net: NetName=SWCLK Pin=U1-76
+Added Pin To Net: NetName=INPUT_CeTui1 Pin=U1-90
+Added Pin To Net: NetName=INPUT_CeTui2 Pin=U1-91
+Added Pin To Net: NetName=A2 Pin=U1-92
+Added Pin To Net: NetName=B2 Pin=U1-93
+Added Pin To Net: NetName=NetR2_1 Pin=U1-94
+Added Pin To Net: NetName=INPUT8 Pin=U1-95
+Added Pin To Net: NetName=INPUT7 Pin=U1-96
+Added Pin To Net: NetName=GND1 Pin=U1-99
+Added Pin To Net: NetName=+3.3V Pin=U1-100
+Added Pin To Net: NetName=12V Pin=U5-2
+Added Pin To Net: NetName=5V Pin=U5-3
+Added Pin To Net: NetName=GND2 Pin=U5-5
+Added Pin To Net: NetName=GND2 Pin=U5-8
+Added Pin To Net: NetName=12V Pin=U8-1
+Added Pin To Net: NetName=VCC_24V Pin=U20-6
+Change Net Name : Old Net Name=12V New Net Name=NetL1_1
+Change Net Name : Old Net Name=NetC23_2 New Net Name=NetF1_2
+Added Pin To Net: NetName=24V Pin=LED2-1
+Added Pin To Net: NetName=24V Pin=TVS1-2
+Added Net: Name=24V
+Added Member To Class: ClassName=AC Member=Component L1 47uH
+Added Member To Class: ClassName=AC Member=Component U1 STM32F407VGT6
+Added Room: Name=AC

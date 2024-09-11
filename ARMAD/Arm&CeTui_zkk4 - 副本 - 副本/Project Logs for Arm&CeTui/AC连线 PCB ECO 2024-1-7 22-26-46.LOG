@@ -1,0 +1,16 @@
+Added Pin To Net: NetName=5V Pin=C28-2
+Added Pin To Net: NetName=5V Pin=C29-1
+Added Pin To Net: NetName=5V Pin=L1-2
+Added Pin To Net: NetName=5V Pin=LED3-1
+Added Pin To Net: NetName=5V Pin=U4-8
+Added Pin To Net: NetName=5V Pin=U4-12
+Added Pin To Net: NetName=5V Pin=U8-8
+Added Pin To Net: NetName=5V Pin=U8-12
+Added Pin To Net: NetName=5V Pin=U12-8
+Added Pin To Net: NetName=5V Pin=U12-12
+Added Pin To Net: NetName=5V Pin=U15-8
+Added Pin To Net: NetName=5V Pin=U15-12
+Added Pin To Net: NetName=5V Pin=U17-3
+Added Pin To Net: NetName=5V Pin=U20-8
+Added Pin To Net: NetName=5V Pin=U20-12
+Change Net Name : Old Net Name=5V New Net Name=VCC_5V

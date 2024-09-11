@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=VCC_24V Pin=U5-9
+Removed Pin From Net: NetName=VCC_24V Pin=U5-10
+Added Component: Designator=F2(0805)
+Added Pin To Net: NetName=VCC_24V Pin=F2-2
+Added Pin To Net: NetName=NetF2_1 Pin=F2-1
+Added Pin To Net: NetName=NetF2_1 Pin=U5-9
+Added Pin To Net: NetName=NetF2_1 Pin=U5-10
+Added Net: Name=NetF2_1
+Added Member To Class: ClassName=RD Member=Component F2 THERMAL FUSE

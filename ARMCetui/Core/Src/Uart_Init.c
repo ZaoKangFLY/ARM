@@ -58,7 +58,7 @@ void process_data(uint8_t *data)//赋值
 		case 0xBF://重置新起点
 			tim_basic_disenable();
 			tim_econder_disenable();
-			tim_econder_enable();
+			//tim_econder_enable();
 			break;
 		case 0xFF://停止
 			tim_basic_disenable(); 

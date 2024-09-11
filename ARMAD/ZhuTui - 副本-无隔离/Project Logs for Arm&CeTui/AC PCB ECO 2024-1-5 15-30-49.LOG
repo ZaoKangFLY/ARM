@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=INPUT_CeTui1 Pin=J5-1
+Removed Pin From Net: NetName=GND1 Pin=J5-3
+Added Pin To Net: NetName=GND1 Pin=J5-1
+Added Pin To Net: NetName=INPUT_CeTui1 Pin=J5-3
+Added Room: Name=AC

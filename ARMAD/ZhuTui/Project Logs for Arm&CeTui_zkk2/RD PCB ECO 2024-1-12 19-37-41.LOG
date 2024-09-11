@@ -1,0 +1,10 @@
+Change Net Name : Old Net Name=pwm1 New Net Name=INPUT_CeTui3
+Change Net Name : Old Net Name=pwm2 New Net Name=INPUT_CeTui4
+Change Net Name : Old Net Name=pwm11 New Net Name=INPUT_DuoJi1
+Change Net Name : Old Net Name=pwm22 New Net Name=INPUT_DuoJi2
+Change Net Name : Old Net Name=pwm31 New Net Name=INPUT_ZhuTui_CH1
+Change Net Name : Old Net Name=pwm32 New Net Name=INPUT_ZhuTui
+Change Net Name : Old Net Name=pwm95 New Net Name=pwm3
+Change Net Name : Old Net Name=pwm96 New Net Name=pwm4
+Change Net Name : Old Net Name=pwm111 New Net Name=pwm1
+Change Net Name : Old Net Name=pwm222 New Net Name=pwm2

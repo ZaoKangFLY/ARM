@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=INPUT_ZhuTui Pin=U1-32
+Removed Pin From Net: NetName=INPUT7 Pin=U1-47
+Removed Pin From Net: NetName=INPUT8 Pin=U1-48
+Removed Pin From Net: NetName=INPUT5 Pin=U1-53
+Removed Pin From Net: NetName=INPUT6 Pin=U1-54
+Removed Pin From Net: NetName=INPUT3 Pin=U1-63
+Removed Pin From Net: NetName=INPUT4 Pin=U1-64
+Removed Pin From Net: NetName=INPUT1 Pin=U1-65
+Removed Pin From Net: NetName=INPUT2 Pin=U1-66
+Added Pin To Net: NetName=INPUT7 Pin=U1-31
+Added Pin To Net: NetName=INPUT8 Pin=U1-32
+Added Pin To Net: NetName=INPUT5 Pin=U1-47
+Added Pin To Net: NetName=INPUT6 Pin=U1-48
+Added Pin To Net: NetName=INPUT3 Pin=U1-53
+Added Pin To Net: NetName=INPUT4 Pin=U1-54
+Added Pin To Net: NetName=INPUT1 Pin=U1-63
+Added Pin To Net: NetName=INPUT2 Pin=U1-64

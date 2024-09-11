@@ -1,0 +1,4 @@
+Added Component: Designator=J16(CON2BB)
+Added Pin To Net: NetName=INPUT_CeTui1 Pin=J16-1
+Added Pin To Net: NetName=INPUT_CeTui2 Pin=J16-2
+Added Member To Class: ClassName=RD Member=Component J16 CON2

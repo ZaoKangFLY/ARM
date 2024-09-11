@@ -1,0 +1,62 @@
+Removed Pin From Net: NetName=GND1 Pin=J5-1
+Removed Pin From Net: NetName=IN5 Pin=J5-2
+Removed Pin From Net: NetName=IN1 Pin=J7-1
+Removed Pin From Net: NetName=OUT+ Pin=J7-2
+Removed Pin From Net: NetName=GND2 Pin=J7-3
+Removed Pin From Net: NetName=GND1 Pin=J16-1
+Removed Pin From Net: NetName=IN3 Pin=J16-2
+Removed Pin From Net: NetName=IN4 Pin=J16-3
+Change Component Footprint: Designator=J5 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CONN-TH_3P-P3.81_DB2EVC-3.81-3P
+Change Component Comment : Designator=J5 Old Comment=CON2 New Comment=CON3
+Change component parameters: Designator = "J5" ("J5"); Footprint = "CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK"; UniqueID = "\ITTFDZVV" ("\ITTFDZVV")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "J7" ("J7"); Footprint = "CONN-TH_3P-P3.81_DB2EVC-3.81-3P"; UniqueID = "\MPZBEYRB" ("\MPZBEYRB")
+Added Component: Designator=J4(CONN-TH_4P-P3.81_DB2EVC-3.81-4P)
+Added Pin To Net: NetName=GND2 Pin=J4-1
+Added Pin To Net: NetName=IN3 Pin=J4-2
+Added Pin To Net: NetName=GND2 Pin=J4-3
+Added Pin To Net: NetName=VCC_12V Pin=J4-4
+Added Pin To Net: NetName=IN1 Pin=J5-1
+Added Pin To Net: NetName=OUT+ Pin=J5-2
+Added Pin To Net: NetName=GND2 Pin=J5-3
+Added Pin To Net: NetName=GND2 Pin=J7-1
+Added Pin To Net: NetName=IN4 Pin=J7-2
+Added Pin To Net: NetName=VCC_24V Pin=J7-3
+Added Pin To Net: NetName=GND2 Pin=J16-1
+Added Pin To Net: NetName=IN5 Pin=J16-2
+Added Pin To Net: NetName=VCC_24V Pin=J16-3
+Added Member To Class: ClassName=RD Member=Component C9 4.7uF
+Added Member To Class: ClassName=RD Member=Component C23 105
+Added Member To Class: ClassName=RD Member=Component C24 107T
+Added Member To Class: ClassName=RD Member=Component C25 104
+Added Member To Class: ClassName=RD Member=Component C26 227V
+Added Member To Class: ClassName=RD Member=Component C28 Cap Pol1
+Added Member To Class: ClassName=RD Member=Component C31 0.1uF
+Added Member To Class: ClassName=RD Member=Component C32 0.1uF
+Added Member To Class: ClassName=RD Member=Component J2 CON2
+Added Member To Class: ClassName=RD Member=Component J3 CON4
+Added Member To Class: ClassName=RD Member=Component J4 CON4
+Added Member To Class: ClassName=RD Member=Component J5 CON3
+Added Member To Class: ClassName=RD Member=Component J6 CON3
+Added Member To Class: ClassName=RD Member=Component R5 10K
+Added Member To Class: ClassName=RD Member=Component R6 332
+Added Member To Class: ClassName=RD Member=Component R7 201
+Added Member To Class: ClassName=RD Member=Component R8 332
+Added Member To Class: ClassName=RD Member=Component R9 201
+Added Member To Class: ClassName=RD Member=Component R10 332
+Added Member To Class: ClassName=RD Member=Component R12 330R
+Added Member To Class: ClassName=RD Member=Component R14 201
+Added Member To Class: ClassName=RD Member=Component R15 10K
+Added Member To Class: ClassName=RD Member=Component R16 332
+Added Member To Class: ClassName=RD Member=Component R17 201
+Added Member To Class: ClassName=RD Member=Component R18 Res2
+Added Member To Class: ClassName=RD Member=Component R19 10K
+Added Member To Class: ClassName=RD Member=Component R20 1k
+Added Member To Class: ClassName=RD Member=Component U4 6n137
+Added Member To Class: ClassName=RD Member=Component U7 LM2596S
+Added Member To Class: ClassName=RD Member=Component U8 6n137
+Added Member To Class: ClassName=RD Member=Component U10 URF4824QB-200W
+Added Member To Class: ClassName=RD Member=Component U11 7812
+Added Room: Name=RD

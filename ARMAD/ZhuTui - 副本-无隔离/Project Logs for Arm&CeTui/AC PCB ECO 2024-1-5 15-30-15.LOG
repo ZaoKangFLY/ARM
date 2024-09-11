@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=GND1 Pin=J9-1
+Removed Member From Class: ClassName=AC Member=J9
+Change Component Footprint: Designator=J5 Old Footprint=CON2B New Footprint=CON3
+Change Component Comment : Designator=J5 Old Comment=CON2 New Comment=CON3
+Added Pin To Net: NetName=GND1 Pin=J5-3
+Added Room: Name=AC

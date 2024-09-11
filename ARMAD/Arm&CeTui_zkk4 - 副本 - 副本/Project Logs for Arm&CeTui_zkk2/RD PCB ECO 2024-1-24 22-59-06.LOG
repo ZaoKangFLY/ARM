@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=INPUT_DuoJi1 Pin=J18-1
+Removed Pin From Net: NetName=INPUT_DuoJi2 Pin=J18-2
+Added Pin To Net: NetName=INPUT_DuoJi2 Pin=J18-1
+Added Pin To Net: NetName=INPUT_DuoJi1 Pin=J18-2

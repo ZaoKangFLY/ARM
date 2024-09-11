@@ -22,11 +22,11 @@ void system_init()
 	//tim_econder_enable();	
 	/*初始化结构体*/					 /*最大输出值,  分离误差，积分限幅,    p,i,d,      最大误差,死区值 */
 	PID_struct_init(&Pid_Jian,POSITION_PID, 500.0f,  1000.0f,200.0f,  0.1f,1.0f,0.0f, 10000.0f,1000.0f);
-	//PID_struct_init(&Pid_Big,POSITION_PID,  999.0f,  20000.0f,666.0f,  0.175f,0.773f,0.0f, 10000.0f,2600.0f);//初始化大臂PID结构体
+	PID_struct_init(&Pid_Big,POSITION_PID,  999.0f,  20000.0f,666.0f,  0.175f,0.773f,0.0f, 10000.0f,2600.0f);//初始化大臂PID结构体
 	//PID_struct_init(&Pid_Small,POSITION_PID,999.0f,  4000.0f,666.0f,  0.17f,0.000075f,0.0f, 10000.0f,2600.0f);//初始化小臂PID结构体 
 	PID_struct_init(&Pid_Wan,POSITION_PID,  500.0f,  1000.0f,2000.0f,  2.1f,1.0f,0.0f, 10000.0f,1000.0f);  
 	//角度控制pid感觉震动更少
-	PID_struct_init(&Pid_Big,POSITION_PID,  999.0f,  3.0f,666.0f,  100.0f,30.0f,0.0f, 10000.0f,0.5f);
+	//PID_struct_init(&Pid_Big,POSITION_PID,  999.0f,  3.0f,666.0f,  100.0f,30.0f,0.0f, 10000.0f,0.5f);
 	PID_struct_init(&Pid_Small,POSITION_PID,999.0f,  3.0f,666.0f,  100.0f,30.0f,0.0f, 10000.0f,0.5f);//初始化小臂PID结构体 
 //速度环及双环
 	PID_struct_init(&Pid_Vsmall,POSITION_PID,999.0f,  3.0f,666.0f,  100.0f,30.0f,0.0f, 10000.0f,0.5f);//初始化小臂PID速度环

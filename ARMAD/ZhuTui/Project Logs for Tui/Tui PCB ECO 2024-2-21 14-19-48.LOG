@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=IN4 Pin=J6-2
+Added Pin To Net: NetName=IN5 Pin=J6-2
+Added Pin To Net: NetName=GND2 Pin=J9-1
+Added Pin To Net: NetName=IN4 Pin=J9-2
+Added Pin To Net: NetName=GND2 Pin=J9-3
+Added Member To Class: ClassName=Tui Member=Component J9 CON3

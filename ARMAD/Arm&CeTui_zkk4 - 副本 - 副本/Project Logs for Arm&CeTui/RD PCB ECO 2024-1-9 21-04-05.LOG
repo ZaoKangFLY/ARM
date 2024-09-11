@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=INPUT_CeTui1 Pin=J16-1
+Change Component Footprint: Designator=J16 Old Footprint=CON2BB New Footprint=CON3BB
+Change Component Comment : Designator=J16 Old Comment=CON2 New Comment=CON3
+Added Pin To Net: NetName=GND1 Pin=J16-1
+Added Pin To Net: NetName=INPUT_CeTui1 Pin=J16-3

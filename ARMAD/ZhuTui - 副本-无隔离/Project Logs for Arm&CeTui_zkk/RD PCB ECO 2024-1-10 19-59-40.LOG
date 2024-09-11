@@ -1,0 +1,43 @@
+Removed Pin From Net: NetName=A1TIM3 Pin=J2-1
+Removed Pin From Net: NetName=A4TIM5 Pin=J13-1
+Removed Pin From Net: NetName=A1TIM3 Pin=R5-1
+Removed Pin From Net: NetName=A4TIM5 Pin=R39-1
+Removed Pin From Net: NetName=INPUT9 Pin=U1-4
+Removed Pin From Net: NetName=INPUT10 Pin=U1-5
+Removed Pin From Net: NetName=A4TIM5 Pin=U1-23
+Removed Pin From Net: NetName=B4 Pin=U1-24
+Removed Pin From Net: NetName=INPUT1 Pin=U1-40
+Removed Pin From Net: NetName=INPUT2 Pin=U1-42
+Removed Pin From Net: NetName=INPUT4 Pin=U1-53
+Removed Pin From Net: NetName=INPUT3 Pin=U1-54
+Removed Pin From Net: NetName=A1TIM3 Pin=U1-63
+Removed Pin From Net: NetName=B1 Pin=U1-64
+Removed Pin From Net: NetName=INPUT6 Pin=U1-65
+Removed Pin From Net: NetName=INPUT5 Pin=U1-66
+Removed Pin From Net: NetName=A2 Pin=U1-92
+Removed Pin From Net: NetName=B2 Pin=U1-93
+Removed Pin From Net: NetName=INPUT8 Pin=U1-95
+Removed Pin From Net: NetName=INPUT7 Pin=U1-96
+Added Pin To Net: NetName=A4TIM5 Pin=J2-1
+Added Pin To Net: NetName=A1TIM3 Pin=J13-1
+Added Pin To Net: NetName=A4TIM5 Pin=R5-1
+Added Pin To Net: NetName=A1TIM3 Pin=R39-1
+Added Pin To Net: NetName=INPUT7 Pin=U1-4
+Added Pin To Net: NetName=INPUT8 Pin=U1-5
+Added Pin To Net: NetName=INPUT5 Pin=U1-23
+Added Pin To Net: NetName=INPUT6 Pin=U1-24
+Added Pin To Net: NetName=INPUT3 Pin=U1-25
+Added Pin To Net: NetName=INPUT4 Pin=U1-26
+Added Pin To Net: NetName=A2 Pin=U1-59
+Added Pin To Net: NetName=B2 Pin=U1-60
+Added Pin To Net: NetName=INPUT1 Pin=U1-63
+Added Pin To Net: NetName=INPUT2 Pin=U1-64
+Added Pin To Net: NetName=INPUT9 Pin=U1-65
+Added Pin To Net: NetName=INPUT10 Pin=U1-66
+Added Pin To Net: NetName=A4TIM5 Pin=U1-67
+Added Pin To Net: NetName=B1 Pin=U1-68
+Added Pin To Net: NetName=A1TIM3 Pin=U1-90
+Added Pin To Net: NetName=B4 Pin=U1-91
+Change Net Name : Old Net Name=A1TIM3 New Net Name=A4
+Change Net Name : Old Net Name=A4TIM5 New Net Name=A1
+Added Room: Name=RD

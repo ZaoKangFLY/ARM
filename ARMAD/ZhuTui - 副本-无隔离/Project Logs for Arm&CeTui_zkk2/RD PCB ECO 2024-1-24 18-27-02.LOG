@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=INPUT_ZhuTui Pin=J17-1
+Removed Pin From Net: NetName=GND1 Pin=J17-2
+Removed Pin From Net: NetName=INPUT_DuoJi1 Pin=J18-1
+Removed Pin From Net: NetName=GND1 Pin=J18-2
+Removed Pin From Net: NetName=INPUT_DuoJi2 Pin=J20-1
+Removed Pin From Net: NetName=GND1 Pin=J20-2
+Added Pin To Net: NetName=GND1 Pin=J17-1
+Added Pin To Net: NetName=INPUT_ZhuTui Pin=J17-2
+Added Pin To Net: NetName=GND1 Pin=J18-1
+Added Pin To Net: NetName=INPUT_DuoJi1 Pin=J18-2
+Added Pin To Net: NetName=GND1 Pin=J20-1
+Added Pin To Net: NetName=INPUT_DuoJi2 Pin=J20-2
+Added Member To Class: ClassName=RD Member=Component J9 CON2

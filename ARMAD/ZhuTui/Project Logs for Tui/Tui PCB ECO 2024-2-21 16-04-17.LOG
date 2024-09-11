@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=INPUT5 Pin=U1-31
+Removed Pin From Net: NetName=INPUT3 Pin=U1-53
+Removed Pin From Net: NetName=INPUT4 Pin=U1-54
+Removed Pin From Net: NetName=INPUT1 Pin=U1-63
+Removed Pin From Net: NetName=INPUT2 Pin=U1-64
+Added Pin To Net: NetName=PWM1 Pin=U1-63
+Added Net: Name=PWM1
+Added Pin To Net: NetName=PWM2 Pin=U1-64
+Added Net: Name=PWM2
+Added Pin To Net: NetName=PWM3 Pin=U1-59
+Added Net: Name=PWM3
+Added Pin To Net: NetName=PWM4 Pin=U1-60
+Added Net: Name=PWM4
+Added Pin To Net: NetName=PWM5 Pin=U1-53
+Added Net: Name=PWM5
+Added Pin To Net: NetName=PWM6 Pin=U1-54
+Added Net: Name=PWM6

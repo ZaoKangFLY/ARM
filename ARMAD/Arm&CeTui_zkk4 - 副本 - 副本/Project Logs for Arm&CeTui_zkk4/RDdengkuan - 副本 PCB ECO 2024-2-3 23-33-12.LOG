@@ -1,0 +1,34 @@
+Removed Pin From Net: NetName=A4 Pin=U1-23
+Removed Pin From Net: NetName=B4 Pin=U1-24
+Removed Pin From Net: NetName=INPUT7 Pin=U1-31
+Removed Pin From Net: NetName=INPUT8 Pin=U1-32
+Removed Pin From Net: NetName=INPUT5 Pin=U1-47
+Removed Pin From Net: NetName=INPUT6 Pin=U1-48
+Removed Pin From Net: NetName=A2 Pin=U1-90
+Removed Pin From Net: NetName=B2 Pin=U1-91
+Removed Pin From Net: NetName=A3 Pin=U1-92
+Removed Pin From Net: NetName=B3 Pin=U1-93
+Change Component Footprint: Designator=J2 Old Footprint=CONN4B New Footprint=CON4B
+Change Component Footprint: Designator=J3 Old Footprint=CONN4B New Footprint=CON4B
+Change Component Footprint: Designator=J4 Old Footprint=CONN4B New Footprint=CON4B
+Change Component Footprint: Designator=J13 Old Footprint=CONN4B New Footprint=CON4B
+Change Component Footprint: Designator=J6 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J9 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J10 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J11 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J12 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J14 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J15 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J17 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J18 Old Footprint=CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK New Footprint=CON2BB
+Change Component Footprint: Designator=J16 Old Footprint=CONN-TH_3P-P3.81_DB2EVC-3.81-3P New Footprint=CON3BB
+Added Pin To Net: NetName=INPUT7 Pin=U1-23
+Added Pin To Net: NetName=INPUT8 Pin=U1-24
+Added Pin To Net: NetName=INPUT5 Pin=U1-31
+Added Pin To Net: NetName=INPUT6 Pin=U1-32
+Added Pin To Net: NetName=A2 Pin=U1-77
+Added Pin To Net: NetName=B2 Pin=U1-89
+Added Pin To Net: NetName=A3 Pin=U1-90
+Added Pin To Net: NetName=B3 Pin=U1-91
+Added Pin To Net: NetName=A4 Pin=U1-92
+Added Pin To Net: NetName=B4 Pin=U1-93

@@ -1,0 +1,2 @@
+Change Component Footprint: Designator=LED2 Old Footprint=0805 New Footprint=LED_0603_GRN
+Change Component Footprint: Designator=R10 Old Footprint=0805R New Footprint=0805

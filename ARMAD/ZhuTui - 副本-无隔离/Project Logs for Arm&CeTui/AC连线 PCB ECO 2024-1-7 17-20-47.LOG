@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator= NewDesignator=C5
+Added Member To Class: ClassName=AC Member=Component C5 104
+Added Member To Class: ClassName=AC Member=Component C8 4.7uF
+Added Member To Class: ClassName=AC Member=Component J7 CON3
+Added Member To Class: ClassName=AC Member=Component J8 CON3

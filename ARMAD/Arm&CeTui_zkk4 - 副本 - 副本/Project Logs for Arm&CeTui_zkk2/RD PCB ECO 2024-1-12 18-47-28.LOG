@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=pwm11 Pin=J21-1
+Removed Pin From Net: NetName=pwm22 Pin=J21-2
+Removed Pin From Net: NetName=pwm31 Pin=J21-3
+Removed Pin From Net: NetName=pwm32 Pin=J21-4
+Added Pin To Net: NetName=pwm22 Pin=J21-1
+Added Pin To Net: NetName=pwm11 Pin=J21-2
+Added Pin To Net: NetName=pwm32 Pin=J21-3
+Added Pin To Net: NetName=pwm31 Pin=J21-4

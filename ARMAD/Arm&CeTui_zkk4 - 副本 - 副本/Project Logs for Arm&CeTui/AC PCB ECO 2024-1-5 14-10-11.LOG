@@ -1,0 +1,5 @@
+Added Component: Designator=D21(肖特基二极管SS34)
+Added Pin To Net: NetName=NetC23_1 Pin=D21-1
+Added Pin To Net: NetName=24V Pin=D21-2
+Added Member To Class: ClassName=AC Member=Component D21 SS34_C8678
+Added Room: Name=AC

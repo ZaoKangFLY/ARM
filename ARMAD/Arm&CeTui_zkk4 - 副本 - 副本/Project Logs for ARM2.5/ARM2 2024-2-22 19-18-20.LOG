@@ -1,0 +1,168 @@
+Removed Pin From Net: NetName=INPUT7 Pin=U1-23
+Removed Pin From Net: NetName=INPUT8 Pin=U1-24
+Removed Pin From Net: NetName=INPUT9 Pin=U1-25
+Removed Pin From Net: NetName=INPUT10 Pin=U1-26
+Removed Pin From Net: NetName=INPUT5 Pin=U1-31
+Removed Pin From Net: NetName=INPUT6 Pin=U1-32
+Removed Pin From Net: NetName=INPUT3 Pin=U1-53
+Removed Pin From Net: NetName=INPUT4 Pin=U1-54
+Removed Pin From Net: NetName=INPUT1 Pin=U1-63
+Removed Pin From Net: NetName=INPUT2 Pin=U1-64
+Added Pin To Net: NetName=INPUT5 Pin=U1-23
+Added Pin To Net: NetName=INPUT6 Pin=U1-24
+Added Pin To Net: NetName=INPUT1 Pin=U1-25
+Added Pin To Net: NetName=INPUT2 Pin=U1-26
+Added Pin To Net: NetName=INPUT3 Pin=U1-31
+Added Pin To Net: NetName=INPUT4 Pin=U1-32
+Added Pin To Net: NetName=INPUT9 Pin=U1-53
+Added Pin To Net: NetName=INPUT10 Pin=U1-54
+Added Pin To Net: NetName=INPUT7 Pin=U1-63
+Added Pin To Net: NetName=INPUT8 Pin=U1-64
+Added Member To Class: ClassName=ARM2.22 Member=Component C1 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C2 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C3 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C4 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C5 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C6 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C7 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C8 4.7uF
+Added Member To Class: ClassName=ARM2.22 Member=Component C9 4.7uF
+Added Member To Class: ClassName=ARM2.22 Member=Component C10 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C11 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C12 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C13 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C14 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C15 22pF
+Added Member To Class: ClassName=ARM2.22 Member=Component C16 22pF
+Added Member To Class: ClassName=ARM2.22 Member=Component C17 22pF
+Added Member To Class: ClassName=ARM2.22 Member=Component C18 22pF
+Added Member To Class: ClassName=ARM2.22 Member=Component C19 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C20 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C21 104
+Added Member To Class: ClassName=ARM2.22 Member=Component C22 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C23 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C24 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C25 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C26 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C27 0.1uF
+Added Member To Class: ClassName=ARM2.22 Member=Component C28 0.1uF
+Added Member To Class: ClassName=ARM2.22 Member=Component C29 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C30 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C31 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component C32 Cap Pol1
+Added Member To Class: ClassName=ARM2.22 Member=Component D1 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D2 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D3 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D4 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D5 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D6 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D7 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D8 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D9 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D10 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D11 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D12 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D13 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D14 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D15 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D16 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D18 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D19 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D20 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component D21 Diode 1N4149
+Added Member To Class: ClassName=ARM2.22 Member=Component DS1 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS2 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS3 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS4 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS5 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS6 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS7 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS8 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS9 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component DS10 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component F1 THERMAL FUSE
+Added Member To Class: ClassName=ARM2.22 Member=Component F2 THERMAL FUSE
+Added Member To Class: ClassName=ARM2.22 Member=Component J1 CON3
+Added Member To Class: ClassName=ARM2.22 Member=Component J2 CON4
+Added Member To Class: ClassName=ARM2.22 Member=Component J3 CON4
+Added Member To Class: ClassName=ARM2.22 Member=Component J4 CON4
+Added Member To Class: ClassName=ARM2.22 Member=Component J5 CON4
+Added Member To Class: ClassName=ARM2.22 Member=Component J6 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component J9 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component J10 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component J11 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component J12 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component J13 CON4
+Added Member To Class: ClassName=ARM2.22 Member=Component J14 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component J15 CON2
+Added Member To Class: ClassName=ARM2.22 Member=Component K1 KEY4
+Added Member To Class: ClassName=ARM2.22 Member=Component LED1 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component LED2 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component LED3 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component LED4 LED
+Added Member To Class: ClassName=ARM2.22 Member=Component R1 10R
+Added Member To Class: ClassName=ARM2.22 Member=Component R2 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R3 1.5K
+Added Member To Class: ClassName=ARM2.22 Member=Component R4 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R5 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R6 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R7 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R8 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R9 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R10 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R11 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R12 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R13 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R14 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R15 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R16 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R17 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R18 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R19 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R20 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R21 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R22 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R23 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R24 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R25 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R26 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R27 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R28 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R29 Res2
+Added Member To Class: ClassName=ARM2.22 Member=Component R30 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R31 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R32 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R34 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R35 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R36 332
+Added Member To Class: ClassName=ARM2.22 Member=Component R37 201
+Added Member To Class: ClassName=ARM2.22 Member=Component R38 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R39 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R40 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R41 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component R42 10K
+Added Member To Class: ClassName=ARM2.22 Member=Component TVS1 TVS
+Added Member To Class: ClassName=ARM2.22 Member=Component U1 STM32F407VGT6
+Added Member To Class: ClassName=ARM2.22 Member=Component U2 MAX3232
+Added Member To Class: ClassName=ARM2.22 Member=Component U3 AMS1117-3.3_C347222
+Added Member To Class: ClassName=ARM2.22 Member=Component U4 L298P
+Added Member To Class: ClassName=ARM2.22 Member=Component U5 URF4824QB-200W
+Added Member To Class: ClassName=ARM2.22 Member=Component U6 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U7 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U8 L298P
+Added Member To Class: ClassName=ARM2.22 Member=Component U9 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U10 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U11 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U12 L298P
+Added Member To Class: ClassName=ARM2.22 Member=Component U13 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U14 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U15 L298P
+Added Member To Class: ClassName=ARM2.22 Member=Component U16 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U18 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U20 L298P
+Added Member To Class: ClassName=ARM2.22 Member=Component U21 6n137
+Added Member To Class: ClassName=ARM2.22 Member=Component U22 7812
+Added Member To Class: ClassName=ARM2.22 Member=Component U23 7805
+Added Member To Class: ClassName=ARM2.22 Member=Component Y1 XTAL8
+Added Member To Class: ClassName=ARM2.22 Member=Component Y2 XTAL32-100
+Added Room: Name=ARM2.22

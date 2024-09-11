@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND1 Pin=J7-1
+Removed Pin From Net: NetName=RXA Pin=J7-2
+Removed Pin From Net: NetName=TXA Pin=J7-3
+Removed Pin From Net: NetName=GND1 Pin=J8-1
+Removed Pin From Net: NetName=INPUT_CeTui2 Pin=J8-2
+Removed Pin From Net: NetName=INPUT_CeTui1 Pin=J8-3
+Removed Member From Class: ClassName=RD Member=J7
+Removed Member From Class: ClassName=RD Member=J8
+Change Component Footprint: Designator=J1 Old Footprint=CON3 New Footprint=CON3BB

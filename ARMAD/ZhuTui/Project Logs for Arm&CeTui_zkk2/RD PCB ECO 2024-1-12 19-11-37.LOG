@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=pwm22 Pin=J21-1
+Removed Pin From Net: NetName=pwm11 Pin=J21-2
+Removed Pin From Net: NetName=pwm32 Pin=J21-3
+Removed Pin From Net: NetName=pwm31 Pin=J21-4
+Removed Member From Class: ClassName=RD Member=J21

@@ -1,0 +1,24 @@
+Added Pin To Net: NetName=VCC_24V Pin=C26-1
+Added Pin To Net: NetName=VCC_24V Pin=D1-2
+Added Pin To Net: NetName=VCC_24V Pin=D2-2
+Added Pin To Net: NetName=VCC_24V Pin=D5-2
+Added Pin To Net: NetName=VCC_24V Pin=D6-2
+Added Pin To Net: NetName=VCC_24V Pin=D9-2
+Added Pin To Net: NetName=VCC_24V Pin=D10-2
+Added Pin To Net: NetName=VCC_24V Pin=D13-2
+Added Pin To Net: NetName=VCC_24V Pin=D14-2
+Added Pin To Net: NetName=VCC_24V Pin=D18-2
+Added Pin To Net: NetName=VCC_24V Pin=D19-2
+Added Pin To Net: NetName=VCC_24V Pin=TVS1-2
+Added Pin To Net: NetName=VCC_24V Pin=U4-6
+Added Pin To Net: NetName=VCC_24V Pin=U5-9
+Added Pin To Net: NetName=VCC_24V Pin=U5-10
+Added Pin To Net: NetName=VCC_24V Pin=U8-6
+Added Pin To Net: NetName=VCC_24V Pin=U12-6
+Added Pin To Net: NetName=VCC_24V Pin=U15-6
+Added Pin To Net: NetName=VCC_24V Pin=U20-6
+Added Net: Name=VCC_24V
+Added Pin To Net: NetName=VDD Pin=R1-1
+Added Pin To Net: NetName=VDD Pin=U1-21
+Added Pin To Net: NetName=VDD Pin=U1-22
+Added Net: Name=VDD

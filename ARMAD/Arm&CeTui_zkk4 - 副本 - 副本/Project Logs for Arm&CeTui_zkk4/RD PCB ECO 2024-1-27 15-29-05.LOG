@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=INPUT_CeTui2 Pin=J16-2
+Removed Pin From Net: NetName=INPUT_CeTui1 Pin=J16-3
+Added Pin To Net: NetName=INPUT_CeTui1 Pin=J16-2
+Added Pin To Net: NetName=INPUT_CeTui2 Pin=J16-3

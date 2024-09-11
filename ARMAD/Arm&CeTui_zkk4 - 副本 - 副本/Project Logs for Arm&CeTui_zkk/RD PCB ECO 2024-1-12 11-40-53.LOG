@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=GND1 Pin=J1-1
+Removed Pin From Net: NetName=TXA Pin=J1-3
+Change Component Footprint: Designator=J1 Old Footprint=CON3 New Footprint=CON2BB
+Change Component Comment : Designator=J1 Old Comment=CON3 New Comment=CON2
+Added Pin To Net: NetName=TXA Pin=J1-1

@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=GND2 Pin=J6-1
+Added Pin To Net: NetName=IN4 Pin=J6-2
+Added Pin To Net: NetName=GND2 Pin=J6-3
+Added Member To Class: ClassName=RD Member=Component J5 CON3
+Added Member To Class: ClassName=RD Member=Component J6 CON4

@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=pwm22 Pin=J17-1
+Added Pin To Net: NetName=pwm32 Pin=J17-1

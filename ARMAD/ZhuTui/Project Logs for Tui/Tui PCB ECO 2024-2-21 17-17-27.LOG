@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=NetF1_1 Pin=J?-1
+Removed Pin From Net: NetName=NetC27_2 Pin=J?-2
+Removed Member From Class: ClassName=Tui Member=J?
+Added Component: Designator=J4(CONN-TH_2P-P3.81_DB2EVC-3.81-2P-BK)
+Added Pin To Net: NetName=NetC27_2 Pin=J4-1
+Added Pin To Net: NetName=NetF1_1 Pin=J4-2
+Added Member To Class: ClassName=Tui Member=Component J4 CON2

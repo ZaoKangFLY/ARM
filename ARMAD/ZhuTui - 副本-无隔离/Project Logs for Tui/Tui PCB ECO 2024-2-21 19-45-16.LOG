@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=VCC_12V Pin=C35-1
+Removed Pin From Net: NetName=GND2 Pin=C35-2
+Removed Pin From Net: NetName=GND2 Pin=C36-2
+Removed Pin From Net: NetName=GND2 Pin=R21-2
+Removed Pin From Net: NetName=VCC_12V Pin=U23-1
+Removed Pin From Net: NetName=GND2 Pin=U23-2
+Removed Member From Class: ClassName=Tui Member=C35
+Removed Member From Class: ClassName=Tui Member=C36
+Removed Member From Class: ClassName=Tui Member=LED5
+Removed Member From Class: ClassName=Tui Member=R21
+Removed Member From Class: ClassName=Tui Member=U23

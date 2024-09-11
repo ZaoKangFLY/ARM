@@ -1,0 +1,4 @@
+Added Component: Designator=J?(HDR1X2)
+Added Pin To Net: NetName=GND1 Pin=J?-1
+Added Pin To Net: NetName=GND2 Pin=J?-2
+Added Member To Class: ClassName=Tui Member=Component J? CON2

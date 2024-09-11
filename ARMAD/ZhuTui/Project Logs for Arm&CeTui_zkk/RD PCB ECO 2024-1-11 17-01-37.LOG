@@ -1,0 +1,129 @@
+Removed Pin From Net: NetName=GND2 Pin=C27-2
+Removed Pin From Net: NetName=VCC_5V Pin=C28-2
+Removed Pin From Net: NetName=VCC_5V Pin=C29-1
+Removed Pin From Net: NetName=VCC_24V Pin=D17-2
+Removed Pin From Net: NetName=VCC_5V Pin=L1-2
+Removed Pin From Net: NetName=VCC_5V Pin=LED3-1
+Removed Pin From Net: NetName=NetLED3_2 Pin=R33-1
+Removed Pin From Net: NetName=GND2 Pin=R33-2
+Removed Pin From Net: NetName=VCC_5V Pin=U17-3
+Removed Pin From Net: NetName=GND2 Pin=U17-5
+Removed Pin From Net: NetName=GND2 Pin=U17-6
+Removed Pin From Net: NetName=GND2 Pin=U17-7
+Removed Pin From Net: NetName=GND2 Pin=U17-8
+Removed Pin From Net: NetName=GND2 Pin=U19-2
+Change Component Footprint: Designator=LED3 Old Footprint=0805 New Footprint=LED
+Change Component Footprint: Designator=C29 Old Footprint=钽电容大 New Footprint=jxcap-small
+Change Component Comment : Designator=C27 Old Comment=1uf New Comment=0.1uF
+Change Component Comment : Designator=C28 Old Comment=1uf New Comment=0.1uF
+Change Component Comment : Designator=C29 Old Comment=100uf New Comment=Cap Pol1
+Change component parameters: Designator = "C27" ("C27"); Footprint = "0805"; UniqueID = "\UQQKOJAV" ("\UQQKOJAV")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Radial Cap, Thru-Hole; 2 Leads; 0.3 in Pin Spacing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C28" ("C28"); Footprint = "0805"; UniqueID = "\JAUTMHWO" ("\JAUTMHWO")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Radial Cap, Thru-Hole; 2 Leads; 0.3 in Pin Spacing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C29" ("C29"); Footprint = "钽电容大"; UniqueID = "\IREUNMLI" ("\IREUNMLI")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "2.2uF"; VariantName = "[No Variations]"
+Added Component: Designator=C30(jxcap-small)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1uF"; VariantName = "[No Variations]"
+Added Component: Designator=C31(jxcap-small)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "2.2uF"; VariantName = "[No Variations]"
+Added Component: Designator=C32(jxcap-small)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1uF"; VariantName = "[No Variations]"
+Added Component: Designator=LED4(LED)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDocument"; Value = "Feb-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "3.2X1.6X1.1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=R41(0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Axial Device, Thru-Hole; 2 Leads; 0.4 in Pin Spacing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "AXIAL-0.4"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"
+Added Component: Designator=R42(0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Axial Device, Thru-Hole; 2 Leads; 0.4 in Pin Spacing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "AXIAL-0.4"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"
+Added Component: Designator=U22(7812)
+Added Component: Designator=U23(7805)
+Added Pin To Net: NetName=GND2 Pin=C27-1
+Added Pin To Net: NetName=VCC_24V Pin=C27-2
+Added Pin To Net: NetName=VCC_24V Pin=C29-1
+Added Pin To Net: NetName=GND2 Pin=C30-2
+Added Pin To Net: NetName=GND2 Pin=C31-2
+Added Pin To Net: NetName=VCC_5V Pin=C32-1
+Added Pin To Net: NetName=GND2 Pin=C32-2
+Added Pin To Net: NetName=VCC_5V Pin=LED4-1
+Added Pin To Net: NetName=NetLED3_2 Pin=R41-1
+Added Pin To Net: NetName=GND2 Pin=R41-2
+Added Pin To Net: NetName=GND2 Pin=R42-2
+Added Pin To Net: NetName=VCC_24V Pin=U22-1
+Added Pin To Net: NetName=GND2 Pin=U22-2
+Added Pin To Net: NetName=GND2 Pin=U23-2
+Added Pin To Net: NetName=VCC_5V Pin=U23-3
+Added Pin To Net: NetName=NetLED4_2 Pin=LED4-2
+Added Pin To Net: NetName=NetLED4_2 Pin=R42-1
+Added Net: Name=NetLED4_2
+Added Pin To Net: NetName=VCC_12V Pin=C28-2
+Added Pin To Net: NetName=VCC_12V Pin=C30-1
+Added Pin To Net: NetName=VCC_12V Pin=C31-1
+Added Pin To Net: NetName=VCC_12V Pin=LED3-1
+Added Pin To Net: NetName=VCC_12V Pin=U22-3
+Added Pin To Net: NetName=VCC_12V Pin=U23-1
+Added Net: Name=VCC_12V
+Added Member To Class: ClassName=RD Member=Component C27 0.1uF
+Added Member To Class: ClassName=RD Member=Component C28 0.1uF
+Added Member To Class: ClassName=RD Member=Component C29 Cap Pol1
+Added Member To Class: ClassName=RD Member=Component C30 Cap Pol1
+Added Member To Class: ClassName=RD Member=Component C31 Cap Pol1
+Added Member To Class: ClassName=RD Member=Component C32 Cap Pol1
+Added Member To Class: ClassName=RD Member=Component LED3 LED
+Added Member To Class: ClassName=RD Member=Component LED4 LED
+Added Member To Class: ClassName=RD Member=Component R41 10K
+Added Member To Class: ClassName=RD Member=Component R42 10K
+Added Member To Class: ClassName=RD Member=Component U22 7812
+Added Member To Class: ClassName=RD Member=Component U23 7805

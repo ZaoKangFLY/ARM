@@ -1,0 +1,42 @@
+Removed Pin From Net: NetName=A3 Pin=U1-23
+Removed Pin From Net: NetName=B3 Pin=U1-24
+Removed Pin From Net: NetName=INPUT_CeTui1 Pin=U1-25
+Removed Pin From Net: NetName=INPUT_CeTui2 Pin=U1-26
+Removed Pin From Net: NetName=B4 Pin=U1-68
+Added Component: Designator=J13(CON4B)
+Added Component: Designator=R39(0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Axial Device, Thru-Hole; 2 Leads; 0.4 in Pin Spacing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "AXIAL-0.4"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"
+Added Component: Designator=R40(0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Axial Device, Thru-Hole; 2 Leads; 0.4 in Pin Spacing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "AXIAL-0.4"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=B4 Pin=J13-2
+Added Pin To Net: NetName=+5V Pin=J13-3
+Added Pin To Net: NetName=GND1 Pin=J13-4
+Added Pin To Net: NetName=+5V Pin=R39-2
+Added Pin To Net: NetName=B4 Pin=R40-1
+Added Pin To Net: NetName=+5V Pin=R40-2
+Added Pin To Net: NetName=B4 Pin=U1-24
+Added Pin To Net: NetName=INPUT_CeTui1 Pin=U1-44
+Added Pin To Net: NetName=INPUT_CeTui2 Pin=U1-45
+Added Pin To Net: NetName=A3 Pin=U1-77
+Added Pin To Net: NetName=B3 Pin=U1-89
+Change Net Color : Old Net Color=RGB(158, 161, 117) New Net Color=Default
+Change Net Color : Old Net Color=RGB(158, 161, 117) New Net Color=Default
+Added Pin To Net: NetName=A4TIM5 Pin=J13-1
+Added Pin To Net: NetName=A4TIM5 Pin=R39-1
+Added Pin To Net: NetName=A4TIM5 Pin=U1-23
+Added Net: Name=A4TIM5
+Added Member To Class: ClassName=AC Member=Component J13 CON4
+Added Member To Class: ClassName=AC Member=Component R39 10K
+Added Member To Class: ClassName=AC Member=Component R40 10K

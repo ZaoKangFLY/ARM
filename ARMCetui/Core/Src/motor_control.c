@@ -336,40 +336,48 @@ void motor_cetui_set_postion(int _set)
 	{
 		if(_set!=con_val )//判断指令是否发生过改变
 		{
-			if(con_val<_set)
-			{
-				while(con_val!=_set)
-				{
-					Ce1_SETCOMPARE(3000-con_val) ;//
-					Ce2_SETCOMPARE(con_val) ;//
-					HAL_Delay(5);
-					con_val++;
-				}
-			}
-			else if(con_val>_set)
-			{
-			   while(_set!=con_val)
-			   {
-					Ce1_SETCOMPARE(3000-con_val) ;//
-					Ce2_SETCOMPARE(con_val);//
-				   HAL_Delay(5);
-				   con_val--;
-			   }
-			}
-		  // y=COUNT(_set);
-		  //  printf("\r\npwm:%d;占空比:%.1f%%;PWM:%.1fms;推力:%.2fN;",_set,((float)con_val)/200,((float)con_val)/20000*20,10*y);
+		
+			Ce1_SETCOMPARE(3000-(int)(_set*1.164-201.44)) ;//蓝_反浆
+			Ce2_SETCOMPARE(_set) ;//红
 		}
-		else
+		else if(_set==1500)
 		{
-		   // printf("\r\n输入侧推占空比无变化"); 
+			Ce1_SETCOMPARE(1500) ;//
+			Ce2_SETCOMPARE(1500);//
 		}
-
-	}
-	else
-	{
-		//printf("\r\n输入侧推占空比不在范围"); 
-	}
-      
+	
+	
+//		if(_set!=con_val )//判断指令是否发生过改变
+//		{
+//			if(con_val<_set)
+//			{
+//				while(con_val!=_set)
+//				{
+//					Ce1_SETCOMPARE(3000-con_val) ;//
+//					Ce2_SETCOMPARE(con_val) ;//
+//					HAL_Delay(5);
+//					con_val++;
+//				}
+//			}
+//			else if(con_val>_set)
+//			{
+//			   while(_set!=con_val)
+//			   {
+//					Ce1_SETCOMPARE(3000-con_val) ;//
+//					Ce2_SETCOMPARE(con_val);//
+//				   HAL_Delay(5);
+//				   con_val--;
+//			   }
+//			}
+//		  // y=COUNT(_set);
+//		  //  printf("\r\npwm:%d;占空比:%.1f%%;PWM:%.1fms;推力:%.2fN;",_set,((float)con_val)/200,((float)con_val)/20000*20,10*y);
+//		}
+//		else if(_set==1500)
+//		{
+//			Ce1_SETCOMPARE(1500) ;//
+//			Ce2_SETCOMPARE(1500);//
+//		}
+	}   
     
 }
 

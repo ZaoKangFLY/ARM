@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=D2 Old Footprint=LED_0603_GRN New Footprint=0805
+Change Component Designator: OldDesignator=   NewDesignator=C31
+Change Component Designator: OldDesignator=  NewDesignator=C33
+Added Member To Class: ClassName=RD Member=Component U10 URF4824QB-200W

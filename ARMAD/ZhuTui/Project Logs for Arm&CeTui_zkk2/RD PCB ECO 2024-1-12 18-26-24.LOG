@@ -1,0 +1,17 @@
+Added Component: Designator=J17(CON2BB)
+Added Component: Designator=J18(CON2BB)
+Added Component: Designator=J19(CON3BB)
+Added Component: Designator=J20(CON2BB)
+Added Pin To Net: NetName=pwm1 Pin=J17-1
+Added Pin To Net: NetName=GND1 Pin=J17-2
+Added Pin To Net: NetName=pwm111 Pin=J18-1
+Added Pin To Net: NetName=GND1 Pin=J18-2
+Added Pin To Net: NetName=pwm1 Pin=J19-1
+Added Pin To Net: NetName=pwm2 Pin=J19-2
+Added Pin To Net: NetName=GND1 Pin=J19-3
+Added Pin To Net: NetName=pwm222 Pin=J20-1
+Added Pin To Net: NetName=GND1 Pin=J20-2
+Added Member To Class: ClassName=RD Member=Component J17 CON2
+Added Member To Class: ClassName=RD Member=Component J18 CON2
+Added Member To Class: ClassName=RD Member=Component J19 CON3
+Added Member To Class: ClassName=RD Member=Component J20 CON2

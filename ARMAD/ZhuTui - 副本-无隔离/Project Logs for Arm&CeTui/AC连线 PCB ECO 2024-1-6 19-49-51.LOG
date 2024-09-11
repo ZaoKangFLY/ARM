@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=VCC_24V Pin=D17-2
+Added Pin To Net: NetName=VCC_24V Pin=LED2-1
+Change Net Color : Old Net Color=RGB(158, 161, 117) New Net Color=Default
+Added Room: Name=AC
