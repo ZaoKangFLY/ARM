@@ -12,10 +12,11 @@
 #include "motor_control.h"
 #include "tim.h"
 #include "usart.h"
-
+/*上位机必须有一个开启*/
 #define  YeHuoPID    					0/* 1:使用野火PID调试助手显示波形,注意protocol.c里 case SET_TARGET_CMD:只能一个通道调试*/
-#define  UVMS    						1/* 1:使用UVMS上位机*/
+#define  UVMS    						1/* 1:使用UVMS上位机，*/
 #define  VoFa    						0/* 1VoFa只能一个通道调试*/
+/*CeShi不能用在野火PID上位机*/
 #define  CeShi    						0/* 1:回显数据*/
 
 #define  JiFenFenLi 					1/* 1:积分分离使能*/
